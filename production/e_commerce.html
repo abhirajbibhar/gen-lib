@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Products | Gentelella 2026 v4</title>
+<title>Catalog | Rajgruha</title>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="module" src="/src/main-v4.js"></script>
 </head>
-<body data-shell="admin" data-page="pages" data-breadcrumb="Home > Products">
+<body data-shell="admin" data-page="catalog" data-breadcrumb="Home > Catalog">
 
 <main class="main">
 <div class="page-wrapper">
@@ -18,77 +18,333 @@
   <div class="page-header">
     <div class="page-header-row">
       <div>
-        <div class="page-pretitle">Catalog</div>
-        <h1 class="page-title">Products</h1>
+        <div class="page-pretitle">Library · Catalog</div>
+        <h1 class="page-title">Browse the catalog</h1>
       </div>
       <div class="page-actions">
-        <button class="btn btn-outline">Categories</button>
+        <button class="btn btn-outline">Import EPUB</button>
         <button class="btn btn-primary">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h8M8 4v8"/></svg>
-          Add product
+          Add a book
         </button>
       </div>
     </div>
   </div>
 
   <!-- Filter bar -->
-  <div class="card" style="margin-bottom:16px">
-    <div class="card-body" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 16px">
-      <span style="font-size:12px;color:var(--text-muted);font-weight:var(--font-weight-medium)">Filter:</span>
-      <span class="chip chip-primary active">Apparel<button type="button" class="chip-close" aria-label="Remove Apparel">×</button></span>
-      <span class="chip">Accessories</span>
-      <span class="chip">Electronics</span>
-      <span class="chip">Home</span>
-      <span class="chip">In stock</span>
-      <span class="chip chip-yellow active">On sale<button type="button" class="chip-close" aria-label="Remove On sale">×</button></span>
-      <span style="margin-left:auto;font-size:12px;color:var(--text-muted)">128 results</span>
-      <select class="form-control" style="width:140px;height:32px" aria-label="Sort orders">
-        <option>Sort: Newest</option>
-        <option>Sort: Price ↑</option>
-        <option>Sort: Price ↓</option>
-        <option>Sort: Best-selling</option>
-      </select>
+  <div class="card" style="margin-bottom:18px">
+    <div class="card-body" style="padding:12px 16px">
+      <div class="catalog-toolbar">
+        <span style="font-size:12px;color:var(--text-muted);font-weight:var(--font-weight-medium)">Filter:</span>
+        <span class="chip chip-primary active">All books<button type="button" class="chip-close" aria-label="Remove All books">×</button></span>
+        <span class="chip">Fiction</span>
+        <span class="chip">Sci-fi &amp; fantasy</span>
+        <span class="chip">History</span>
+        <span class="chip">Memoir</span>
+        <span class="chip chip-green active">Reading now<button type="button" class="chip-close" aria-label="Remove Reading now">×</button></span>
+        <div class="catalog-search">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+          <input type="text" placeholder="Search title, author, ISBN…" aria-label="Search the catalog">
+        </div>
+        <select class="form-control" style="width:156px;height:32px" aria-label="Sort books">
+          <option>Recently added</option>
+          <option>Title (A–Z)</option>
+          <option>Author (A–Z)</option>
+          <option>Most read</option>
+          <option>Highest rated</option>
+        </select>
+      </div>
+      <div style="margin-top:10px;font-size:11.5px;color:var(--text-muted)">
+        4,286 books · 2,061 EPUB · 1,157 PDF · 771 audiobooks · 128 added this month
+      </div>
     </div>
   </div>
 
-  <div class="row col-3" id="products-grid"></div>
+  <div class="book-shelf">
+
+    <article class="book-card">
+      <a class="book-card-art" href="product_detail.html" aria-label="Open The Left Hand of Darkness">
+        <div class="book-cover cv-1">
+          <span class="bc-kicker">Ace Books</span>
+          <span class="bc-title">The Left Hand of Darkness</span>
+          <span class="bc-rule"></span>
+          <span class="bc-author">Ursula K. Le Guin</span>
+        </div>
+        <span class="book-card-cta">Continue reading</span>
+      </a>
+      <div class="book-card-body">
+        <a class="book-title" href="product_detail.html">The Left Hand of Darkness</a>
+        <div class="book-author">Ursula K. Le Guin</div>
+        <div class="book-card-foot">
+          <span class="book-rating">★ 4.8 <span class="count">1.2k</span></span>
+          <span class="format-tag epub">EPUB</span>
+        </div>
+        <div class="book-card-progress">
+          <div class="reading-progress"><div class="fill" style="width:62%"></div></div>
+          <div class="continue-sub"><span>62% read</span><span>3h 12m left</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <a class="book-card-art" href="product_detail.html" aria-label="Open Piranesi">
+        <div class="book-cover cv-3">
+          <span class="bc-kicker">Bloomsbury</span>
+          <span class="bc-title">Piranesi</span>
+          <span class="bc-rule"></span>
+          <span class="bc-author">Susanna Clarke</span>
+        </div>
+        <span class="book-card-cta">Read now</span>
+      </a>
+      <div class="book-card-body">
+        <a class="book-title" href="product_detail.html">Piranesi</a>
+        <div class="book-author">Susanna Clarke</div>
+        <div class="book-card-foot">
+          <span class="book-rating">★ 4.6 <span class="count">940</span></span>
+          <span class="format-tag epub">EPUB</span>
+        </div>
+        <div class="book-card-status reading"><span class="dot"></span> Reading · p. 84 of 245</div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <a class="book-card-art" href="product_detail.html" aria-label="Open Braiding Sweetgrass">
+        <div class="book-cover cv-6">
+          <span class="bc-kicker">Milkweed</span>
+          <span class="bc-title">Braiding Sweetgrass</span>
+          <span class="bc-rule"></span>
+          <span class="bc-author">Robin Wall Kimmerer</span>
+        </div>
+        <span class="book-flag">New</span>
+        <span class="book-card-cta">Continue reading</span>
+      </a>
+      <div class="book-card-body">
+        <a class="book-title" href="product_detail.html">Braiding Sweetgrass</a>
+        <div class="book-author">Robin Wall Kimmerer</div>
+        <div class="book-card-foot">
+          <span class="book-rating">★ 4.7 <span class="count">2.1k</span></span>
+          <span class="format-tag epub">EPUB</span>
+        </div>
+        <div class="book-card-progress">
+          <div class="reading-progress"><div class="fill" style="width:28%"></div></div>
+          <div class="continue-sub"><span>28% read</span><span>6h 40m left</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <a class="book-card-art" href="product_detail.html" aria-label="Open Klara and the Sun">
+        <div class="book-cover cv-11">
+          <span class="bc-kicker">Faber</span>
+          <span class="bc-title">Klara and the Sun</span>
+          <span class="bc-rule"></span>
+          <span class="bc-author">Kazuo Ishiguro</span>
+        </div>
+        <span class="book-card-cta">Read now</span>
+      </a>
+      <div class="book-card-body">
+        <a class="book-title" href="product_detail.html">Klara and the Sun</a>
+        <div class="book-author">Kazuo Ishiguro</div>
+        <div class="book-card-foot">
+          <span class="book-rating">★ 4.5 <span class="count">1.8k</span></span>
+          <span class="format-tag audio">Audio</span>
+        </div>
+        <div class="book-card-status finished"><span class="dot"></span> Finished · Oct 24</div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <a class="book-card-art" href="product_detail.html" aria-label="Open The Overstory">
+        <div class="book-cover cv-12">
+          <span class="bc-kicker">Norton</span>
+          <span class="bc-title">The Overstory</span>
+          <span class="bc-rule"></span>
+          <span class="bc-author">Richard Powers</span>
+        </div>
+        <span class="book-card-cta">Read now</span>
+      </a>
+      <div class="book-card-body">
+        <a class="book-title" href="product_detail.html">The Overstory</a>
+        <div class="book-author">Richard Powers</div>
+        <div class="book-card-foot">
+          <span class="book-rating">★ 4.4 <span class="count">760</span></span>
+          <span class="format-tag epub">EPUB</span>
+        </div>
+        <div class="book-card-status queued"><span class="dot"></span> Want to read</div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <a class="book-card-art" href="product_detail.html" aria-label="Open Project Hail Mary">
+        <div class="book-cover cv-10">
+          <span class="bc-kicker">Ballantine</span>
+          <span class="bc-title">Project Hail Mary</span>
+          <span class="bc-rule"></span>
+          <span class="bc-author">Andy Weir</span>
+        </div>
+        <span class="book-card-cta">Continue listening</span>
+      </a>
+      <div class="book-card-body">
+        <a class="book-title" href="product_detail.html">Project Hail Mary</a>
+        <div class="book-author">Andy Weir</div>
+        <div class="book-card-foot">
+          <span class="book-rating">★ 4.9 <span class="count">3.4k</span></span>
+          <span class="format-tag audio">Audio</span>
+        </div>
+        <div class="book-card-progress">
+          <div class="reading-progress"><div class="fill" style="width:81%"></div></div>
+          <div class="continue-sub"><span>81% listened</span><span>2h 05m left</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <a class="book-card-art" href="product_detail.html" aria-label="Open Circe">
+        <div class="book-cover cv-5">
+          <span class="bc-kicker">Little, Brown</span>
+          <span class="bc-title">Circe</span>
+          <span class="bc-rule"></span>
+          <span class="bc-author">Madeline Miller</span>
+        </div>
+        <span class="book-card-cta">Read now</span>
+      </a>
+      <div class="book-card-body">
+        <a class="book-title" href="product_detail.html">Circe</a>
+        <div class="book-author">Madeline Miller</div>
+        <div class="book-card-foot">
+          <span class="book-rating">★ 4.7 <span class="count">2.6k</span></span>
+          <span class="format-tag epub">EPUB</span>
+        </div>
+        <div class="book-card-status reading"><span class="dot"></span> Reading · p. 143 of 393</div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <a class="book-card-art" href="product_detail.html" aria-label="Open The Master and Margarita">
+        <div class="book-cover cv-2">
+          <span class="bc-kicker">Vintage Classics</span>
+          <span class="bc-title">The Master and Margarita</span>
+          <span class="bc-rule"></span>
+          <span class="bc-author">Mikhail Bulgakov</span>
+        </div>
+        <span class="book-card-cta">Read now</span>
+      </a>
+      <div class="book-card-body">
+        <a class="book-title" href="product_detail.html">The Master and Margarita</a>
+        <div class="book-author">Mikhail Bulgakov</div>
+        <div class="book-card-foot">
+          <span class="book-rating">★ 4.6 <span class="count">1.1k</span></span>
+          <span class="format-tag pdf">PDF</span>
+        </div>
+        <div class="book-card-status"><span class="dot"></span> Not started · 412 pages</div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <a class="book-card-art" href="product_detail.html" aria-label="Open Sapiens">
+        <div class="book-cover cv-8">
+          <span class="bc-kicker">Harper</span>
+          <span class="bc-title">Sapiens</span>
+          <span class="bc-rule"></span>
+          <span class="bc-author">Yuval Noah Harari</span>
+        </div>
+        <span class="book-card-cta">Read now</span>
+      </a>
+      <div class="book-card-body">
+        <a class="book-title" href="product_detail.html">Sapiens</a>
+        <div class="book-author">Yuval Noah Harari</div>
+        <div class="book-card-foot">
+          <span class="book-rating">★ 4.3 <span class="count">4.8k</span></span>
+          <span class="format-tag epub">EPUB</span>
+        </div>
+        <div class="book-card-status finished"><span class="dot"></span> Finished · Sep 12</div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <a class="book-card-art" href="product_detail.html" aria-label="Open The Ministry for the Future">
+        <div class="book-cover cv-9">
+          <span class="bc-kicker">Orbit</span>
+          <span class="bc-title">The Ministry for the Future</span>
+          <span class="bc-rule"></span>
+          <span class="bc-author">Kim Stanley Robinson</span>
+        </div>
+        <span class="book-card-cta">Read now</span>
+      </a>
+      <div class="book-card-body">
+        <a class="book-title" href="product_detail.html">The Ministry for the Future</a>
+        <div class="book-author">Kim Stanley Robinson</div>
+        <div class="book-card-foot">
+          <span class="book-rating">★ 4.2 <span class="count">690</span></span>
+          <span class="format-tag epub">EPUB</span>
+        </div>
+        <div class="book-card-status queued"><span class="dot"></span> Want to read</div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <a class="book-card-art" href="product_detail.html" aria-label="Open Educated">
+        <div class="book-cover cv-4">
+          <span class="bc-kicker">Random House</span>
+          <span class="bc-title">Educated</span>
+          <span class="bc-rule"></span>
+          <span class="bc-author">Tara Westover</span>
+        </div>
+        <span class="book-card-cta">Continue reading</span>
+      </a>
+      <div class="book-card-body">
+        <a class="book-title" href="product_detail.html">Educated</a>
+        <div class="book-author">Tara Westover</div>
+        <div class="book-card-foot">
+          <span class="book-rating">★ 4.8 <span class="count">3.0k</span></span>
+          <span class="format-tag epub">EPUB</span>
+        </div>
+        <div class="book-card-progress">
+          <div class="reading-progress"><div class="fill" style="width:45%"></div></div>
+          <div class="continue-sub"><span>45% read</span><span>4h 20m left</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <a class="book-card-art" href="product_detail.html" aria-label="Open The Name of the Wind">
+        <div class="book-cover cv-7">
+          <span class="bc-kicker">DAW Books</span>
+          <span class="bc-title">The Name of the Wind</span>
+          <span class="bc-rule"></span>
+          <span class="bc-author">Patrick Rothfuss</span>
+        </div>
+        <span class="book-flag">Queued</span>
+        <span class="book-card-cta">Read now</span>
+      </a>
+      <div class="book-card-body">
+        <a class="book-title" href="product_detail.html">The Name of the Wind</a>
+        <div class="book-author">Patrick Rothfuss</div>
+        <div class="book-card-foot">
+          <span class="book-rating">★ 4.9 <span class="count">5.2k</span></span>
+          <span class="format-tag epub">EPUB</span>
+        </div>
+        <div class="book-card-status queued"><span class="dot"></span> Want to read · 662 pages</div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <div class="pagination" style="border-top:none">
+      <span class="page-info">Showing 12 of 4,286 books</span>
+      <span class="page-link disabled">‹</span>
+      <span class="page-link active">1</span>
+      <span class="page-link">2</span>
+      <span class="page-link">3</span>
+      <span class="page-link">…</span>
+      <span class="page-link">358</span>
+      <span class="page-link">›</span>
+    </div>
+  </div>
 
 </div>
 </main>
-
-<script type="module">
-import { PRODUCT_IMAGES } from '/src/v4/product-images.js';
-
-const products = [
-  ['Aurora hoodie',          'Apparel',       49, 65,  'Sale',     'red',    '★★★★☆ 4.6 (128)', 'hoodie'],
-  ['Linen field shirt',      'Apparel',       89, null,'New',      'green',  '★★★★★ 4.9 (42)',  'shirt'],
-  ['Trail runner sneakers',  'Footwear',      129,159, 'Sale',     'red',    '★★★★☆ 4.4 (231)', 'sneakers'],
-  ['Canvas weekend bag',     'Accessories',   79, null,null,       null,     '★★★★☆ 4.5 (76)',  'bag'],
-  ['Wireless earbuds Pro',   'Electronics',   149,null,'Hot',      'yellow', '★★★★★ 5.0 (892)', 'earbuds'],
-  ['Ceramic pour-over set',  'Home',          54, null,null,       null,     '★★★★☆ 4.7 (61)',  'pourover'],
-  ['Standing desk mat',      'Home',          39, 49,  'Sale',     'red',    '★★★★☆ 4.3 (158)', 'mat'],
-  ['Mechanical keyboard',    'Electronics',   189,null,'New',      'green',  '★★★★★ 4.8 (304)', 'keyboard'],
-  ['Merino base layer',      'Apparel',       69, null,null,       null,     '★★★★☆ 4.6 (97)',  'baselayer']
-];
-
-document.getElementById('products-grid').innerHTML = products.map(([name, cat, price, oldPrice, badge, badgeCls, stars, slug]) => `
-  <a class="product-card" href="product_detail.html">
-    <div class="product-thumb">
-      ${badge ? `<span class="product-badge"><span class="chip chip-${badgeCls}">${badge}</span></span>` : ''}
-      ${PRODUCT_IMAGES[slug] || ''}
-    </div>
-    <div class="product-info">
-      <div class="name">${name}</div>
-      <div class="category">${cat}</div>
-      <div class="price-row">
-        <span class="price">$${price}</span>
-        ${oldPrice ? `<span class="price-old">$${oldPrice}</span>` : ''}
-      </div>
-      <div class="stars">${stars}</div>
-    </div>
-  </a>
-`).join('');
-</script>
 
 </body>
 </html>

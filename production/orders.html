@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orders | Gentelella 2026 v4</title>
+<title>Reading log | Rajgruha</title>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="module" src="/src/main-v4.js"></script>
 </head>
-<body data-shell="admin" data-page="orders" data-breadcrumb="Home > Orders">
+<body data-shell="admin" data-page="orders" data-breadcrumb="Home > Reading log">
 
 <main class="main">
 <div class="page-wrapper">
@@ -18,52 +18,52 @@
   <div class="page-header">
     <div class="page-header-row">
       <div>
-        <div class="page-pretitle">Shop</div>
-        <h1 class="page-title">Orders</h1>
+        <div class="page-pretitle">Reading</div>
+        <h1 class="page-title">Reading log</h1>
       </div>
       <div class="page-actions">
         <button class="btn btn-outline">Export CSV</button>
-        <button class="btn btn-primary">+ Manual order</button>
+        <button class="btn btn-primary">+ Log a session</button>
       </div>
     </div>
   </div>
 
   <!-- Stat row -->
   <div class="row col-3" style="margin-bottom:16px">
-    <div class="card"><div class="stat"><div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg></div><div class="stat-content"><div class="stat-label">Total orders</div><div class="stat-value-row"><span class="stat-value">1,240</span><span class="stat-change up">12%</span></div><div class="stat-subtext">78 today</div></div></div></div>
-    <div class="card"><div class="stat"><div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div class="stat-content"><div class="stat-label">Revenue</div><div class="stat-value-row"><span class="stat-value">$84,520</span><span class="stat-change up">18%</span></div><div class="stat-subtext">$3,218 today</div></div></div></div>
-    <div class="card"><div class="stat"><div class="stat-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="stat-content"><div class="stat-label">Pending</div><div class="stat-value-row"><span class="stat-value">42</span><span class="stat-change down">3%</span></div><div class="stat-subtext">5 awaiting payment</div></div></div></div>
+    <div class="card"><div class="stat"><div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 3H20v18H6.5A2.5 2.5 0 014 18.5v-13A2.5 2.5 0 016.5 3z"/></svg></div><div class="stat-content"><div class="stat-label">In progress</div><div class="stat-value-row"><span class="stat-value">8</span><span class="stat-change up">2</span></div><div class="stat-subtext">3 read this week</div></div></div></div>
+    <div class="card"><div class="stat"><div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l5 5L21 4"/></svg></div><div class="stat-content"><div class="stat-label">Finished this month</div><div class="stat-value-row"><span class="stat-value">12</span><span class="stat-change up">3</span></div><div class="stat-subtext">4,812 pages behind you</div></div></div></div>
+    <div class="card"><div class="stat"><div class="stat-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="stat-content"><div class="stat-label">Reading time</div><div class="stat-value-row"><span class="stat-value">28h</span><span class="stat-change down">4%</span></div><div class="stat-subtext">this month · avg 48 min/day</div></div></div></div>
   </div>
 
   <div class="card">
     <div class="card-header">
       <div>
-        <div class="card-title">All orders</div>
-        <div class="card-subtitle">1,240 results</div>
+        <div class="card-title">All sessions</div>
+        <div class="card-subtitle">372 entries</div>
       </div>
-      <div class="card-options">
-        <label style="font-size:11.5px;color:var(--text-muted);margin-right:6px">Status</label>
+      <div class="card-options" style="display:flex;align-items:center;gap:6px">
+        <label style="font-size:11.5px;color:var(--text-muted);margin:0;white-space:nowrap">Status</label>
         <select class="form-control" style="width:170px;height:32px" aria-label="Filter by status">
           <option>All statuses</option>
-          <option>Paid</option>
-          <option>Processing</option>
-          <option>Pending</option>
-          <option>Cancelled</option>
+          <option>Reading</option>
+          <option>Finished</option>
+          <option>Want to read</option>
+          <option>Paused</option>
         </select>
       </div>
     </div>
     <div class="card-body p-0">
       <div class="table-responsive">
-        <table class="table" data-datatable data-page-length="10" data-export="orders">
+        <table class="table" data-datatable data-page-length="10" data-export="reading-log">
           <thead>
             <tr>
-              <th>Order</th>
-              <th>Customer</th>
-              <th>Items</th>
-              <th>Total</th>
+              <th>Entry</th>
+              <th>Book</th>
+              <th>Format</th>
+              <th>Progress</th>
               <th>Status</th>
-              <th>Payment</th>
-              <th>Date</th>
+              <th>Started</th>
+              <th>Last read</th>
               <th data-orderable="false"></th>
             </tr>
           </thead>
@@ -77,60 +77,69 @@
 </main>
 
 <script type="module">
-// This page demonstrates the data-adapter pattern. By default it uses
-// a hardcoded SEED array — the standard "self-contained demo" mode.
-// Add `?api=1` to the URL to fetch from /api/orders instead. Run the
-// example backend in `examples/express-sqlite/` to see it in action.
 import { useApiMode, seedAdapter, httpAdapter } from '/src/v4/data-adapter.js';
 
 const SEED = [
-  { id:'#7841', customer:'John Doe',      initials:'JD', avatarColor:'primary',  items:3, total:245, status:'paid',       payment:'Visa •••• 4242',       createdAt:'Apr 28, 2026' },
-  { id:'#7840', customer:'Anna Smith',    initials:'AS', avatarColor:'azure',    items:1, total: 89, status:'processing', payment:'Mastercard •••• 8841', createdAt:'Apr 28, 2026' },
-  { id:'#7839', customer:'Robert Jones',  initials:'RJ', avatarColor:'purple',   items:5, total:490, status:'paid',       payment:'PayPal',               createdAt:'Apr 28, 2026' },
-  { id:'#7838', customer:'Emily Wang',    initials:'EW', avatarColor:'yellow',   items:2, total:125, status:'pending',    payment:'Stripe checkout',      createdAt:'Apr 27, 2026' },
-  { id:'#7837', customer:'Mark Kim',      initials:'MK', avatarColor:'red',      items:1, total: 67, status:'cancelled',  payment:'Visa •••• 1234',       createdAt:'Apr 27, 2026' },
-  { id:'#7836', customer:'Lina Park',     initials:'LP', avatarColor:'green',    items:4, total:312, status:'paid',       payment:'Visa •••• 4242',       createdAt:'Apr 27, 2026' },
-  { id:'#7835', customer:'Diego Reyes',   initials:'DR', avatarColor:'blue',     items:2, total:178, status:'paid',       payment:'Apple Pay',            createdAt:'Apr 26, 2026' },
-  { id:'#7834', customer:'Yuki Tanaka',   initials:'YT', avatarColor:'primary',  items:3, total:234, status:'processing', payment:'Mastercard •••• 7712', createdAt:'Apr 26, 2026' },
-  { id:'#7833', customer:'Sarah Kowalski',initials:'SK', avatarColor:'primary',  items:6, total:549, status:'paid',       payment:'Stripe checkout',      createdAt:'Apr 26, 2026' },
-  { id:'#7832', customer:'Michael Reyes', initials:'MR', avatarColor:'purple',   items:1, total: 45, status:'pending',    payment:'PayPal',               createdAt:'Apr 25, 2026' },
-  { id:'#7831', customer:'Tom Hardy',     initials:'TH', avatarColor:'purple',   items:2, total:195, status:'paid',       payment:'Visa •••• 4242',       createdAt:'Apr 25, 2026' },
-  { id:'#7830', customer:'Anna Smith',    initials:'AS', avatarColor:'azure',    items:3, total:220, status:'paid',       payment:'Mastercard •••• 8841', createdAt:'Apr 24, 2026' },
-  { id:'#7829', customer:'John Doe',      initials:'JD', avatarColor:'primary',  items:1, total: 79, status:'paid',       payment:'Apple Pay',            createdAt:'Apr 24, 2026' },
-  { id:'#7828', customer:'Robert Jones',  initials:'RJ', avatarColor:'purple',   items:2, total:168, status:'cancelled',  payment:'Visa •••• 5566',       createdAt:'Apr 23, 2026' },
-  { id:'#7827', customer:'Emily Wang',    initials:'EW', avatarColor:'yellow',   items:4, total:388, status:'paid',       payment:'Stripe checkout',      createdAt:'Apr 23, 2026' },
-  { id:'#7826', customer:'Mark Kim',      initials:'MK', avatarColor:'red',      items:1, total:112, status:'paid',       payment:'Google Pay',           createdAt:'Apr 22, 2026' },
-  { id:'#7825', customer:'Diego Reyes',   initials:'DR', avatarColor:'blue',     items:2, total:156, status:'processing', payment:'PayPal',               createdAt:'Apr 22, 2026' },
-  { id:'#7824', customer:'Lina Park',     initials:'LP', avatarColor:'green',    items:3, total:247, status:'paid',       payment:'Visa •••• 4242',       createdAt:'Apr 21, 2026' },
-  { id:'#7823', customer:'Yuki Tanaka',   initials:'YT', avatarColor:'primary',  items:1, total: 58, status:'paid',       payment:'Apple Pay',            createdAt:'Apr 21, 2026' },
-  { id:'#7822', customer:'Sarah Kowalski',initials:'SK', avatarColor:'primary',  items:2, total:132, status:'paid',       payment:'Stripe checkout',      createdAt:'Apr 20, 2026' }
+  { id:'#R-1042', book:'The Left Hand of Darkness', author:'Ursula K. Le Guin',  cover:'cv-1',  initials:'LH', format:'EPUB',  progress:47, status:'reading',  startedAt:'Oct 18, 2026', lastRead:'Today, 21:40' },
+  { id:'#R-1041', book:'Piranesi',                  author:'Susanna Clarke',    cover:'cv-3',  initials:'PI', format:'EPUB',  progress:36, status:'reading',  startedAt:'Oct 24, 2026', lastRead:'Today, 08:12' },
+  { id:'#R-1040', book:'Braiding Sweetgrass',       author:'Robin Wall Kimmerer', cover:'cv-6', initials:'BS', format:'EPUB',  progress:16, status:'reading',  startedAt:'Nov 01, 2026', lastRead:'Today, 07:02' },
+  { id:'#R-1039', book:'Klara and the Sun',         author:'Kazuo Ishiguro',    cover:'cv-11', initials:'KS', format:'Audio', progress:100, status:'finished', startedAt:'Oct 02, 2026', lastRead:'Oct 24, 2026' },
+  { id:'#R-1038', book:'Project Hail Mary',         author:'Andy Weir',         cover:'cv-10', initials:'PH', format:'Audio', progress:81,  status:'reading',  startedAt:'Oct 09, 2026', lastRead:'Yesterday' },
+  { id:'#R-1037', book:'The Ministry for the Future', author:'Kim Stanley Robinson', cover:'cv-9', initials:'MF', format:'EPUB', progress:0, status:'queued', startedAt:'—', lastRead:'—' },
+  { id:'#R-1036', book:'Circe',                     author:'Madeline Miller',   cover:'cv-5',  initials:'CI', format:'EPUB',  progress:64,  status:'paused',   startedAt:'Sep 28, 2026', lastRead:'Oct 15, 2026' },
+  { id:'#R-1035', book:'Educated',                  author:'Tara Westover',     cover:'cv-4',  initials:'ED', format:'EPUB',  progress:100, status:'finished', startedAt:'Sep 12, 2026', lastRead:'Oct 08, 2026' },
+  { id:'#R-1034', book:'The Overstory',             author:'Richard Powers',    cover:'cv-12', initials:'OV', format:'EPUB',  progress:0,   status:'queued',   startedAt:'—', lastRead:'—' },
+  { id:'#R-1033', book:'Sapiens',                   author:'Yuval Noah Harari', cover:'cv-8',  initials:'SA', format:'PDF',   progress:100, status:'finished', startedAt:'Aug 02, 2026', lastRead:'Sep 12, 2026' },
+  { id:'#R-1032', book:'The Name of the Wind',      author:'Patrick Rothfuss',  cover:'cv-7',  initials:'NW', format:'EPUB',  progress:2,   status:'reading',  startedAt:'Nov 02, 2026', lastRead:'Today, 06:30' },
+  { id:'#R-1031', book:'The Master and Margarita',  author:'Mikhail Bulgakov',  cover:'cv-2',  initials:'MM', format:'PDF',   progress:0,   status:'queued',   startedAt:'—', lastRead:'—' },
+  { id:'#R-1030', book:'Dune Messiah',              author:'Frank Herbert',     cover:'cv-3',  initials:'DM', format:'EPUB',  progress:100, status:'finished', startedAt:'Jul 19, 2026', lastRead:'Aug 04, 2026' },
+  { id:'#R-1029', book:'The Seventh Perfection',    author:'Daniel Polansky',   cover:'cv-1',  initials:'SP', format:'EPUB',  progress:12,  status:'paused',   startedAt:'Sep 04, 2026', lastRead:'Sep 21, 2026' },
+  { id:'#R-1028', book:'Piranesi',                  author:'Susanna Clarke',    cover:'cv-3',  initials:'PI', format:'EPUB',  progress:100, status:'finished', startedAt:'Jun 02, 2026', lastRead:'Jun 21, 2026' },
+  { id:'#R-1027', book:'This Is How You Lose the Time War', author:'Amal El-Mohtar', cover:'cv-11', initials:'TW', format:'EPUB', progress:100, status:'finished', startedAt:'May 12, 2026', lastRead:'May 19, 2026' },
+  { id:'#R-1026', book:'The Left Hand of Darkness', author:'Ursula K. Le Guin', cover:'cv-1',  initials:'LH', format:'EPUB',  progress:100, status:'finished', startedAt:'Mar 04, 2026', lastRead:'Mar 22, 2026' },
+  { id:'#R-1025', book:'A Psalm for the Wild-Built', author:'Becky Chambers',   cover:'cv-6',  initials:'PW', format:'Audio', progress:100, status:'finished', startedAt:'Feb 14, 2026', lastRead:'Feb 16, 2026' },
+  { id:'#R-1024', book:'The Overstory',             author:'Richard Powers',    cover:'cv-12', initials:'OV', format:'EPUB',  progress:41,  status:'paused',   startedAt:'Jan 08, 2026', lastRead:'Feb 02, 2026' },
+  { id:'#R-1023', book:'Klara and the Sun',         author:'Kazuo Ishiguro',    cover:'cv-11', initials:'KS', format:'EPUB',  progress:100, status:'finished', startedAt:'Jan 02, 2026', lastRead:'Jan 18, 2026' }
 ];
 
-const colorMap = { primary:'var(--primary)', azure:'var(--azure)', purple:'var(--purple)', yellow:'var(--yellow)', red:'var(--red)', green:'var(--green)', blue:'var(--blue)' };
-const STATUS = { paid:'green', processing:'blue', pending:'yellow', cancelled:'red' };
+const STATUS = { reading:'green', finished:'blue', queued:'yellow', paused:'red' };
+const STATUS_LABEL = { reading:'Reading', finished:'Finished', queued:'Want to read', paused:'Paused' };
 
 const adapter = useApiMode()
-  ? httpAdapter('/api/orders', { listKey: 'orders' })
+  ? httpAdapter('/api/reading-log', { listKey: 'entries' })
   : seedAdapter(SEED);
 
 const tbody = document.getElementById('orders-rows');
 
 function rowHtml(o) {
+  const progress = o.status === 'queued'
+    ? '<span style="color:var(--text-muted);font-size:12px">—</span>'
+    : `<div style="display:flex;align-items:center;gap:8px;min-width:110px">
+         <div class="reading-progress" style="flex:1"><div class="fill" style="width:${o.progress}%"></div></div>
+         <span class="cell-mono" style="font-size:11.5px;color:var(--text-muted)">${o.progress}%</span>
+       </div>`;
   return `
     <tr>
       <td class="cell-mono"><a href="order_detail.html" style="color:var(--primary);font-weight:var(--font-weight-medium)">${o.id}</a></td>
-      <td><div class="cell-customer"><div class="cell-avatar" style="background:${colorMap[o.avatarColor] || 'var(--primary)'}">${o.initials}</div><span class="cell-strong">${o.customer}</span></div></td>
-      <td>${o.items}</td>
-      <td class="cell-strong">$${o.total}</td>
-      <td><span class="status status-${STATUS[o.status]}">${o.status[0].toUpperCase() + o.status.slice(1)}</span></td>
-      <td style="font-size:12px;color:var(--text-muted)">${o.payment}</td>
-      <td>${o.createdAt}</td>
+      <td>
+        <div class="cell-customer">
+          <div class="book-cover sm ${o.cover}" style="width:28px"><span class="bc-title">${o.initials}</span></div>
+          <div>
+            <div class="cell-strong">${o.book}</div>
+            <div style="font-size:11.5px;color:var(--text-muted)">${o.author}</div>
+          </div>
+        </div>
+      </td>
+      <td><span class="format-tag ${o.format.toLowerCase()}">${o.format}</span></td>
+      <td>${progress}</td>
+      <td><span class="status status-${STATUS[o.status]}">${STATUS_LABEL[o.status]}</span></td>
+      <td>${o.startedAt}</td>
+      <td class="cell-strong">${o.lastRead}</td>
       <td><button class="card-opt-btn" aria-label="More"><svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="3" r="1.2"/><circle cx="8" cy="8" r="1.2"/><circle cx="8" cy="13" r="1.2"/></svg></button></td>
     </tr>`;
 }
 
-// Loading state during fetch — emit 5 skeleton rows so the table looks "alive"
-// while the network request resolves. In seed mode this flashes briefly.
+// Loading state during fetch — 5 skeleton rows keep the table looking alive.
 function skeletonRows(n = 5) {
   const cell = '<td><span class="skeleton skeleton-text" style="width:80%"></span></td>';
   return Array.from({ length: n }, () => `<tr>${cell.repeat(8)}</tr>`).join('');
@@ -139,18 +148,18 @@ function skeletonRows(n = 5) {
 async function load() {
   tbody.innerHTML = skeletonRows();
   try {
-    const orders = await adapter.list();
-    if (!orders.length) {
-      tbody.innerHTML = `<tr><td colspan="8" style="padding:40px;text-align:center;color:var(--text-muted)">No orders yet.</td></tr>`;
+    const entries = await adapter.list();
+    if (!entries.length) {
+      tbody.innerHTML = `<tr><td colspan="8" style="padding:40px;text-align:center;color:var(--text-muted)">Nothing logged yet.</td></tr>`;
       return;
     }
-    tbody.innerHTML = orders.map(rowHtml).join('');
+    tbody.innerHTML = entries.map(rowHtml).join('');
   } catch (err) {
     tbody.innerHTML = `
       <tr><td colspan="8" style="padding:24px">
         <div class="banner banner-danger">
           <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 5l6 6M11 5l-6 6"/></svg>
-          <div class="banner-body"><strong>Failed to load orders.</strong> ${err.message || err}</div>
+          <div class="banner-body"><strong>Failed to load the reading log.</strong> ${err.message || err}</div>
           <div class="banner-actions"><button class="btn btn-outline btn-sm" id="orders-retry">Retry</button></div>
         </div>
       </td></tr>`;

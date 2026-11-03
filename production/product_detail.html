@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AdminLTE Pro · Product | Gentelella 2026 v4</title>
+<title>The Left Hand of Darkness | Rajgruha</title>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="module" src="/src/main-v4.js"></script>
 </head>
-<body data-shell="admin" data-page="product" data-breadcrumb="Home > Storefront > AdminLTE Pro">
+<body data-shell="admin" data-page="book" data-breadcrumb="Home > Catalog|e_commerce.html > The Left Hand of Darkness">
 
 <main class="main">
 <div class="page-wrapper">
@@ -18,8 +18,8 @@
   <div class="page-header">
     <div class="page-header-row">
       <div>
-        <div class="page-pretitle">Shop · <a href="e_commerce.html" style="color:var(--primary)">Storefront</a></div>
-        <h1 class="page-title">AdminLTE Pro</h1>
+        <div class="page-pretitle">Catalog · <a href="e_commerce.html" style="color:var(--primary)">All books</a></div>
+        <h1 class="page-title">The Left Hand of Darkness</h1>
       </div>
       <div class="page-actions">
         <button class="btn btn-outline">← Back to catalog</button>
@@ -27,85 +27,74 @@
     </div>
   </div>
 
-  <div class="row col-2 product-detail-grid" style="grid-template-columns:5fr 4fr;align-items:flex-start">
-    <!-- Gallery -->
+  <div class="book-hero">
+    <!-- Cover + reader actions -->
     <div class="card">
-      <div class="card-body" style="padding:20px">
-        <div class="product-gallery">
-          <div class="gallery-main">
-            <div class="gallery-image" id="main-img">
-              <span class="gallery-badge">Best seller</span>
-              <div class="gallery-svg" id="gallery-svg" aria-label="Dashboard preview"></div>
-            </div>
-          </div>
-          <div class="gallery-thumbs" id="gallery-thumbs">
-            <button type="button" class="gallery-thumb active" data-view="overview"  aria-label="Overview"></button>
-            <button type="button" class="gallery-thumb" data-view="analytics" aria-label="Analytics"></button>
-            <button type="button" class="gallery-thumb" data-view="tables"    aria-label="Tables"></button>
-            <button type="button" class="gallery-thumb" data-view="dark"      aria-label="Dark mode"></button>
-            <button type="button" class="gallery-thumb" data-view="mobile"    aria-label="Mobile"></button>
-          </div>
+      <div class="book-hero-art" style="border-radius:var(--radius-lg) var(--radius-lg) 0 0">
+        <div class="book-cover cv-1">
+          <span class="bc-kicker">Ace Books</span>
+          <span class="bc-title">The Left Hand of Darkness</span>
+          <span class="bc-rule"></span>
+          <span class="bc-author">Ursula K. Le Guin</span>
+        </div>
+      </div>
+      <div class="card-body" style="padding:16px">
+        <div style="display:flex;gap:6px;justify-content:center;margin-bottom:14px">
+          <span class="format-tag epub">EPUB</span>
+          <span class="format-tag pdf">PDF</span>
+          <span class="format-tag audio">Audiobook</span>
+        </div>
+        <div class="book-actions" style="margin:0 0 8px">
+          <a class="btn btn-primary" id="read-epub" href="reader.html" style="flex:1">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 3h8a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M6 7h4M6 10h3"/></svg>
+            Read now
+          </a>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-outline btn-sm" id="download-epub" style="flex:1">Download EPUB</button>
+          <button class="btn btn-outline btn-sm" id="download-pdf" style="flex:1">PDF</button>
+        </div>
+        <div class="reading-progress" style="margin-top:16px"><div class="fill" style="width:47%"></div></div>
+        <div class="continue-sub"><span>Page 142 of 304</span><span>47%</span></div>
+        <div style="margin-top:12px;font-size:11.5px;color:var(--text-muted);display:flex;align-items:center;gap:6px">
+          <span class="availability"><span class="dot"></span> Available</span>
+          <span style="margin-left:auto">2 formats · EPUB + PDF</span>
         </div>
       </div>
     </div>
 
-    <!-- Info -->
+    <!-- Metadata -->
     <div style="display:flex;flex-direction:column;gap:16px">
       <div class="card">
         <div class="card-body" style="padding:20px">
           <div class="product-meta">
-            <span class="chip chip-primary active" style="font-weight:var(--font-weight-medium)">Dashboard</span>
-            <span class="rating">★★★★<span style="color:var(--text-disabled)">★</span> <small>4.6 · 248 reviews</small></span>
+            <span class="chip chip-primary active" style="font-weight:var(--font-weight-medium)">Science fiction</span>
+            <span class="rating">★★★★★ <small>4.8 · 248 ratings</small></span>
           </div>
-          <h2 class="product-title">AdminLTE Pro</h2>
-          <p class="product-tagline">A premium dashboard kit with 80+ pages, fully responsive, dark mode included.</p>
+          <h2 class="product-title">The Left Hand of Darkness</h2>
+          <p class="product-tagline">Ursula K. Le Guin · Hainish Cycle #4 · 1969</p>
 
-          <div class="product-price-row">
-            <span class="price">$129</span>
-            <span class="price-old">$199</span>
-            <span class="price-discount">-35%</span>
-          </div>
+          <p style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;margin:14px 0">
+            On the frozen world of Gethen, an envoy from the Ekumen must cross a planet of ice with
+            a disgraced politician to keep a fragile alliance alive. Le Guin's landmark novel is a
+            study of loyalty, gender, and the cost of understanding a culture that is not your own.
+          </p>
 
-          <div class="product-option">
-            <div class="option-label">License</div>
-            <div class="option-values" data-group="license">
-              <button type="button" class="option-value active" data-val="single">Single project</button>
-              <button type="button" class="option-value" data-val="team">Team</button>
-              <button type="button" class="option-value" data-val="enterprise">Enterprise</button>
-            </div>
-          </div>
-
-          <div class="product-option">
-            <div class="option-label">Support</div>
-            <div class="option-values" data-group="support">
-              <button type="button" class="option-value active" data-val="6m">6 months</button>
-              <button type="button" class="option-value" data-val="12m">12 months</button>
-              <button type="button" class="option-value" data-val="lifetime">Lifetime</button>
-            </div>
+          <div class="book-meta-grid">
+            <div><div class="k">Publisher</div><div class="v">Ace Books</div></div>
+            <div><div class="k">First published</div><div class="v">March 1969</div></div>
+            <div><div class="k">Pages</div><div class="v">304</div></div>
+            <div><div class="k">Language</div><div class="v">English</div></div>
+            <div><div class="k">ISBN</div><div class="v">978-0441478125</div></div>
+            <div><div class="k">Series</div><div class="v">Hainish Cycle #4</div></div>
+            <div><div class="k">Added</div><div class="v">24 October 2026</div></div>
+            <div><div class="k">Shelf</div><div class="v">Sci-fi classics</div></div>
           </div>
 
-          <div class="product-quantity-row">
-            <div class="qty-label">Quantity</div>
-            <div class="qty-controls">
-              <button type="button" class="qty-btn" id="qty-dec" aria-label="Decrease">−</button>
-              <input type="number" id="qty" value="1" min="1" max="99" aria-label="Quantity">
-              <button type="button" class="qty-btn" id="qty-inc" aria-label="Increase">+</button>
-            </div>
-            <div class="stock-indicator"><span class="dot"></span> In stock — 142 available</div>
-          </div>
-
-          <div class="product-actions">
-            <button class="btn btn-outline" id="add-cart">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="14" r="1"/><circle cx="13" cy="14" r="1"/><path d="M2 2h2l1.5 8h9L16 4H5"/></svg>
-              Add to cart
-            </button>
-            <button class="btn btn-primary" id="buy-now">Buy now — $129</button>
-          </div>
-
-          <div class="product-perks">
-            <div class="perk"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8l3 3 9-9"/></svg> Instant download</div>
-            <div class="perk"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8l3 3 9-9"/></svg> 30-day money-back guarantee</div>
-            <div class="perk"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8l3 3 9-9"/></svg> Free updates for 6 months</div>
+          <div class="product-perks" style="margin-top:16px">
+            <div class="perk"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8l3 3 9-9"/></svg> EPUB &amp; PDF open in the built-in readers</div>
+            <div class="perk"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8l3 3 9-9"/></svg> Reading position syncs across devices</div>
+            <div class="perk"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8l3 3 9-9"/></svg> 38 highlights and 12 notes saved</div>
           </div>
         </div>
       </div>
@@ -116,44 +105,42 @@
   <div class="card" style="margin-top:16px">
     <div class="card-header" style="border-bottom:1px solid var(--border-color-light)">
       <div class="chart-tabs product-tabs">
-        <button class="chart-tab active" data-tab="description">Description</button>
-        <button class="chart-tab" data-tab="specs">Specifications</button>
+        <button class="chart-tab active" data-tab="description">About this book</button>
+        <button class="chart-tab" data-tab="specs">Chapters</button>
         <button class="chart-tab" data-tab="reviews">Reviews <span style="opacity:.6;font-weight:normal">· 248</span></button>
       </div>
     </div>
     <div class="card-body" style="padding:24px">
       <div class="product-tab-panel" data-panel="description">
         <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-bottom:14px">
-          AdminLTE Pro is the most popular open-source dashboard kit, now with 80+ production-ready pages, vanilla JS architecture, and zero jQuery. Built for engineers who want to ship faster without compromising on polish.
+          Genly Ai is sent alone to the planet Winter — a world where people have no fixed gender —
+          to invite its nations into the Ekumen. His mission fails, then survives through an unlikely
+          partnership with Estraven, the one politician who believed him. Their crossing of the Gobrin
+          Ice is one of the great sequences in science fiction.
         </p>
-        <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-bottom:18px">
-          Every page is responsive down to 320px, every component honors prefers-reduced-motion and prefers-color-scheme, and every interaction is keyboard-accessible.
-        </p>
-        <h4 style="font-size:13px;font-weight:var(--font-weight-bold);color:var(--text);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:10px">What's included</h4>
+        <h4 style="font-size:13px;font-weight:var(--font-weight-bold);color:var(--text);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:10px">Reader notes</h4>
         <ul style="list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:13px;color:var(--text-secondary)">
-          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> 80+ HTML pages</li>
-          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> Dark mode + theming tokens</li>
-          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> ECharts integration</li>
-          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> DataTables.net styling</li>
-          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> Lifetime SCSS source</li>
-          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> Vite build config</li>
-          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> Figma source files</li>
-          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> Email templates (HTML)</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> 38 highlights</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> 12 notes</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> 3 bookmarks</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> 4h 12m reading time</li>
         </ul>
       </div>
 
       <div class="product-tab-panel" data-panel="specs" hidden>
         <table class="table" style="margin:0">
+          <thead>
+            <tr><th>Chapter</th><th>Title</th><th>Pages</th><th>Status</th></tr>
+          </thead>
           <tbody>
-            <tr><td style="font-weight:var(--font-weight-medium);width:200px">Version</td><td>4.0.0-beta.1</td></tr>
-            <tr><td style="font-weight:var(--font-weight-medium)">Released</td><td>April 28, 2026</td></tr>
-            <tr><td style="font-weight:var(--font-weight-medium)">Updated</td><td>April 28, 2026</td></tr>
-            <tr><td style="font-weight:var(--font-weight-medium)">File size</td><td>4.2 MB compressed</td></tr>
-            <tr><td style="font-weight:var(--font-weight-medium)">Pages</td><td>80+ HTML pages</td></tr>
-            <tr><td style="font-weight:var(--font-weight-medium)">Build</td><td>Vite 8</td></tr>
-            <tr><td style="font-weight:var(--font-weight-medium)">Styling</td><td>SCSS with custom property tokens</td></tr>
-            <tr><td style="font-weight:var(--font-weight-medium)">Browser support</td><td>Last 2 versions of Chrome, Firefox, Safari, Edge</td></tr>
-            <tr><td style="font-weight:var(--font-weight-medium)">License</td><td>Single project · transferable to one URL</td></tr>
+            <tr><td>1</td><td class="cell-strong">A Parade in Erhenrang</td><td>1–34</td><td><span class="status status-green">Read</span></td></tr>
+            <tr><td>2</td><td class="cell-strong">The Place Inside the Blizzard</td><td>35–68</td><td><span class="status status-green">Read</span></td></tr>
+            <tr><td>3</td><td class="cell-strong">The Mad King</td><td>69–102</td><td><span class="status status-green">Read</span></td></tr>
+            <tr><td>4</td><td class="cell-strong">The Nineteenth Day</td><td>103–141</td><td><span class="status status-blue">Reading</span></td></tr>
+            <tr><td>5</td><td class="cell-strong">The Domestication of Hunch</td><td>142–178</td><td><span class="status status-yellow">Up next</span></td></tr>
+            <tr><td>6</td><td class="cell-strong">One Way into Orgoreyn</td><td>179–232</td><td><span class="status">—</span></td></tr>
+            <tr><td>7</td><td class="cell-strong">The Question of Sex</td><td>233–268</td><td><span class="status">—</span></td></tr>
+            <tr><td>8</td><td class="cell-strong">On the Ice</td><td>269–304</td><td><span class="status">—</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -161,40 +148,40 @@
       <div class="product-tab-panel" data-panel="reviews" hidden>
         <div class="reviews-summary">
           <div class="rating-big">
-            <div class="num">4.6</div>
-            <div class="stars">★★★★<span style="color:var(--text-disabled)">★</span></div>
-            <div class="meta">Based on 248 reviews</div>
+            <div class="num">4.8</div>
+            <div class="stars">★★★★★</div>
+            <div class="meta">Based on 248 ratings</div>
           </div>
           <div class="rating-bars">
-            <div class="r-bar"><span class="lbl">5★</span><div class="bar"><div class="fill" style="width:72%;background:var(--green)"></div></div><span class="cnt">178</span></div>
-            <div class="r-bar"><span class="lbl">4★</span><div class="bar"><div class="fill" style="width:18%;background:var(--green)"></div></div><span class="cnt">45</span></div>
-            <div class="r-bar"><span class="lbl">3★</span><div class="bar"><div class="fill" style="width:6%;background:var(--yellow)"></div></div><span class="cnt">15</span></div>
-            <div class="r-bar"><span class="lbl">2★</span><div class="bar"><div class="fill" style="width:2%;background:var(--yellow)"></div></div><span class="cnt">6</span></div>
-            <div class="r-bar"><span class="lbl">1★</span><div class="bar"><div class="fill" style="width:2%;background:var(--red)"></div></div><span class="cnt">4</span></div>
+            <div class="r-bar"><span class="lbl">5★</span><div class="bar"><div class="fill" style="width:82%;background:var(--green)"></div></div><span class="cnt">203</span></div>
+            <div class="r-bar"><span class="lbl">4★</span><div class="bar"><div class="fill" style="width:12%;background:var(--green)"></div></div><span class="cnt">30</span></div>
+            <div class="r-bar"><span class="lbl">3★</span><div class="bar"><div class="fill" style="width:4%;background:var(--yellow)"></div></div><span class="cnt">10</span></div>
+            <div class="r-bar"><span class="lbl">2★</span><div class="bar"><div class="fill" style="width:1%;background:var(--yellow)"></div></div><span class="cnt">3</span></div>
+            <div class="r-bar"><span class="lbl">1★</span><div class="bar"><div class="fill" style="width:1%;background:var(--red)"></div></div><span class="cnt">2</span></div>
           </div>
         </div>
 
         <div class="reviews-list">
           <div class="review">
             <div class="review-head">
-              <div class="cell-customer"><div class="cell-avatar" style="background:var(--azure)">SK</div><div><div class="cell-strong">Sarah Kowalski</div><div style="font-size:11.5px;color:var(--text-muted)">Verified purchase · Apr 25, 2026</div></div></div>
+              <div class="cell-customer"><div class="cell-avatar" style="background:var(--azure)">SK</div><div><div class="cell-strong">Sarah Kowalski</div><div style="font-size:11.5px;color:var(--text-muted)">Finished 28 Oct 2026 · EPUB</div></div></div>
               <div class="stars">★★★★★</div>
             </div>
-            <div class="review-body">Genuinely the best admin template I've bought in years. The token system makes theme customization a one-line change.</div>
+            <div class="review-body">The ice crossing in the final third is extraordinary. I read it twice before returning it.</div>
           </div>
           <div class="review">
             <div class="review-head">
-              <div class="cell-customer"><div class="cell-avatar" style="background:var(--purple)">MR</div><div><div class="cell-strong">Michael Reyes</div><div style="font-size:11.5px;color:var(--text-muted)">Verified purchase · Apr 22, 2026</div></div></div>
+              <div class="cell-customer"><div class="cell-avatar" style="background:var(--purple)">MR</div><div><div class="cell-strong">Michael Reyes</div><div style="font-size:11.5px;color:var(--text-muted)">Finished 22 Oct 2026 · Audiobook</div></div></div>
               <div class="stars">★★★★★</div>
             </div>
-            <div class="review-body">Documentation is thorough and the code style is consistent. Stripped jQuery from our project in a weekend using this as the reference.</div>
+            <div class="review-body">The narrator handles the invented terms without ever making them feel like homework.</div>
           </div>
           <div class="review">
             <div class="review-head">
-              <div class="cell-customer"><div class="cell-avatar" style="background:var(--yellow)">EW</div><div><div class="cell-strong">Emily Wang</div><div style="font-size:11.5px;color:var(--text-muted)">Verified purchase · Apr 18, 2026</div></div></div>
+              <div class="cell-customer"><div class="cell-avatar" style="background:var(--yellow)">EW</div><div><div class="cell-strong">Emily Wang</div><div style="font-size:11.5px;color:var(--text-muted)">Finished 18 Oct 2026 · PDF</div></div></div>
               <div class="stars">★★★★<span style="color:var(--text-disabled)">★</span></div>
             </div>
-            <div class="review-body">Loved it overall. Small wish: more chart variants out of the box. Otherwise a great purchase.</div>
+            <div class="review-body">Slow to start, but the world-building rewards patience. The PDF scan is clean.</div>
           </div>
         </div>
       </div>
@@ -203,32 +190,68 @@
 
   <!-- Related -->
   <div class="card" style="margin-top:16px">
-    <div class="card-header"><div class="card-title">Related products</div></div>
+    <div class="card-header"><div class="card-title">More in science fiction</div></div>
     <div class="card-body">
-      <div class="related-grid">
-        <a class="related-card" href="#">
-          <div class="thumb" data-thumb="bars"></div>
-          <div class="title">Gentelella Theme</div>
-          <div class="meta">★★★★★ 4.8 · 1.2k</div>
-          <div class="price">$89</div>
+      <div class="book-shelf">
+        <a class="book-card" href="e_commerce.html">
+          <div class="book-cover cv-10">
+            <span class="bc-kicker">Ballantine</span>
+            <span class="bc-title">Project Hail Mary</span>
+            <span class="bc-rule"></span>
+            <span class="bc-author">Andy Weir</span>
+          </div>
+          <div class="book-title">Project Hail Mary</div>
+          <div class="book-author">Andy Weir</div>
         </a>
-        <a class="related-card" href="#">
-          <div class="thumb" data-thumb="donut"></div>
-          <div class="title">Dashboard Pack</div>
-          <div class="meta">★★★★<span style="color:var(--text-disabled)">★</span> 4.4 · 380</div>
-          <div class="price">$67</div>
+        <a class="book-card" href="e_commerce.html">
+          <div class="book-cover cv-8">
+            <span class="bc-kicker">Tor</span>
+            <span class="bc-title">The Three-Body Problem</span>
+            <span class="bc-rule"></span>
+            <span class="bc-author">Liu Cixin</span>
+          </div>
+          <div class="book-title">The Three-Body Problem</div>
+          <div class="book-author">Liu Cixin</div>
         </a>
-        <a class="related-card" href="#">
-          <div class="thumb" data-thumb="table"></div>
-          <div class="title">Bootstrap Bundle</div>
-          <div class="meta">★★★★★ 4.7 · 920</div>
-          <div class="price">$49</div>
+        <a class="book-card" href="e_commerce.html">
+          <div class="book-cover cv-9">
+            <span class="bc-kicker">Orbit</span>
+            <span class="bc-title">The Ministry for the Future</span>
+            <span class="bc-rule"></span>
+            <span class="bc-author">Kim Stanley Robinson</span>
+          </div>
+          <div class="book-title">The Ministry for the Future</div>
+          <div class="book-author">Kim Stanley Robinson</div>
         </a>
-        <a class="related-card" href="#">
-          <div class="thumb" data-thumb="forms"></div>
-          <div class="title">UI Kit Pro</div>
-          <div class="meta">★★★★<span style="color:var(--text-disabled)">★</span> 4.3 · 240</div>
-          <div class="price">$39</div>
+        <a class="book-card" href="e_commerce.html">
+          <div class="book-cover cv-6">
+            <span class="bc-kicker">Beacon</span>
+            <span class="bc-title">Dawn</span>
+            <span class="bc-rule"></span>
+            <span class="bc-author">Octavia E. Butler</span>
+          </div>
+          <div class="book-title">Dawn</div>
+          <div class="book-author">Octavia E. Butler</div>
+        </a>
+        <a class="book-card" href="e_commerce.html">
+          <div class="book-cover cv-3">
+            <span class="bc-kicker">Harper Perennial</span>
+            <span class="bc-title">The Dispossessed</span>
+            <span class="bc-rule"></span>
+            <span class="bc-author">Ursula K. Le Guin</span>
+          </div>
+          <div class="book-title">The Dispossessed</div>
+          <div class="book-author">Ursula K. Le Guin</div>
+        </a>
+        <a class="book-card" href="e_commerce.html">
+          <div class="book-cover cv-12">
+            <span class="bc-kicker">Vintage</span>
+            <span class="bc-title">The Overstory</span>
+            <span class="bc-rule"></span>
+            <span class="bc-author">Richard Powers</span>
+          </div>
+          <div class="book-title">The Overstory</div>
+          <div class="book-author">Richard Powers</div>
         </a>
       </div>
     </div>
@@ -240,48 +263,6 @@
 <script type="module">
 import { showToast } from '/src/v4/toast.js';
 
-// Gallery — load SVG mockups + handle thumbnail switching
-import('/src/v4/product-mockups.js').then(({ MOCKUPS, RELATED }) => {
-  const main = document.getElementById('gallery-svg');
-  const thumbs = document.querySelectorAll('.gallery-thumb');
-
-  function setView(view) {
-    main.innerHTML = MOCKUPS[view] || '';
-  }
-  thumbs.forEach((b) => { b.innerHTML = MOCKUPS[b.dataset.view] || ''; });
-  setView('overview');
-
-  document.getElementById('gallery-thumbs').addEventListener('click', (e) => {
-    const t = e.target.closest('.gallery-thumb');
-    if (!t) return;
-    e.stopPropagation();
-    thumbs.forEach((b) => b.classList.remove('active'));
-    t.classList.add('active');
-    setView(t.dataset.view);
-  });
-
-  // Related-product thumbs use the smaller RELATED mockups.
-  document.querySelectorAll('.related-card .thumb[data-thumb]').forEach((el) => {
-    el.innerHTML = RELATED[el.dataset.thumb] || '';
-  });
-});
-
-// Variant toggles
-document.querySelectorAll('.option-values').forEach((group) => {
-  group.addEventListener('click', (e) => {
-    const v = e.target.closest('.option-value');
-    if (!v) return;
-    e.stopPropagation();
-    group.querySelectorAll('.option-value').forEach((b) => b.classList.remove('active'));
-    v.classList.add('active');
-  });
-});
-
-// Quantity steppers
-const qty = document.getElementById('qty');
-document.getElementById('qty-dec').addEventListener('click', (e) => { e.stopPropagation(); qty.value = Math.max(1, parseInt(qty.value, 10) - 1); });
-document.getElementById('qty-inc').addEventListener('click', (e) => { e.stopPropagation(); qty.value = Math.min(99, parseInt(qty.value, 10) + 1); });
-
 // Tab panels
 document.querySelector('.product-tabs').addEventListener('click', (e) => {
   const tab = e.target.closest('.chart-tab');
@@ -292,14 +273,14 @@ document.querySelector('.product-tabs').addEventListener('click', (e) => {
   });
 });
 
-// Cart actions
-document.getElementById('add-cart').addEventListener('click', (e) => {
+// Download entry points. "Read now" links straight into reader.html.
+document.getElementById('download-epub').addEventListener('click', (e) => {
   e.stopPropagation();
-  showToast(`Added ${qty.value} × AdminLTE Pro to cart`, { variant: 'success' });
+  showToast('Downloading EPUB…', { variant: 'success' });
 });
-document.getElementById('buy-now').addEventListener('click', (e) => {
+document.getElementById('download-pdf').addEventListener('click', (e) => {
   e.stopPropagation();
-  showToast('Redirecting to checkout…', { variant: 'success' });
+  showToast('Downloading PDF…', { variant: 'success' });
 });
 </script>
 

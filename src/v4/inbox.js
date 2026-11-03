@@ -26,31 +26,97 @@ const id = () => `msg-${nextId++}`;
 /** @type {Array<Message>} */
 const seed = [
   // ── Inbox
-  m({ folder: 'inbox', unread: true,  starred: true,  label: 'work',     from: 'Sarah K.',     fromEmail: 'sarah@design.co',     subject: 'Re: Q1 design review',          preview: "I've added comments to the figma file. The hero section…", body: "Hey,\n\nI've added comments to the figma file. The hero section needs a tighter type scale, and the donut on the dashboard could use a 2px border to lift it off the surface.\n\nLet me know what you think — I'm around all afternoon.\n\nSarah", time: '9:42 AM' }),
-  m({ folder: 'inbox', unread: true,  starred: false, label: 'work',     from: 'GitHub',       fromEmail: 'noreply@github.com', subject: 'PR #248 ready for review',      preview: 'feat(dashboard): wire chart tabs to data source', body: 'Pull request #248 by @aigars is ready for your review.\n\nfeat(dashboard): wire chart tabs to data source\n\n3 files changed, 47 additions, 12 deletions.\n\nView on GitHub →', time: '8:14 AM' }),
-  m({ folder: 'inbox', unread: true,  starred: false, label: 'work',     from: 'Stripe',       fromEmail: 'invoicing@stripe.com', subject: 'Your invoice is ready',         preview: 'Invoice #INV-04812 for $499.00 has been generated.', body: 'Invoice #INV-04812\nAmount: $499.00 USD\nDue: Apr 30, 2026\n\nView and pay invoice →\n\nThanks for using Stripe.', time: '7:30 AM' }),
-  m({ folder: 'inbox', unread: false, starred: false, label: 'personal', from: 'Michael R.',   fromEmail: 'mike@somewhere.io', subject: 'Lunch tomorrow?',               preview: 'Hey, are you free for lunch tomorrow at the new place?', body: 'Hey,\n\nAre you free for lunch tomorrow at the new place on 4th?\n\n12:30 work?\n\n— Mike', time: 'Yesterday' }),
-  m({ folder: 'inbox', unread: false, starred: true,  label: 'work',     from: 'Emily W.',     fromEmail: 'emily@design.co', subject: 'Sprint retro notes',            preview: "Posted the action items from yesterday's retro.", body: "Posted the retro notes — three action items:\n\n1. Move standup to 9:30 (was 9:00)\n2. Add a 'blocked' column to the board\n3. Pair up on the perf work\n\nLink in the channel.", time: 'Yesterday' }),
-  m({ folder: 'inbox', unread: false, starred: false, label: 'work',     from: 'Linear',       fromEmail: 'notifications@linear.app', subject: 'You were assigned 3 issues',    preview: 'GEN-128, GEN-129, GEN-131 are now assigned to you.', body: 'Three issues assigned to you:\n\nGEN-128 · Wire empty state on file manager search\nGEN-129 · Fix focus trap on nested modals\nGEN-131 · Migrate icons.html to inline SVG\n\nView in Linear →', time: 'Tue' }),
-  m({ folder: 'inbox', unread: false, starred: false, label: null,       from: 'Vercel',       fromEmail: 'updates@vercel.com', subject: 'Deployment succeeded',          preview: 'gentelella-v4.vercel.app deployed in 28s', body: 'Production deployment for gentelella-v4 succeeded.\n\nDuration: 28s\nCommit: e08f69c — Release 2.2.0 — fresh for 2026\n\nView deployment →', time: 'Tue' }),
-  m({ folder: 'inbox', unread: false, starred: false, label: 'work',     from: 'Aigars S.',    fromEmail: 'aigars@colorlib.com', subject: 'Draft for landing copy',        preview: 'Take a look when you get a chance — happy to iterate.', body: 'First pass at the landing copy:\n\n> The free Bootstrap admin template, redesigned for 2026.\n> Fresh design system. Real ECharts. Real DataTables. Vite 8, vanilla JS, zero jQuery.\n\nHappy to iterate. — A.', time: 'Mon' }),
-  m({ folder: 'inbox', unread: false, starred: false, label: null,       from: 'Notion',       fromEmail: 'team@notion.com', subject: 'Mentioned in Q2 OKRs',          preview: '@you was mentioned in the new Q2 OKRs document.', body: 'You were mentioned in:\n\nQ2 OKRs — 2026\n  > … @aigars to drive the v4 release and migration playbook.\n\nView document →', time: 'Apr 23' }),
-  m({ folder: 'inbox', unread: false, starred: false, label: 'work',     from: 'Diego R.',     fromEmail: 'diego@research.co', subject: 'Customer feedback summary',     preview: 'Compiled the top 10 feature requests from interviews.', body: 'Compiled the top 10 feature requests from the last 12 customer interviews:\n\n1. Dark mode (8 mentions) ✓ shipped\n2. Mobile drawer (6) ✓ shipped\n3. Command palette (5) ✓ shipped\n4. Multi-tenant theming\n5. Print-friendly invoice\n…\n\nFull doc linked.', time: 'Apr 22' }),
-  m({ folder: 'inbox', unread: false, starred: false, label: 'promotions', from: 'Figma',     fromEmail: 'team@figma.com', subject: '🎁 Your design tools, refreshed',  preview: 'New plugins, faster autosave, and AI features.', body: "Hi Aigars,\n\nWe shipped a bunch of stuff this month — autosave got 4× faster, plugins now run in a sandboxed worker, and our AI assist is in open beta.\n\nWhat's new →", time: 'Apr 20' }),
-  m({ folder: 'inbox', unread: false, starred: false, label: 'urgent',   from: 'Security',     fromEmail: 'security@colorlib.com', subject: 'Action required: 2FA reset',     preview: 'Please confirm your 2FA codes have been backed up.', body: "We rotated the 2FA seed for your account on Apr 19.\n\nIf you haven't done so already, please confirm your backup codes are saved somewhere safe. Without them you may be locked out if you lose your device.\n\nReview backup codes →", time: 'Apr 19' }),
+  m({ folder: 'inbox', unread: true,  starred: true,  label: 'library', from: 'Rajgruha Sync', fromEmail: 'sync@rajgruha.app', subject: 'Kobo Libra is up to date', preview: 'Three books synced — last position in Piranesi.', body: `Piranesi, The Left Hand of Darkness and Braiding Sweetgrass were synced to your Kobo Libra.
+
+Last position: Piranesi · page 88 of 245.
+
+Everything is in sync — no action needed.`, time: '9:42 AM' }),
+  m({ folder: 'inbox', unread: true,  starred: false, label: 'library', from: 'Import', fromEmail: 'imports@rajgruha.app', subject: '24 EPUBs indexed', preview: 'Two files need metadata review before they appear in the catalog.', body: `24 EPUB files finished indexing.
+
+22 matched cleanly against Open Library.
+2 need review: missing author and series fields.
+
+Review them in Catalog → Import queue.`, time: '8:14 AM' }),
+  m({ folder: 'inbox', unread: true,  starred: false, label: 'library', from: 'Catalog', fromEmail: 'catalog@rajgruha.app', subject: '5 titles are missing covers', preview: 'The sci-fi shelf has five books without cover art.', body: `Five titles on the Sci-fi shelf have no cover image:
+
+· The Seventh Perfection
+· A Memory Called Empire
+· The Vanished Birds
+· Piranesi (Japanese edition)
+· This Is How You Lose the Time War
+
+Upload covers or let the catalog fetch them automatically.`, time: '7:30 AM' }),
+  m({ folder: 'inbox', unread: false, starred: false, label: 'personal', from: 'Michael R.', fromEmail: 'mike@somewhere.io', subject: 'Book club pick for November?', preview: 'I vote for The Ministry for the Future — anyone read it?', body: `I vote for The Ministry for the Future for November.
+
+Anyone read it yet? I have it queued but keep putting it off.
+
+— Mike`, time: 'Yesterday' }),
+  m({ folder: 'inbox', unread: false, starred: true,  label: 'library', from: 'Emily W.', fromEmail: 'emily@readers.club', subject: 'My Piranesi highlights', preview: '14 highlights, mostly about the statues.', body: `Sharing my 14 highlights from Piranesi — most of them are about the statues and the tides.
+
+Favourite one: "The Beauty of the House is immeasurable; its Kindness infinite."
+
+Tell me which ones you'd keep.`, time: 'Yesterday' }),
+  m({ folder: 'inbox', unread: false, starred: false, label: 'library', from: 'Open Library', fromEmail: 'metadata@openlibrary.org', subject: 'Metadata matched for 216 titles', preview: 'Covers, series and publication dates were updated.', body: `216 titles were matched this week:
+
+· 208 covers updated
+· 41 series gaps filled
+· 5 titles left unmatched
+
+Open Catalog → Metadata to review the leftovers.`, time: 'Tue' }),
+  m({ folder: 'inbox', unread: false, starred: false, label: null,       from: 'Storage', fromEmail: 'ops@rajgruha.app', subject: 'Nightly backup complete', preview: '2.4 GB of EPUBs and PDFs archived.', body: `Backup finished at 02:14.
+
+· 2.4 GB archived
+· 4,286 books, 771 audiobooks
+· Verified: 100%
+
+Next backup: tonight at 02:00.`, time: 'Tue' }),
+  m({ folder: 'inbox', unread: false, starred: false, label: 'library', from: 'Collections', fromEmail: 'collections@rajgruha.app', subject: 'The Seventh Perfection suggested', preview: 'Emily Wang suggested a title for the Sci-fi shelf.', body: `Emily Wang suggested The Seventh Perfection for the Sci-fi shelf.
+
+Daniel Polansky · 2020 · 208 pages
+
+Approve it to add the EPUB to the shelf.`, time: 'Mon' }),
+  m({ folder: 'inbox', unread: false, starred: false, label: null,       from: 'Diego R.', fromEmail: 'diego@readers.club', subject: 'Shared shelf — 14 new books', preview: 'All EPUB, covers already matched.', body: `Added 14 books to the shared shelf.
+
+All EPUB 3 with covers and metadata already matched — nothing for you to fix.
+
+Highlights: two Le Guin, three Becky Chambers, the rest sci-fi short fiction.`, time: 'Apr 23' }),
+  m({ folder: 'inbox', unread: false, starred: false, label: 'library', from: 'Calibre', fromEmail: 'library@calibre.local', subject: 'Library export ready', preview: 'catalog-2026.epub collection is ready to import.', body: `Your Calibre export finished.
+
+File: catalog-2026.epub
+Books: 612
+Size: 1.8 GB
+
+Import it from Book files → Upload.`, time: 'Apr 22' }),
+  m({ folder: 'inbox', unread: false, starred: false, label: 'acquisitions', from: 'Bookshop', fromEmail: 'orders@bookshop.org', subject: 'Your order is on the way', preview: 'Piranesi and Circe — arriving Thursday.', body: `Order #BS-40218 shipped.
+
+· Piranesi — Susanna Clarke
+· Circe — Madeline Miller
+
+Estimated delivery: Thursday.`, time: 'Apr 20' }),
+  m({ folder: 'inbox', unread: false, starred: false, label: 'urgent',   from: 'Security', fromEmail: 'security@rajgruha.app', subject: 'New device signed in', preview: 'An iPad Air signed in to your library yesterday.', body: `A new device signed in to your library:
+
+· Device: iPad Air
+· Location: Bengaluru, IN
+· Time: Apr 19, 21:12
+
+If this was you, no action is needed. Otherwise revoke the session in Settings → Sessions.`, time: 'Apr 19' }),
 
   // ── Sent
-  m({ folder: 'sent', unread: false, starred: false, label: 'work',     from: 'Me',  to: 'sarah@design.co',  subject: 'Q1 design review',           preview: 'Sharing the figma link — comments welcome.', body: 'Hey Sarah,\n\nSharing the figma link for Q1. Annotated the open questions.\n\nLet me know if anything looks off.\n\n— A.', time: 'Yesterday' }),
-  m({ folder: 'sent', unread: false, starred: false, label: 'work',     from: 'Me',  to: 'team@colorlib.com', subject: 'v4 release plan',             preview: 'Cutting the beta tag tomorrow if no blockers come in.', body: 'Quick update — cutting v4.0.0-beta.1 tomorrow morning unless something blocks. PR list and release notes in the doc.\n\n— A.', time: 'Mon' }),
-  m({ folder: 'sent', unread: false, starred: false, label: 'personal', from: 'Me',  to: 'mike@somewhere.io', subject: 'Re: Lunch tomorrow?',         preview: '12:30 works for me. See you there.', body: '12:30 works. See you there.', time: 'Yesterday' }),
+  m({ folder: 'sent', unread: false, starred: false, label: 'personal', from: 'Me',  to: 'mike@somewhere.io',  subject: 'Re: Book club pick for November?', preview: 'Piranesi if you want something short.', body: `Piranesi if you want something short — it is 245 pages and reads in a weekend.
+
+Otherwise The Ministry for the Future, but give it a month.`, time: 'Yesterday' }),
+  m({ folder: 'sent', unread: false, starred: false, label: 'library',  from: 'Me',  to: 'mark@readers.club', subject: 'Re: Import my Calibre library', preview: 'Drop the export in Book files and I will index it tonight.', body: `Drop the export into Book files → Upload and I will run the indexer tonight.
+
+600 books should take about 20 minutes.`, time: 'Mon' }),
+  m({ folder: 'sent', unread: false, starred: false, label: 'personal', from: 'Me',  to: 'emily@readers.club', subject: 'Re: My Piranesi highlights', preview: 'Keep the one about the tides.', body: `Keep the one about the tides — it is the whole book in one line.`, time: 'Yesterday' }),
 
   // ── Drafts
-  m({ folder: 'drafts', unread: false, starred: false, label: null,     from: 'Me', to: 'aigars@colorlib.com', subject: 'Re: Draft for landing copy',  preview: 'Two suggestions on the subhead — instead of …', body: "Two suggestions on the subhead:\n\n1. Lead with the year-anchor (\"redesigned for 2026\") earlier — it's the strongest signal.\n2. \"Real charts. Real tables.\" reads stronger as one beat.", time: 'Today' }),
+  m({ folder: 'drafts', unread: false, starred: false, label: null,     from: 'Me', to: 'emily@readers.club', subject: 'Re: My Piranesi highlights',  preview: 'Two more highlights you might like —', body: 'Two more highlights you might like — the ones from chapter 34 and the final page.', time: 'Today' }),
   m({ folder: 'drafts', unread: false, starred: false, label: null,     from: 'Me', to: '',                    subject: '',                          preview: '', body: '', time: 'Today' }),
-  m({ folder: 'drafts', unread: false, starred: false, label: null,     from: 'Me', to: 'diego@research.co',   subject: 'Re: Customer feedback summary', preview: '', body: '', time: 'Apr 22' }),
+  m({ folder: 'drafts', unread: false, starred: false, label: null,     from: 'Me', to: 'diego@readers.club', subject: 'Re: Shared shelf — 14 new books', preview: '', body: '', time: 'Apr 23' }),
 
   // ── Trash
-  m({ folder: 'trash', trashed: true, unread: false, starred: false, label: 'promotions', from: 'AppSumo',   fromEmail: 'deals@appsumo.com', subject: '90% off lifetime deals — today only', preview: 'Don\'t miss out…', body: 'Today only — 90% off our top admin templates and dashboards.\n\nUnsubscribe', time: 'Apr 18' })
+  m({ folder: 'trash', trashed: true, unread: false, starred: false, label: 'acquisitions', from: 'BookBub', fromEmail: 'deals@bookbub.com', subject: '99¢ eBook deals — today only', preview: "Don't miss out…", body: 'Today only — 99¢ deals on bestselling eBooks.\n\nUnsubscribe', time: 'Apr 18' })
 ];
 
 /**
@@ -115,9 +181,9 @@ const FOLDERS = [
 ];
 
 const LABELS = [
-  { key: 'work',       label: 'Work',       color: 'var(--primary)' },
+  { key: 'library',      label: 'Library',      color: 'var(--primary)' },
   { key: 'personal',   label: 'Personal',   color: 'var(--blue)' },
-  { key: 'promotions', label: 'Promotions', color: 'var(--yellow)' },
+  { key: 'acquisitions', label: 'Acquisitions', color: 'var(--yellow)' },
   { key: 'urgent',     label: 'Urgent',     color: 'var(--red)' }
 ];
 

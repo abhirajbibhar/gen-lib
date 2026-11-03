@@ -6,19 +6,19 @@ import { showToast } from './toast.js';
 import { showModal } from './modal.js';
 
 const COLUMNS = [
-  { id: 'todo',    title: 'To do',       color: 'var(--text-muted)' },
-  { id: 'doing',   title: 'In progress', color: 'var(--blue)' },
-  { id: 'review',  title: 'Review',      color: 'var(--yellow)' },
-  { id: 'done',    title: 'Done',        color: 'var(--green)' }
+  { id: 'todo',    title: 'Requested',   color: 'var(--text-muted)' },
+  { id: 'doing',   title: 'Evaluating',  color: 'var(--blue)' },
+  { id: 'review',  title: 'Ordered',     color: 'var(--yellow)' },
+  { id: 'done',    title: 'Catalogued',  color: 'var(--green)' }
 ];
 
 const LABELS = [
-  { id: 'design',  text: 'Design',  color: 'purple' },
-  { id: 'eng',     text: 'Eng',     color: 'blue' },
-  { id: 'pm',      text: 'PM',      color: 'green' },
-  { id: 'bug',     text: 'Bug',     color: 'red' },
-  { id: 'urgent',  text: 'Urgent',  color: 'red' },
-  { id: 'docs',    text: 'Docs',    color: 'yellow' }
+  { id: 'design',  text: 'Fiction',  color: 'purple' },
+  { id: 'eng',     text: 'Non-fiction', color: 'blue' },
+  { id: 'pm',      text: 'Children', color: 'green' },
+  { id: 'bug',     text: 'Award',    color: 'red' },
+  { id: 'urgent',  text: 'Rare',     color: 'red' },
+  { id: 'docs',    text: 'Reference', color: 'yellow' }
 ];
 
 const ASSIGNEES = {
@@ -40,22 +40,22 @@ const COLOR_VAR = {
 
 let nextId = 1;
 const CARDS = [
-  { id: nextId++, col: 'todo',   title: 'Define onboarding email sequence',  desc: 'Three-message welcome flow with day 1, 3, 7 cadence',           labels: ['pm'],          assignees: ['EW'],       due: 'May 02', priority: 'medium' },
-  { id: nextId++, col: 'todo',   title: 'Refresh icon system',                desc: 'Move from heroicons to a custom set with consistent stroke',     labels: ['design'],      assignees: ['SK'],       due: 'May 05', priority: 'low' },
-  { id: nextId++, col: 'todo',   title: 'Audit a11y on form pages',           desc: '',                                                                labels: ['eng', 'docs'], assignees: ['MR', 'TH'], due: 'May 08', priority: 'medium' },
-  { id: nextId++, col: 'todo',   title: 'Plan Q3 OKRs',                       desc: 'Workshop with leads to define Q3 outcomes',                      labels: ['pm'],          assignees: ['EW'],       due: 'May 15', priority: 'low' },
+  { id: nextId++, col: 'todo',   title: 'The Seventh Perfection',           desc: 'Member request · 4 holds waiting',                               labels: ['design'],      assignees: ['EW'],       due: 'May 02', priority: 'medium' },
+  { id: nextId++, col: 'todo',   title: 'The Saint of Bright Doors',        desc: 'Staff pick · literary fantasy',                                  labels: ['design'],      assignees: ['SK'],       due: 'May 05', priority: 'low' },
+  { id: nextId++, col: 'todo',   title: 'The Practice of the Wild',          desc: 'Nature writing · replace worn copy',                             labels: ['eng', 'docs'], assignees: ['MR', 'TH'], due: 'May 08', priority: 'medium' },
+  { id: nextId++, col: 'todo',   title: 'Drive Your Plow Over the Bones',    desc: 'Translated fiction · 3 requests',                                labels: ['design'],      assignees: ['LP'],       due: 'May 15', priority: 'low' },
 
-  { id: nextId++, col: 'doing',  title: 'Implement drag-and-drop kanban',    desc: 'Use HTML5 drag API, no library',                                 labels: ['eng'],         assignees: ['MR'],       due: 'Apr 30', priority: 'high' },
-  { id: nextId++, col: 'doing',  title: 'Design product detail page',         desc: 'Gallery + variants + reviews + related',                         labels: ['design'],      assignees: ['SK'],       due: 'Apr 30', priority: 'high' },
-  { id: nextId++, col: 'doing',  title: 'Write FAQ content',                  desc: '15 articles across 5 categories',                                labels: ['docs'],        assignees: ['EW'],       due: 'May 01', priority: 'medium' },
+  { id: nextId++, col: 'doing',  title: 'The Ministry for the Future',      desc: 'Checking publisher licence for ebook + audio',                   labels: ['eng'],         assignees: ['MR'],       due: 'Apr 30', priority: 'high' },
+  { id: nextId++, col: 'doing',  title: 'The Overstory',                     desc: 'Audiobook rights and narrator availability',                     labels: ['design'],      assignees: ['SK'],       due: 'Apr 30', priority: 'high' },
+  { id: nextId++, col: 'doing',  title: 'A Brief History of Time',           desc: 'New illustrated edition — compare pricing',                       labels: ['docs'],        assignees: ['EW'],       due: 'May 01', priority: 'medium' },
 
-  { id: nextId++, col: 'review', title: 'Fix DataTables sort indicators',    desc: 'Replace empty span with proper chevron SVG',                     labels: ['bug', 'eng'],  assignees: ['MR'],       due: 'Apr 29', priority: 'medium' },
-  { id: nextId++, col: 'review', title: 'Notifications dropdown',             desc: 'Bell button → panel with sample notifications',                  labels: ['eng'],         assignees: ['TH'],       due: 'Apr 29', priority: 'medium' },
+  { id: nextId++, col: 'review', title: 'Gideon the Ninth',                  desc: '2 copies ordered · arriving May 06',                             labels: ['eng'],         assignees: ['MR'],       due: 'Apr 29', priority: 'medium' },
+  { id: nextId++, col: 'review', title: 'Piranesi',                          desc: 'Replacement copy for the missing loan',                           labels: ['eng'],         assignees: ['TH'],       due: 'Apr 29', priority: 'medium' },
 
-  { id: nextId++, col: 'done',   title: 'Build chat page',                    desc: '',                                                                labels: ['eng'],         assignees: ['MR'],       due: 'Apr 28', priority: 'high' },
-  { id: nextId++, col: 'done',   title: 'Build settings page',                desc: '',                                                                labels: ['eng', 'design'], assignees: ['SK', 'TH'], due: 'Apr 28', priority: 'high' },
-  { id: nextId++, col: 'done',   title: 'Migrate to Vite 8',                  desc: '',                                                                labels: ['eng'],         assignees: ['MR'],       due: 'Apr 25', priority: 'medium' },
-  { id: nextId++, col: 'done',   title: 'Add dark mode',                      desc: 'Pre-paint script, token overrides, ECharts theme observer',      labels: ['eng', 'design'], assignees: ['MR', 'SK'], due: 'Apr 25', priority: 'high' }
+  { id: nextId++, col: 'done',   title: 'The Left Hand of Darkness',         desc: 'Cover, metadata, and EPUB validated',                             labels: ['eng'],         assignees: ['MR'],       due: 'Apr 28', priority: 'high' },
+  { id: nextId++, col: 'done',   title: 'Braiding Sweetgrass',               desc: '',                                                                labels: ['eng', 'design'], assignees: ['SK', 'TH'], due: 'Apr 28', priority: 'high' },
+  { id: nextId++, col: 'done',   title: 'Educated',                          desc: 'Audiobook synced with ebook progress',                            labels: ['eng'],         assignees: ['MR'],       due: 'Apr 25', priority: 'medium' },
+  { id: nextId++, col: 'done',   title: 'Circe',                             desc: 'Added to mythology shelf',                                        labels: ['eng', 'design'], assignees: ['MR', 'SK'], due: 'Apr 25', priority: 'high' }
 ];
 
 function escapeHtml(s) { return String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }

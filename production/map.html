@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Map | Gentelella 2026 v4</title>
+<title>Reading map | Rajgruha</title>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin>
 <script type="module" src="/src/main-v4.js"></script>
 </head>
-<body data-shell="admin" data-page="map" data-breadcrumb="Home > Map">
+<body data-shell="admin" data-page="map" data-breadcrumb="Home > Reading map">
 
 <main class="main">
 <div class="page-wrapper">
@@ -19,8 +19,8 @@
   <div class="page-header">
     <div class="page-header-row">
       <div>
-        <div class="page-pretitle">Geo</div>
-        <h1 class="page-title">Customer map</h1>
+        <div class="page-pretitle">Readers</div>
+        <h1 class="page-title">Reading map</h1>
       </div>
       <div class="page-actions">
         <button class="btn btn-outline">Filters</button>
@@ -34,7 +34,7 @@
     </div>
 
     <div class="card">
-      <div class="card-header"><div><div class="card-title">Top regions</div><div class="card-subtitle">Active customers by city</div></div></div>
+      <div class="card-header"><div><div class="card-title">Top regions</div><div class="card-subtitle">Readers by city</div></div></div>
       <div class="card-body" style="padding:8px 16px">
         <div class="visitor-row"><span class="visitor-flag">🇺🇸</span><span class="visitor-name">San Francisco</span><span class="visitor-pct">182</span><div class="visitor-bar"><div class="fill" style="width:82%"></div></div></div>
         <div class="visitor-row"><span class="visitor-flag">🇬🇧</span><span class="visitor-name">London</span><span class="visitor-pct">147</span><div class="visitor-bar"><div class="fill" style="width:64%"></div></div></div>
@@ -68,7 +68,7 @@ import('leaflet').then(({ default: L }) => {
     L.circleMarker([lat, lng], {
       radius: Math.max(6, Math.sqrt(count) * 1.5),
       color: '#1ABB9C', fillColor: '#1ABB9C', fillOpacity: 0.4, weight: 2
-    }).addTo(map).bindPopup(`<strong>${name}</strong><br>${count} customers`);
+    }).addTo(map).bindPopup(`<strong>${name}</strong><br>${count} readers`);
   });
 });
 </script>

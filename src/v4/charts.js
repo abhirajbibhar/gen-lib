@@ -869,8 +869,221 @@ function gantt(echarts, el, t) {
   return chart;
 }
 
+// ────────────────────────
+//  Library — pages read per day, with minutes as a secondary line
+// ────────────────────────
+function readingActivity(echarts, el, t) {
+  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  const pages = [64, 88, 42, 96, 121, 158, 142];
+  const minutes = [45, 62, 28, 70, 88, 112, 96];
+  const chart = echarts.init(el);
+  chart.setOption({
+    ...baseOption(t),
+    tooltip: { ...baseOption(t).tooltip, trigger: 'axis', axisPointer: { type: 'line', lineStyle: { color: t.borderLight } } },
+    legend: { show: false },
+    xAxis: {
+      type: 'category',
+      data: days,
+      boundaryGap: false,
+      axisLine: { lineStyle: { color: t.borderLight } },
+      axisTick: { show: false },
+      axisLabel: { color: t.textMuted, fontSize: 10 }
+    },
+    yAxis: {
+      type: 'value',
+      splitLine: { lineStyle: { color: t.borderLight, type: [4, 3] } },
+      axisLabel: { color: t.textMuted, fontSize: 10 },
+      axisLine: { show: false },
+      axisTick: { show: false }
+    },
+    series: [
+      {
+        name: 'Pages read',
+        type: 'line',
+        smooth: true,
+        showSymbol: false,
+        data: pages,
+        lineStyle: { color: t.primary, width: 2 },
+        itemStyle: { color: t.primary, borderColor: t.bgSurface, borderWidth: 2 },
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: t.primary + '33' },
+            { offset: 1, color: t.primary + '00' }
+          ])
+        }
+      },
+      {
+        name: 'Minutes read',
+        type: 'line',
+        smooth: true,
+        showSymbol: false,
+        data: minutes,
+        lineStyle: { color: t.azure, width: 1.5, type: 'dashed' },
+        itemStyle: { color: t.azure }
+      }
+    ]
+  });
+  return chart;
+}
+
+// ────────────────────────
+//  Library — pages read per month
+// ────────────────────────
+function readingOverTime(echarts, el, t) {
+  const months = ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'];
+  const pages = [820, 940, 1180, 760, 1020, 1240, 1380, 1120, 960, 1280, 1460, 1320];
+  const chart = echarts.init(el);
+  chart.setOption({
+    ...baseOption(t),
+    tooltip: { ...baseOption(t).tooltip, trigger: 'axis', valueFormatter: (v) => v.toLocaleString() + ' pages' },
+    xAxis: {
+      type: 'category',
+      data: months,
+      boundaryGap: false,
+      axisLine: { lineStyle: { color: t.borderLight } },
+      axisTick: { show: false },
+      axisLabel: { color: t.textMuted, fontSize: 10 }
+    },
+    yAxis: {
+      type: 'value',
+      splitLine: { lineStyle: { color: t.borderLight, type: [4, 3] } },
+      axisLabel: { color: t.textMuted, fontSize: 10 },
+      axisLine: { show: false },
+      axisTick: { show: false }
+    },
+    series: [{
+      type: 'line',
+      smooth: true,
+      showSymbol: false,
+      data: pages,
+      lineStyle: { color: t.primary, width: 2 },
+      itemStyle: { color: t.primary },
+      areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: t.primary + '40' },
+          { offset: 1, color: t.primary + '00' }
+        ])
+      }
+    }]
+  });
+  return chart;
+}
+
+// ────────────────────────
+//  Circulation — loans vs returns
+// ────────────────────────
+function loansTrend(echarts, el, t) {
+  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  const loans = [42, 58, 51, 66, 74, 91, 78];
+  const returns = [36, 44, 48, 52, 61, 70, 63];
+  const chart = echarts.init(el);
+  chart.setOption({
+    ...baseOption(t),
+    tooltip: { ...baseOption(t).tooltip, trigger: 'axis', axisPointer: { type: 'shadow' } },
+    legend: { show: false },
+    grid: { ...baseOption(t).grid, right: 16 },
+    xAxis: {
+      type: 'category',
+      data: days,
+      axisLine: { lineStyle: { color: t.borderLight } },
+      axisTick: { show: false },
+      axisLabel: { color: t.textMuted, fontSize: 10 }
+    },
+    yAxis: {
+      type: 'value',
+      splitLine: { lineStyle: { color: t.borderLight, type: [4, 3] } },
+      axisLabel: { color: t.textMuted, fontSize: 10 },
+      axisLine: { show: false },
+      axisTick: { show: false }
+    },
+    series: [
+      {
+        name: 'Loans',
+        type: 'bar',
+        data: loans,
+        barWidth: '46%',
+        itemStyle: { color: t.primary, borderRadius: [4, 4, 0, 0] }
+      },
+      {
+        name: 'Returns',
+        type: 'line',
+        smooth: true,
+        symbol: 'circle',
+        symbolSize: 5,
+        data: returns,
+        lineStyle: { color: t.azure, width: 2 },
+        itemStyle: { color: t.azure, borderColor: t.bgSurface, borderWidth: 2 }
+      }
+    ]
+  });
+  return chart;
+}
+
+const formatMix = (echarts, el, t) => donut(echarts, el, t, [
+  ['EPUB',      48, 'primary'],
+  ['PDF',       27, 'azure'],
+  ['Audiobook', 18, 'purple'],
+  ['MOBI',       7, 'yellow']
+]);
+
+const genreMix = (echarts, el, t) => donut(echarts, el, t, [
+  ['Fantasy',           26, 'primary'],
+  ['Literary fiction',  21, 'azure'],
+  ['Science fiction',   18, 'purple'],
+  ['History',           14, 'yellow'],
+  ['Business',          12, 'green'],
+  ['Poetry',             9, 'red']
+]);
+
+// ────────────────────────
+//  Library — most-read authors
+// ────────────────────────
+function topAuthors(echarts, el, t) {
+  const items = [
+    ['Ursula K. Le Guin', 9, t.primary],
+    ['Kazuo Ishiguro',    7, t.azure],
+    ['Octavia E. Butler', 6, t.purple],
+    ['Susanna Clarke',    5, t.yellow],
+    ['Liu Cixin',         4, t.green],
+    ['Madeline Miller',   4, t.red],
+    ['Robin W. Kimmerer', 3, t.primaryDk]
+  ];
+  const chart = echarts.init(el);
+  chart.setOption({
+    ...baseOption(t),
+    tooltip: { ...baseOption(t).tooltip, trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: (v) => v + ' books' },
+    grid: { ...baseOption(t).grid, left: 108, right: 24 },
+    xAxis: {
+      type: 'value',
+      splitLine: { lineStyle: { color: t.borderLight, type: [4, 3] } },
+      axisLine: { show: false },
+      axisTick: { show: false },
+      axisLabel: { color: t.textMuted, fontSize: 10 }
+    },
+    yAxis: {
+      type: 'category',
+      data: items.map((d) => d[0]).reverse(),
+      axisLine: { show: false },
+      axisTick: { show: false },
+      axisLabel: { color: t.text, fontSize: 11.5 }
+    },
+    series: [{
+      type: 'bar',
+      barWidth: '52%',
+      data: items.map((d) => ({ value: d[1], itemStyle: { color: d[2], borderRadius: [0, 4, 4, 0] } })).reverse()
+    }]
+  });
+  return chart;
+}
+
 const charts = {
   'dashboard-network': dashboardNetwork,
+  'reading-activity':  readingActivity,
+  'loans-trend':       loansTrend,
+  'reading-over-time': readingOverTime,
+  'format-mix':        formatMix,
+  'genre-mix':         genreMix,
+  'top-authors':       topAuthors,
   'revenue-line':      revenueLine,
   'sales-bar':         salesBar,
   'traffic-donut':     trafficDonut,
@@ -964,6 +1177,16 @@ export async function initCharts() {
     clearTimeout(timer);
     timer = setTimeout(() => mounted.forEach((m) => m.instance.resize()), 120);
   });
+
+  // Container-size changes don't fire window resize (sidebar collapse, CSS
+  // still loading, responsive breakpoints). Observe each host so the canvas
+  // never keeps a stale width.
+  if (typeof ResizeObserver !== 'undefined') {
+    const observer = new ResizeObserver(() => {
+      mounted.forEach((m) => m.instance.resize());
+    });
+    mounted.forEach((m) => observer.observe(m.el));
+  }
 
   // Rebuild all charts when the theme changes — tokens come from CSS custom
   // properties, so a fresh setOption isn't enough; dispose + re-init picks up

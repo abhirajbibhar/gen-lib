@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Files | Gentelella 2026 v4</title>
+<title>Book files | Rajgruha</title>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="module" src="/src/main-v4.js"></script>
 </head>
-<body data-shell="admin" data-page="files" data-breadcrumb="Home > Files">
+<body data-shell="admin" data-page="files" data-breadcrumb="Home > Book files">
 
 <main class="main">
 <div class="page-wrapper">
@@ -18,8 +18,8 @@
   <div class="page-header">
     <div class="page-header-row">
       <div>
-        <div class="page-pretitle">Apps</div>
-        <h1 class="page-title">Files</h1>
+        <div class="page-pretitle">Library files</div>
+        <h1 class="page-title">Book files</h1>
       </div>
       <div class="page-actions">
         <button class="btn btn-outline" id="new-folder-btn">
@@ -43,8 +43,8 @@
         <div class="fm-storage">
           <div class="fm-storage-label">Storage</div>
           <div class="storage-bar"><div style="width:62%;background:var(--primary)"></div></div>
-          <div class="fm-storage-meta">6.2 GB of 10 GB used</div>
-          <button class="btn btn-outline btn-sm" style="width:100%;justify-content:center;margin-top:8px">Upgrade plan</button>
+          <div class="fm-storage-meta">6.2 GB of 20 GB used</div>
+          <button class="btn btn-outline btn-sm" style="width:100%;justify-content:center;margin-top:8px">Manage storage</button>
         </div>
       </aside>
 
@@ -55,7 +55,7 @@
           <div class="fm-toolbar-actions">
             <div class="search-box" style="width:200px">
               <svg class="s-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
-              <input type="text" placeholder="Search files…" aria-label="Search files">
+              <input type="text" placeholder="Search books and files…" aria-label="Search files">
             </div>
             <div class="fm-view-toggle">
               <button type="button" class="view-btn active" id="view-grid" aria-label="Grid view">
@@ -73,7 +73,7 @@
         <div id="fm-empty" class="fm-empty" hidden>
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7a2 2 0 012-2h4l2 2h7a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
           <div class="empty-title">This folder is empty</div>
-          <div class="empty-desc">Drag files here or use the Upload button to add files.</div>
+          <div class="empty-desc">Drag EPUB, PDF or audiobook files here, or use Upload.</div>
         </div>
       </section>
     </div>

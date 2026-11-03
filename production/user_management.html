@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>User management | Gentelella 2026 v4</title>
+<title>Members | Rajgruha</title>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="module" src="/src/main-v4.js"></script>
 </head>
-<body data-shell="admin" data-page="user_management" data-breadcrumb="Home > User management">
+<body data-shell="admin" data-page="user_management" data-breadcrumb="Home > Members">
 
 <main class="main">
 <div class="page-wrapper">
@@ -19,18 +19,18 @@
     <div class="page-header-row">
       <div>
         <div class="page-pretitle">Admin</div>
-        <h1 class="page-title">User management</h1>
+        <h1 class="page-title">Members</h1>
       </div>
       <div class="page-actions">
         <button class="btn btn-outline">Export</button>
-        <button class="btn btn-primary" id="invite-btn">+ Invite user</button>
+        <button class="btn btn-primary" id="invite-btn">+ Invite member</button>
       </div>
     </div>
   </div>
 
   <div class="row col-3" style="margin-bottom:16px">
-    <div class="card"><div class="stat"><div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></div><div class="stat-content"><div class="stat-label">Total users</div><div class="stat-value-row"><span class="stat-value">12</span></div><div class="stat-subtext">3 active right now</div></div></div></div>
-    <div class="card"><div class="stat"><div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1l3 6 6 .9-4.5 4.4 1 6.7L12 16l-5.5 3 1-6.7L3 7.9 9 7z"/></svg></div><div class="stat-content"><div class="stat-label">Admins</div><div class="stat-value-row"><span class="stat-value">2</span></div><div class="stat-subtext">Owner + 1 admin</div></div></div></div>
+    <div class="card"><div class="stat"><div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></div><div class="stat-content"><div class="stat-label">Total members</div><div class="stat-value-row"><span class="stat-value">12</span></div><div class="stat-subtext">3 active right now</div></div></div></div>
+    <div class="card"><div class="stat"><div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1l3 6 6 .9-4.5 4.4 1 6.7L12 16l-5.5 3 1-6.7L3 7.9 9 7z"/></svg></div><div class="stat-content"><div class="stat-label">Librarians</div><div class="stat-value-row"><span class="stat-value">2</span></div><div class="stat-subtext">Owner + 1 admin</div></div></div></div>
     <div class="card"><div class="stat"><div class="stat-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div class="stat-content"><div class="stat-label">Pending invites</div><div class="stat-value-row"><span class="stat-value">2</span></div><div class="stat-subtext">Awaiting acceptance</div></div></div></div>
   </div>
 
@@ -44,9 +44,9 @@
         <select class="form-control" id="filter-role" style="width:140px;height:32px" aria-label="Filter by role">
           <option value="">All roles</option>
           <option value="Owner">Owner</option>
-          <option value="Admin">Admin</option>
-          <option value="Editor">Editor</option>
-          <option value="Viewer">Viewer</option>
+          <option value="Librarian">Librarian</option>
+          <option value="Curator">Curator</option>
+          <option value="Reader">Reader</option>
         </select>
         <select class="form-control" id="filter-status" style="width:140px;height:32px" aria-label="Filter by status">
           <option value="">All statuses</option>
@@ -85,23 +85,23 @@ import { showModal } from '/src/v4/modal.js';
 import { openMenu } from '/src/v4/menus.js';
 
 const USERS = [
-  { name:'Aigars Silkalns',  email:'aigars@example.com',  ini:'A',  col:'primary', role:'Owner',  status:'active',    lastActive:'just now',     joined:'Mar 2024' },
-  { name:'Sarah Kowalski',   email:'sarah@example.com',   ini:'SK', col:'azure',   role:'Admin',  status:'active',    lastActive:'2 min ago',    joined:'Apr 2024' },
-  { name:'Michael Reyes',    email:'michael@example.com', ini:'MR', col:'purple',  role:'Editor', status:'active',    lastActive:'14 min ago',   joined:'May 2024' },
-  { name:'Emily Wang',       email:'emily@example.com',   ini:'EW', col:'yellow',  role:'Editor', status:'active',    lastActive:'1 hour ago',   joined:'Jun 2024' },
-  { name:'Mark Kim',         email:'mark@example.com',    ini:'MK', col:'red',     role:'Viewer', status:'active',    lastActive:'3 hours ago',  joined:'Jul 2024' },
-  { name:'Lina Park',        email:'lina@example.com',    ini:'LP', col:'green',   role:'Editor', status:'active',    lastActive:'Yesterday',    joined:'Sep 2024' },
-  { name:'Diego Reyes',      email:'diego@example.com',   ini:'DR', col:'blue',    role:'Editor', status:'active',    lastActive:'2 days ago',   joined:'Sep 2024' },
-  { name:'Yuki Tanaka',      email:'yuki@example.com',    ini:'YT', col:'primary', role:'Viewer', status:'active',    lastActive:'4 days ago',   joined:'Oct 2024' },
-  { name:'Tom Hardy',        email:'tom@example.com',     ini:'TH', col:'purple',  role:'Editor', status:'active',    lastActive:'1 week ago',   joined:'Nov 2024' },
-  { name:'Robert Jones',     email:'robert@example.com',  ini:'RJ', col:'red',     role:'Viewer', status:'suspended', lastActive:'2 weeks ago',  joined:'Dec 2024' },
-  { name:'invite@acme.com',  email:'invite@acme.com',     ini:'?',  col:'gray',    role:'Editor', status:'pending',   lastActive:'—',            joined:'Apr 28, 2026', pending:true },
-  { name:'newhire@team.io',  email:'newhire@team.io',     ini:'?',  col:'gray',    role:'Viewer', status:'pending',   lastActive:'—',            joined:'Apr 27, 2026', pending:true }
+  { name:'Maya Chen',       email:'maya@rajgruha.app',   ini:'MC', col:'primary', role:'Owner',  status:'active',    lastActive:'just now',     joined:'Mar 2024' },
+  { name:'Sarah Kowalski',   email:'sarah@example.com',   ini:'SK', col:'azure',   role:'Librarian',  status:'active',    lastActive:'2 min ago',    joined:'Apr 2024' },
+  { name:'Michael Reyes',    email:'michael@example.com', ini:'MR', col:'purple',  role:'Curator', status:'active',    lastActive:'14 min ago',   joined:'May 2024' },
+  { name:'Emily Wang',       email:'emily@example.com',   ini:'EW', col:'yellow',  role:'Curator', status:'active',    lastActive:'1 hour ago',   joined:'Jun 2024' },
+  { name:'Mark Kim',         email:'mark@example.com',    ini:'MK', col:'red',     role:'Reader', status:'active',    lastActive:'3 hours ago',  joined:'Jul 2024' },
+  { name:'Lina Park',        email:'lina@example.com',    ini:'LP', col:'green',   role:'Curator', status:'active',    lastActive:'Yesterday',    joined:'Sep 2024' },
+  { name:'Diego Reyes',      email:'diego@example.com',   ini:'DR', col:'blue',    role:'Curator', status:'active',    lastActive:'2 days ago',   joined:'Sep 2024' },
+  { name:'Yuki Tanaka',      email:'yuki@example.com',    ini:'YT', col:'primary', role:'Reader', status:'active',    lastActive:'4 days ago',   joined:'Oct 2024' },
+  { name:'Tom Hardy',        email:'tom@example.com',     ini:'TH', col:'purple',  role:'Curator', status:'active',    lastActive:'1 week ago',   joined:'Nov 2024' },
+  { name:'Robert Jones',     email:'robert@example.com',  ini:'RJ', col:'red',     role:'Reader', status:'suspended', lastActive:'2 weeks ago',  joined:'Dec 2024' },
+  { name:'neha@readers.club', email:'neha@readers.club',  ini:'?',  col:'gray',    role:'Curator', status:'pending',   lastActive:'—',            joined:'Nov 02, 2026', pending:true },
+  { name:'sam@readers.club',  email:'sam@readers.club',   ini:'?',  col:'gray',    role:'Reader', status:'pending',   lastActive:'—',            joined:'Nov 01, 2026', pending:true }
 ];
 const COLORS = { primary:'var(--primary)', azure:'var(--azure)', purple:'var(--purple)', yellow:'var(--yellow)', red:'var(--red)', green:'var(--green)', blue:'var(--blue)', gray:'var(--text-disabled)' };
 const STATUS_CLS = { active:'green', pending:'yellow', suspended:'red' };
-const ROLE_CLS   = { Owner:'purple', Admin:'red', Editor:'blue', Viewer:'green' };
-const ROLES = ['Owner', 'Admin', 'Editor', 'Viewer'];
+const ROLE_CLS   = { Owner:'purple', Librarian:'red', Curator:'blue', Reader:'green' };
+const ROLES = ['Owner', 'Librarian', 'Curator', 'Reader'];
 
 let filterText = '', filterRole = '', filterStatus = '';
 
@@ -181,7 +181,7 @@ document.getElementById('users-rows').addEventListener('click', (e) => {
         }
       },
       '-',
-      { label: 'Remove from workspace', action: () => {
+      { label: 'Remove from library', action: () => {
           const i = USERS.indexOf(u);
           if (i > -1) USERS.splice(i, 1);
           render();
@@ -196,24 +196,24 @@ document.getElementById('users-rows').addEventListener('click', (e) => {
 document.getElementById('invite-btn').addEventListener('click', (e) => {
   e.stopPropagation();
   showModal({
-    title: 'Invite a user',
+    title: 'Invite a member',
     body: `
       <form class="modal-form" novalidate>
         <div class="modal-form-row">
           <label for="iv-email">Email address</label>
-          <input type="email" id="iv-email" name="email" placeholder="teammate@example.com" autocomplete="off" required>
+          <input type="email" id="iv-email" name="email" placeholder="reader@example.com" autocomplete="off" required>
         </div>
         <div class="modal-form-row">
           <label for="iv-role">Role</label>
           <select id="iv-role" name="role">
-            <option value="Viewer">Viewer — can only view</option>
-            <option value="Editor" selected>Editor — can view and edit</option>
-            <option value="Admin">Admin — can manage users</option>
+            <option value="Reader">Reader — can read and review</option>
+            <option value="Curator" selected>Curator — can edit shelves and metadata</option>
+            <option value="Librarian">Librarian — can manage members</option>
           </select>
         </div>
         <div class="modal-form-row">
           <label for="iv-message">Personal message (optional)</label>
-          <textarea id="iv-message" name="message" rows="3" placeholder="Welcome to the team!"></textarea>
+          <textarea id="iv-message" name="message" rows="3" placeholder="Welcome to Rajgruha!"></textarea>
         </div>
       </form>
     `,

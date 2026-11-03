@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Users | Gentelella 2026 v4</title>
+<title>Members | Rajgruha</title>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="module" src="/src/main-v4.js"></script>
 </head>
-<body data-shell="admin" data-page="users" data-breadcrumb="Home > Users">
+<body data-shell="admin" data-page="users" data-breadcrumb="Home > Members">
 
 <main class="main">
 <div class="page-wrapper">
@@ -18,17 +18,36 @@
   <div class="page-header">
     <div class="page-header-row">
       <div>
-        <div class="page-pretitle">Team</div>
-        <h1 class="page-title">Users</h1>
+        <div class="page-pretitle">Patrons</div>
+        <h1 class="page-title">Members</h1>
       </div>
       <div class="page-actions">
         <button class="btn btn-outline">Import CSV</button>
         <button class="btn btn-primary">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h8M8 4v8"/></svg>
-          Invite user
+          Add member
         </button>
       </div>
     </div>
+  </div>
+
+  <div class="row col-4" style="margin-bottom:16px">
+    <div class="card"><div class="stat">
+      <div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></div>
+      <div class="stat-content"><div class="stat-label">Active members</div><div class="stat-value-row"><span class="stat-value">1,284</span><span class="stat-change up">+42</span></div><div class="stat-subtext">this month</div></div>
+    </div></div>
+    <div class="card"><div class="stat">
+      <div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 3H20v18H6.5A2.5 2.5 0 014 18.5v-13A2.5 2.5 0 016.5 3z"/></svg></div>
+      <div class="stat-content"><div class="stat-label">Currently reading</div><div class="stat-value-row"><span class="stat-value">372</span><span class="stat-change up">+18</span></div><div class="stat-subtext">across all members</div></div>
+    </div></div>
+    <div class="card"><div class="stat">
+      <div class="stat-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="stat-content"><div class="stat-label">Avg. reading streak</div><div class="stat-value-row"><span class="stat-value">18d</span><span class="stat-change up">+3</span></div><div class="stat-subtext">longest: 214 days</div></div>
+    </div></div>
+    <div class="card"><div class="stat">
+      <div class="stat-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7-6.3-4.5L5.7 21l2.3-7-6-4.6h7.6z"/></svg></div>
+      <div class="stat-content"><div class="stat-label">Premium tier</div><div class="stat-value-row"><span class="stat-value">214</span><span class="stat-change up">+9</span></div><div class="stat-subtext">17% of members</div></div>
+    </div></div>
   </div>
 
   <div class="row col-3" id="contacts-grid"></div>
@@ -38,20 +57,20 @@
 
 <script type="module">
 const people = [
-  ['Aigars Silkalns','A','primary','Admin','148','12','9'],
-  ['Sarah Kowalski','SK','azure','Designer','64','7','5'],
-  ['Michael Reyes','MR','purple','Engineer','98','11','4'],
-  ['Emily Wang','EW','yellow','PM','42','3','8'],
-  ['Mark Kim','MK','red','Engineer','71','6','2'],
-  ['Lina Park','LP','green','Marketing','38','9','6'],
-  ['Diego Reyes','DR','blue','Sales','83','14','11'],
-  ['Yuki Tanaka','YT','primary','Support','55','8','3'],
-  ['Tom Hardy','TH','purple','Engineer','67','5','7']
+  ['Aigars Silkalns','A','primary','Librarian · Admin','148','2','0'],
+  ['Sarah Kowalski','SK','azure','Premium member','64','2','1'],
+  ['Michael Reyes','MR','purple','Premium member','98','1','0'],
+  ['Emily Wang','EW','yellow','Standard member','42','3','2'],
+  ['Mark Kim','MK','red','Standard member','71','0','0'],
+  ['Lina Park','LP','green','Premium member','38','1','3'],
+  ['Diego Reyes','DR','blue','Standard member','83','2','1'],
+  ['Yuki Tanaka','YT','primary','Student','55','1','0'],
+  ['Tom Hardy','TH','purple','Standard member','67','0','2']
 ];
 const colorMap = { primary:'linear-gradient(135deg,var(--primary),var(--primary-dk))', azure:'linear-gradient(135deg,var(--azure),#1d6fa5)', purple:'linear-gradient(135deg,var(--purple),#8a2da0)', yellow:'linear-gradient(135deg,var(--yellow),#c97f00)', red:'linear-gradient(135deg,var(--red),#a82b2b)', green:'linear-gradient(135deg,var(--green),#1a8a32)', blue:'linear-gradient(135deg,var(--blue),#0550a0)' };
 
 const grid = document.getElementById('contacts-grid');
-grid.innerHTML = people.map(([name, ini, col, role, projects, tasks, msgs], idx) => `
+grid.innerHTML = people.map(([name, ini, col, role, read, loans, holds], idx) => `
   <div class="contact-card" data-idx="${idx}">
     <div class="av" style="background:${colorMap[col]}">${ini}</div>
     <div class="name">${name}</div>
@@ -61,9 +80,9 @@ grid.innerHTML = people.map(([name, ini, col, role, projects, tasks, msgs], idx)
       <button class="btn btn-primary btn-sm" data-action="view">View</button>
     </div>
     <div class="stats">
-      <div><strong>${projects}</strong>Projects</div>
-      <div><strong>${tasks}</strong>Tasks</div>
-      <div><strong>${msgs}</strong>Messages</div>
+      <div><strong>${read}</strong>Read</div>
+      <div><strong>${loans}</strong>Reading</div>
+      <div><strong>${holds}</strong>Wishlist</div>
     </div>
   </div>
 `).join('');
@@ -76,12 +95,10 @@ import('/src/v4/details.js').then(({ openContactModal }) => {
     const p = people[idx];
     if (!p) return;
     const action = e.target.closest('[data-action]')?.dataset.action;
-    const [name, ini, col, role, projectsCount, tasks, msgs] = p;
-    // Both buttons + plain card click open the modal; the modal exposes
-    // Message/View actions of its own.
+    const [name, ini, col, role, read, loans, holds] = p;
     if (action === 'message' || action === 'view' || !e.target.closest('button')) {
       e.preventDefault();
-      openContactModal({ name, ini, color: col, role, projects: projectsCount, tasks, msgs });
+      openContactModal({ name, ini, color: col, role, read, loans, holds });
     }
   });
 });

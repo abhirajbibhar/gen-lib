@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Order #7841 | Gentelella 2026 v4</title>
+<title>Session #R-1042 | Rajgruha</title>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="module" src="/src/main-v4.js"></script>
 </head>
-<body data-shell="admin" data-page="order-detail" data-breadcrumb="Home > Orders > #7841">
+<body data-shell="admin" data-page="order-detail" data-breadcrumb="Home > Reading log|orders.html > #R-1042">
 
 <main class="main">
 <div class="page-wrapper">
@@ -18,13 +18,13 @@
   <div class="page-header">
     <div class="page-header-row">
       <div>
-        <div class="page-pretitle">Shop · <a href="orders.html" style="color:var(--primary)">Orders</a></div>
-        <h1 class="page-title">Order #7841 <span class="status status-green" style="vertical-align:middle;margin-left:8px">Paid</span></h1>
+        <div class="page-pretitle">Reading · <a href="orders.html" style="color:var(--primary)">Reading log</a></div>
+        <h1 class="page-title">Session #R-1042 <span class="status status-green" style="vertical-align:middle;margin-left:8px">Reading</span></h1>
       </div>
       <div class="page-actions">
-        <button class="btn btn-outline">Print</button>
-        <button class="btn btn-outline">Send invoice</button>
-        <button class="btn btn-primary">Mark fulfilled</button>
+        <button class="btn btn-outline">Add highlight</button>
+        <button class="btn btn-outline">Set bookmark</button>
+        <a class="btn btn-primary" href="reader.html">Open in reader</a>
       </div>
     </div>
   </div>
@@ -33,100 +33,102 @@
   <div class="card" style="margin-bottom:16px">
     <div class="card-body" style="padding:16px 20px">
       <div class="order-timeline">
-        <div class="step done"><div class="dot"></div><div><div class="label">Placed</div><div class="meta">Apr 28 · 10:14</div></div></div>
-        <div class="step done"><div class="dot"></div><div><div class="label">Paid</div><div class="meta">Apr 28 · 10:14</div></div></div>
-        <div class="step active"><div class="dot"></div><div><div class="label">Preparing</div><div class="meta">In progress</div></div></div>
-        <div class="step"><div class="dot"></div><div><div class="label">Shipped</div><div class="meta">Pending</div></div></div>
-        <div class="step"><div class="dot"></div><div><div class="label">Delivered</div><div class="meta">Pending</div></div></div>
+        <div class="step done"><div class="dot"></div><div><div class="label">Added</div><div class="meta">Oct 18 · 09:14</div></div></div>
+        <div class="step done"><div class="dot"></div><div><div class="label">Metadata matched</div><div class="meta">Oct 18 · 09:15</div></div></div>
+        <div class="step active"><div class="dot"></div><div><div class="label">Reading</div><div class="meta">47% · p. 142</div></div></div>
+        <div class="step"><div class="dot"></div><div><div class="label">Review</div><div class="meta">Not yet</div></div></div>
+        <div class="step"><div class="dot"></div><div><div class="label">Finished</div><div class="meta">Pending</div></div></div>
       </div>
     </div>
   </div>
 
   <div class="row col-8-4">
-    <!-- Items -->
     <div style="display:flex;flex-direction:column;gap:16px">
       <div class="card">
         <div class="card-header">
-          <div class="card-title">Items · 3</div>
+          <div class="card-title">Current book</div>
+          <a class="btn btn-outline btn-sm" href="product_detail.html">Book details →</a>
         </div>
-        <div class="card-body p-0">
-          <div class="table-responsive">
-            <table class="table">
-              <thead>
-                <tr><th>Product</th><th style="width:60px">Qty</th><th style="width:100px">Price</th><th style="width:100px">Total</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><div class="cell-customer"><div class="cell-avatar" style="background:var(--primary-lt);color:var(--primary)">AP</div><div><div class="cell-strong">AdminLTE Pro</div><div style="font-size:11.5px;color:var(--text-muted)">SKU · ALP-2026</div></div></div></td>
-                  <td>1</td><td>$129.00</td><td class="cell-strong">$129.00</td>
-                </tr>
-                <tr>
-                  <td><div class="cell-customer"><div class="cell-avatar" style="background:var(--azure-lt);color:var(--azure)">GT</div><div><div class="cell-strong">Gentelella Theme</div><div style="font-size:11.5px;color:var(--text-muted)">SKU · GT-2026</div></div></div></td>
-                  <td>1</td><td>$89.00</td><td class="cell-strong">$89.00</td>
-                </tr>
-                <tr>
-                  <td><div class="cell-customer"><div class="cell-avatar" style="background:var(--purple-lt);color:var(--purple)">DP</div><div><div class="cell-strong">Dashboard Pack</div><div style="font-size:11.5px;color:var(--text-muted)">SKU · DP-2026</div></div></div></td>
-                  <td>1</td><td>$27.00</td><td class="cell-strong">$27.00</td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="card-body">
+          <div style="display:flex;gap:16px">
+            <div class="book-cover cv-1" style="width:92px;flex-shrink:0">
+              <span class="bc-kicker">Ace Books</span>
+              <span class="bc-title">The Left Hand of Darkness</span>
+              <span class="bc-rule"></span>
+              <span class="bc-author">Ursula K. Le Guin</span>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:16px;font-weight:var(--font-weight-bold);color:var(--text)">The Left Hand of Darkness</div>
+              <div style="font-size:12.5px;color:var(--text-muted);margin-top:2px">Ursula K. Le Guin · Ace Books · 1969</div>
+              <div style="display:flex;gap:6px;margin-top:10px">
+                <span class="format-tag epub">EPUB</span>
+                <span class="format-tag pdf">PDF</span>
+                <span class="status status-green" style="font-size:10.5px">Reading</span>
+              </div>
+              <div class="reading-progress" style="margin-top:14px"><div class="fill" style="width:47%"></div></div>
+              <div class="continue-sub"><span>Page 142 of 304</span><span>47% · 3h 12m left</span></div>
+            </div>
           </div>
         </div>
-        <div style="padding:14px 20px;border-top:1px solid var(--border-color-light);display:flex;justify-content:flex-end">
-          <table style="font-size:13px">
-            <tr><td style="padding:2px 16px 2px 0;color:var(--text-secondary)">Subtotal</td><td style="text-align:right;min-width:90px">$245.00</td></tr>
-            <tr><td style="padding:2px 16px 2px 0;color:var(--text-secondary)">Shipping</td><td style="text-align:right">$0.00</td></tr>
-            <tr><td style="padding:2px 16px 2px 0;color:var(--text-secondary)">Tax</td><td style="text-align:right">$0.00</td></tr>
-            <tr><td style="padding:6px 16px 2px 0;color:var(--text);font-weight:var(--font-weight-bold);border-top:1px solid var(--border-color-light)">Total</td><td style="text-align:right;font-weight:var(--font-weight-bold);font-size:15px;border-top:1px solid var(--border-color-light);padding-top:6px">$245.00</td></tr>
+        <div style="padding:14px 20px;border-top:1px solid var(--border-color-light)">
+          <table style="font-size:13px;width:100%">
+            <tr><td style="padding:3px 0;color:var(--text-secondary)">Started</td><td style="text-align:right">Oct 18, 2026</td></tr>
+            <tr><td style="padding:3px 0;color:var(--text-secondary)">Last session</td><td style="text-align:right">Today · 21:40 · 42 min</td></tr>
+            <tr><td style="padding:3px 0;color:var(--text-secondary)">Total time</td><td style="text-align:right">6h 08m</td></tr>
+            <tr><td style="padding:3px 0;color:var(--text-secondary)">Highlights</td><td style="text-align:right">18</td></tr>
+            <tr><td style="padding:8px 0 2px;color:var(--text);font-weight:var(--font-weight-bold);border-top:1px solid var(--border-color-light)">Estimated finish</td><td style="text-align:right;font-weight:var(--font-weight-bold);border-top:1px solid var(--border-color-light);padding-top:8px">Nov 08, 2026</td></tr>
           </table>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-header"><div class="card-title">Order notes</div></div>
+        <div class="card-header"><div class="card-title">Highlights &amp; notes</div></div>
         <div class="card-body" style="padding:8px 16px">
           <div class="activity-list">
-            <div class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--primary),var(--primary-dk))">JD</div><div><div class="activity-body">Customer requested expedited shipping if available.</div><div class="activity-time">Apr 28 · 10:15</div></div></div>
-            <div class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--azure),#1d6fa5)">A</div><div><div class="activity-body"><strong>Aigars S.</strong> noted the customer is a returning user with 5+ orders.</div><div class="activity-time">Apr 28 · 10:32</div></div></div>
+            <div class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--primary),var(--primary-dk))">H</div><div><div class="activity-body">“It is good to have an end to journey toward; but it is the journey that matters, in the end.” <span style="color:var(--text-muted)">— p. 138</span></div><div class="activity-time">Today · 21:31</div></div></div>
+            <div class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--azure),#1d6fa5)">M</div><div><div class="activity-body"><strong>Note</strong> Genly’s voice shifts after the crossing — worth rereading the Estraven chapters.</div><div class="activity-time">Yesterday · 20:12</div></div></div>
+            <div class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--purple),#8a2da0)">H</div><div><div class="activity-body">“The king was pregnant.” <span style="color:var(--text-muted)">— p. 96</span></div><div class="activity-time">Oct 26 · 22:04</div></div></div>
           </div>
-          <textarea class="form-control" rows="2" placeholder="Add a note for your team…" aria-label="Order note" style="margin-top:10px"></textarea>
+          <textarea class="form-control" rows="2" placeholder="Add a note at the current position…" aria-label="Reading note" style="margin-top:10px"></textarea>
         </div>
       </div>
     </div>
 
-    <!-- Sidebar -->
     <div style="display:flex;flex-direction:column;gap:16px">
       <div class="card">
-        <div class="card-header"><div class="card-title">Customer</div></div>
+        <div class="card-header"><div class="card-title">Reader</div></div>
         <div class="card-body" style="padding:14px 16px">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-            <div class="cell-avatar" style="background:linear-gradient(135deg,var(--primary),var(--primary-dk));width:40px;height:40px;font-size:13px">JD</div>
+            <div class="cell-avatar" style="background:linear-gradient(135deg,var(--primary),var(--primary-dk));width:40px;height:40px;font-size:13px">MC</div>
             <div>
-              <div class="cell-strong">John Doe</div>
-              <div style="font-size:11.5px;color:var(--text-muted)">5 previous orders</div>
+              <div class="cell-strong">Maya Chen</div>
+              <div style="font-size:11.5px;color:var(--text-muted)">Library admin · 34 books this year</div>
             </div>
           </div>
-          <div class="order-info-row"><span class="label">Email</span><a href="mailto:john@example.com" style="color:var(--primary);font-size:12.5px">john@example.com</a></div>
-          <div class="order-info-row"><span class="label">Phone</span><span class="value">+1 (555) 010-2026</span></div>
+          <div class="order-info-row"><span class="label">Email</span><a href="mailto:maya@rajgruha.app" style="color:var(--primary);font-size:12.5px">maya@rajgruha.app</a></div>
+          <div class="order-info-row"><span class="label">Member since</span><span class="value">Jan 2024</span></div>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-header"><div class="card-title">Shipping address</div></div>
-        <div class="card-body" style="padding:14px 16px;font-size:12.5px;color:var(--text-secondary);line-height:1.6">
-          <strong style="color:var(--text)">John Doe</strong><br>
-          1234 Market Street, Suite 500<br>
-          San Francisco, CA 94103<br>
-          United States
+        <div class="card-header"><div class="card-title">Devices in sync</div></div>
+        <div class="card-body" style="padding:14px 16px;font-size:12.5px;color:var(--text-secondary);line-height:1.7">
+          <strong style="color:var(--text)">iPad Air · Rajgruha web reader</strong><br>
+          Last position synced Today · 21:40<br>
+          <span class="availability" style="margin-top:8px"><span class="dot"></span> Up to date</span>
+          <div style="border-top:1px solid var(--border-color-light);margin:12px 0 10px"></div>
+          <strong style="color:var(--text)">Kobo Libra</strong><br>
+          Last position synced Today · 07:05
         </div>
       </div>
 
       <div class="card">
-        <div class="card-header"><div class="card-title">Payment</div></div>
+        <div class="card-header"><div class="card-title">File</div></div>
         <div class="card-body" style="padding:14px 16px">
-          <div class="order-info-row"><span class="label">Method</span><span class="value">Visa •••• 4242</span></div>
-          <div class="order-info-row"><span class="label">Transaction</span><span class="value cell-mono">ch_3OqXyZ</span></div>
-          <div class="order-info-row"><span class="label">Status</span><span class="status status-green">Captured</span></div>
+          <div class="order-info-row"><span class="label">Format</span><span class="value">EPUB 3</span></div>
+          <div class="order-info-row"><span class="label">Size</span><span class="value cell-mono">2.4 MB</span></div>
+          <div class="order-info-row"><span class="label">DRM</span><span class="value">None</span></div>
+          <div class="order-info-row"><span class="label">Status</span><span class="status status-green">Available offline</span></div>
         </div>
       </div>
     </div>

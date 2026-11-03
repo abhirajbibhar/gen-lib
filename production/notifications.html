@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notifications | Gentelella 2026 v4</title>
+<title>Notifications | Rajgruha</title>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
   <div class="page-header">
     <div class="page-header-row">
       <div>
-        <div class="page-pretitle">Activity</div>
+        <div class="page-pretitle">Library activity</div>
         <h1 class="page-title">Notifications</h1>
       </div>
       <div class="page-actions">
@@ -57,18 +57,18 @@
 
 <script type="module">
 const notifications = [
-  { id:1, kind:'info',    cat:'all',      from:'Stripe',     text:'Payment of $499.00 received from Acme Corp', time:'2 min ago',   unread:true },
-  { id:2, kind:'task',    cat:'reviews',  from:'GitHub',     text:'PR #248 ready for review on the analytics-pipeline repo', time:'14 min ago',  unread:true },
-  { id:3, kind:'alert',   cat:'all',      from:'Linear',     text:'GEN-128 marked as urgent — needs attention before EOD', time:'1 hour ago',  unread:true },
-  { id:4, kind:'mention', cat:'mentions', from:'Sarah K.',   text:'Mentioned you in a comment on "Q2 Marketing Campaign"', time:'2 hours ago', unread:true },
-  { id:5, kind:'info',    cat:'all',      from:'Vercel',     text:'Deployment succeeded — gentelella-v4.vercel.app live in 28s', time:'3 hours ago', unread:false },
-  { id:6, kind:'task',    cat:'reviews',  from:'GitHub',     text:'PR #246 was merged into main by Michael R.', time:'5 hours ago', unread:false },
-  { id:7, kind:'mention', cat:'mentions', from:'Notion',     text:'You were mentioned in "Q2 OKRs" by Emily Wang', time:'Yesterday',   unread:false },
-  { id:8, kind:'info',    cat:'all',      from:'Stripe',     text:'Subscription renewed — Pro plan $29 billed for May 2026', time:'Yesterday',   unread:false },
-  { id:9, kind:'alert',   cat:'all',      from:'System',     text:'Scheduled maintenance window: April 30 02:00–04:00 UTC', time:'2 days ago',  unread:false },
-  { id:10, kind:'task',   cat:'reviews',  from:'Linear',     text:'GEN-129 assigned to you — fix table sort indicators', time:'2 days ago',  unread:false },
-  { id:11, kind:'mention', cat:'mentions', from:'Diego R.',  text:'Replied to your comment on "Customer feedback summary"', time:'3 days ago',  unread:false },
-  { id:12, kind:'info',   cat:'all',      from:'Notion',     text:'Page "API integration guide" was edited by Tom Hardy', time:'4 days ago',  unread:false }
+  { id:1, kind:'info',    cat:'all',      from:'Sync',         text:'Kobo Libra synced — last position in Piranesi is up to date', time:'2 min ago',   unread:true },
+  { id:2, kind:'alert',   cat:'all',      from:'Goal',         text:'You are 2 books ahead of your 2026 goal — 39 of 50', time:'14 min ago',  unread:true },
+  { id:3, kind:'task',    cat:'reviews',  from:'Review',       text:'Sarah K. reviewed Klara and the Sun and gave it 5 stars', time:'1 hour ago',  unread:true },
+  { id:4, kind:'mention', cat:'mentions', from:'Sarah K.',     text:'Mentioned you in a highlight from Piranesi', time:'2 hours ago', unread:true },
+  { id:5, kind:'info',    cat:'all',      from:'Import',       text:'24 EPUB files indexed — 2 need metadata review', time:'3 hours ago', unread:false },
+  { id:6, kind:'task',    cat:'reviews',  from:'Reviews',      text:'3 new reader reviews for Braiding Sweetgrass', time:'5 hours ago', unread:false },
+  { id:7, kind:'mention', cat:'mentions', from:'Collections',  text:'Emily Wang suggested The Seventh Perfection for Sci-fi shelf', time:'Yesterday',   unread:false },
+  { id:8, kind:'info',    cat:'all',      from:'Members',      text:'Diego Reyes joined your shared library', time:'Yesterday',   unread:false },
+  { id:9, kind:'alert',   cat:'all',      from:'Storage',      text:'Library backup completed — 2.4 GB of EPUBs archived', time:'2 days ago',  unread:false },
+  { id:10, kind:'task',   cat:'reviews',  from:'Metadata',     text:'Open Library matched 216 titles — 5 still missing covers', time:'2 days ago',  unread:false },
+  { id:11, kind:'mention', cat:'mentions', from:'Emily W.',    text:'Replied to your highlight in Braiding Sweetgrass', time:'3 days ago',  unread:false },
+  { id:12, kind:'info',   cat:'all',      from:'Catalog',      text:'Metadata refreshed for 216 titles from Open Library', time:'4 days ago',  unread:false }
 ];
 
 const ICON = {

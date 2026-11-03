@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reader | Rajgruha</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="reader" data-breadcrumb="Home > Catalog|e_commerce.html > Reader">
+
+<main class="main">
+<div class="page-wrapper reader-page">
+
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Reading · <a href="product_detail.html" style="color:var(--primary)">The Left Hand of Darkness</a></div>
+        <h1 class="page-title">Reader</h1>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline" id="bookmark-btn">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h8v12l-4-3-4 3V2z"/></svg>
+          Bookmark
+        </button>
+        <button class="btn btn-outline" id="download-btn">Download PDF</button>
+        <a class="btn btn-primary" href="product_detail.html">Book details</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card reader-card">
+    <div class="reader-toolbar">
+      <div class="reader-book">
+        <div class="book-cover sm cv-1"><span class="bc-title">The Left Hand of Darkness</span></div>
+        <div class="reader-book-text">
+          <div class="reader-book-title">The Left Hand of Darkness</div>
+          <div class="reader-book-meta">Ursula K. Le Guin · PDF · DRM-free</div>
+        </div>
+      </div>
+
+      <div class="chart-tabs reader-format-switch" role="tablist" aria-label="Book format">
+        <button class="chart-tab active" type="button" role="tab" aria-selected="true">PDF</button>
+        <button class="chart-tab" type="button" role="tab" aria-selected="false">EPUB</button>
+        <button class="chart-tab" type="button" role="tab" aria-selected="false">Audio</button>
+      </div>
+
+      <div class="reader-position">
+        <span class="reader-page-count">Page 142 of 304 · 47%</span>
+        <div class="reading-progress"><div class="fill" style="width:47%"></div></div>
+      </div>
+    </div>
+
+    <div class="reader-stage">
+      <div id="pdf-viewer"></div>
+      <div class="reader-loading" id="reader-loading">
+        <span class="reader-spinner" aria-hidden="true"></span>
+        Loading the demo PDF…
+      </div>
+    </div>
+
+    <div class="reader-footer">
+      <span class="availability"><span class="dot"></span> Local copy · synced today</span>
+      <span>Demo document served from the EmbedPDF CDN</span>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<script type="module">
+async function mountReader() {
+  const target = document.getElementById('pdf-viewer');
+  const loading = document.getElementById('reader-loading');
+  try {
+    const { default: EmbedPDF } = await import('https://cdn.jsdelivr.net/npm/@embedpdf/snippet@2/dist/embedpdf.js');
+    await EmbedPDF.init({
+      type: 'container',
+      target,
+      src: 'https://snippet.embedpdf.com/ebook.pdf',
+      theme: { preference: 'system' }
+    });
+    loading.remove();
+  } catch (err) {
+    loading.textContent = 'The demo PDF could not load. Check your connection and reload.';
+  }
+}
+mountReader();
+</script>
+
+</body>
+</html>

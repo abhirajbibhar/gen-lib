@@ -6,15 +6,15 @@ import { showModal } from './modal.js';
 import { showToast } from './toast.js';
 
 const MEMBER_NAMES = {
-  SK: { name: 'Sarah Kowalski', role: 'Designer',  color: 'azure' },
-  MR: { name: 'Michael Reyes',  role: 'Engineer',  color: 'purple' },
-  EW: { name: 'Emily Wang',     role: 'PM',        color: 'yellow' },
-  MK: { name: 'Mark Kim',       role: 'Engineer',  color: 'red' },
-  LP: { name: 'Lina Park',      role: 'Marketing', color: 'green' },
-  DR: { name: 'Diego Reyes',    role: 'Sales',     color: 'blue' },
-  YT: { name: 'Yuki Tanaka',    role: 'Support',   color: 'primary' },
-  TH: { name: 'Tom Hardy',      role: 'Engineer',  color: 'purple' },
-  A:  { name: 'Aigars Silkalns', role: 'Admin',    color: 'primary' }
+  SK: { name: 'Sarah Kowalski', role: 'Curator',   color: 'azure' },
+  MR: { name: 'Michael Reyes',  role: 'Reader',    color: 'purple' },
+  EW: { name: 'Emily Wang',     role: 'Reader',    color: 'yellow' },
+  MK: { name: 'Mark Kim',       role: 'Reader',    color: 'red' },
+  LP: { name: 'Lina Park',      role: 'Curator',   color: 'green' },
+  DR: { name: 'Diego Reyes',    role: 'Reader',    color: 'blue' },
+  YT: { name: 'Yuki Tanaka',    role: 'Reader',    color: 'primary' },
+  TH: { name: 'Tom Hardy',      role: 'Reader',    color: 'purple' },
+  A:  { name: 'Maya Chen',      role: 'Librarian', color: 'primary' }
 };
 
 const COLOR_VAR = {
@@ -48,9 +48,9 @@ const SAMPLE_TASKS = [
 ];
 
 const SAMPLE_ACTIVITY = [
-  { who: 'Sarah K.',    what: 'commented on the design review', time: '12 min ago' },
-  { who: 'Michael R.',  what: 'merged PR #248',                  time: '1 hour ago' },
-  { who: 'Emily W.',    what: 'updated the timeline',            time: '4 hours ago' }
+  { who: 'Sarah K.',    what: 'added a note to the collection', time: '12 min ago' },
+  { who: 'Michael R.',  what: 'finished a book on the shelf',                  time: '1 hour ago' },
+  { who: 'Emily W.',    what: 'updated the collection',            time: '4 hours ago' }
 ];
 
 export function openProjectModal({ title, client, status, sCls, desc, pct, due, members }) {
@@ -100,11 +100,11 @@ export function openProjectModal({ title, client, status, sCls, desc, pct, due, 
           <div class="progress-thin"><div class="bar" style="width:${pct}%;background:${progressColor}"></div></div>
         </div>
         <div class="stat-block">
-          <div class="label">Due date</div>
+          <div class="label">Last updated</div>
           <div class="value">${escapeHtml(due)}</div>
         </div>
         <div class="stat-block">
-          <div class="label">Team</div>
+          <div class="label">Contributors</div>
           <div class="value">${members.length}</div>
         </div>
       </div>
@@ -132,12 +132,12 @@ export function openProjectModal({ title, client, status, sCls, desc, pct, due, 
     size: 'lg',
     actions: [
       { label: 'Close', variant: 'outline' },
-      { label: 'Open project', variant: 'primary', action: () => showToast(`Opening: ${title}`) }
+      { label: 'Open collection', variant: 'primary', action: () => showToast(`Opening: ${title}`) }
     ]
   });
 }
 
-export function openContactModal({ name, ini, color, role, projects, tasks, msgs }) {
+export function openContactModal({ name, ini, color, role, read, loans, holds }) {
   const email = emailFor(name);
   const phone = '+1 (555) ' + (300 + (ini.charCodeAt(0) % 600)).toString().padStart(3, '0') + '-' + (1000 + (ini.charCodeAt(ini.length - 1) % 9000)).toString();
   const colorVar = COLOR_VAR[color] || 'var(--primary)';
@@ -155,14 +155,14 @@ export function openContactModal({ name, ini, color, role, projects, tasks, msgs
       <div class="detail-contact-fields">
         <div><span class="label">Email</span><a class="value" href="mailto:${email}">${email}</a></div>
         <div><span class="label">Phone</span><span class="value">${phone}</span></div>
-        <div><span class="label">Location</span><span class="value">San Francisco, CA</span></div>
         <div><span class="label">Joined</span><span class="value">Mar 2024</span></div>
+        <div><span class="label">Tier</span><span class="value">${escapeHtml(role)}</span></div>
       </div>
 
       <div class="detail-contact-stats">
-        <div><strong>${projects}</strong><span>Projects</span></div>
-        <div><strong>${tasks}</strong><span>Open tasks</span></div>
-        <div><strong>${msgs}</strong><span>Unread messages</span></div>
+        <div><strong>${read}</strong><span>Books read</span></div>
+        <div><strong>${loans}</strong><span>Reading</span></div>
+        <div><strong>${holds}</strong><span>Wishlist</span></div>
       </div>
     </div>
   `;

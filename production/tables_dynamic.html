@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dynamic tables | Gentelella 2026 v4</title>
+<title>Dynamic tables | Rajgruha</title>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="module" src="/src/main-v4.js"></script>
 </head>
-<body data-shell="admin" data-page="tables-dynamic" data-breadcrumb="Home > Tables > Dynamic">
+<body data-shell="admin" data-page="tables-dynamic" data-breadcrumb="Home > Books > Server data">
 
 <main class="main">
 <div class="page-wrapper">
@@ -18,8 +18,8 @@
   <div class="page-header">
     <div class="page-header-row">
       <div>
-        <div class="page-pretitle">Tables</div>
-        <h1 class="page-title">Server data — orders</h1>
+        <div class="page-pretitle">Library · Inventory</div>
+        <h1 class="page-title">Server data — books</h1>
       </div>
       <div class="page-actions">
         <button class="btn btn-outline">Refresh</button>
@@ -31,7 +31,7 @@
   <div class="card">
     <div class="card-header">
       <div>
-        <div class="card-title">Orders</div>
+        <div class="card-title">Books</div>
         <div class="card-subtitle">Sortable columns, search across all fields, paginated 25/page.</div>
       </div>
     </div>
@@ -39,7 +39,7 @@
       <table class="table" data-datatable data-page-length="25">
         <thead>
           <tr>
-            <th>Order #</th><th>Customer</th><th>Item</th><th>Qty</th><th>Total</th><th>Channel</th><th>Status</th><th>Date</th>
+            <th>Book</th><th>Author</th><th>Genre</th><th>Format</th><th>Copies</th><th>Shelf</th><th>Status</th><th>Added</th>
           </tr>
         </thead>
         <tbody id="orders-tbody"></tbody>
@@ -51,31 +51,34 @@
 </main>
 
 <script type="module">
-const customers = ['John Doe','Anna Smith','Robert Jones','Emily Wang','Mark Kim','Sarah Lee','Tom Hardy','Lina Park','Diego Reyes','Yuki Tanaka','Chris Hill','Nina Volkov','Ahmed Bashir','Fiona Reilly','Oliver Kane','Priya Verma','Jamie Morales','Sven Kowalski','Rachel Chen','Hana Kawasaki'];
-const items = ['Aurora hoodie','Linen shirt','Trail sneakers','Canvas bag','Wireless earbuds','Pour-over set','Desk mat','Mech keyboard','Merino base layer','Coffee grinder'];
-const channels = ['Web','Mobile','Email','Partner','Direct'];
-const statuses = [['Paid','green'],['Processing','blue'],['Pending','yellow'],['Cancelled','red']];
+const books = ['The Left Hand of Darkness','Piranesi','Braiding Sweetgrass','Klara and the Sun','The Overstory','Project Hail Mary','Circe','The Master and Margarita','Sapiens','Educated','The Name of the Wind','Gideon the Ninth','The Three-Body Problem','Dawn','A Brief History of Time','The Remains of the Day','The Dispossessed','The Ministry for the Future','Blood Meridian','The Seventh Perfection'];
+const authors = ['Ursula K. Le Guin','Susanna Clarke','Robin Wall Kimmerer','Kazuo Ishiguro','Richard Powers','Andy Weir','Madeline Miller','Mikhail Bulgakov','Yuval Noah Harari','Tara Westover','Patrick Rothfuss','Tamsyn Muir','Liu Cixin','Octavia E. Butler','Stephen Hawking','Kazuo Ishiguro','Ursula K. Le Guin','Kim Stanley Robinson','Cormac McCarthy','Kate Elliott'];
+const genres = ['Science fiction','Fantasy','Literary fiction','History','Nature writing','Classics','Memoir','Mythology'];
+const formats = ['EPUB','PDF','Audiobook'];
+const shelves = ['Sci-fi classics','New arrivals','Essays','Literary','History','Mythology','Classics'];
+const statuses = [['In library','green'],['Queued','blue'],['Reading','yellow'],['File missing','red']];
 
-const months = ['Jan','Feb','Mar','Apr'];
+const months = ['Jul','Aug','Sep','Oct'];
 function rng(seed) { let s = seed; return () => { s = (s * 9301 + 49297) % 233280; return s / 233280; }; }
 const r = rng(42);
 const rows = [];
 for (let i = 0; i < 50; i++) {
-  const c = customers[Math.floor(r() * customers.length)];
-  const it = items[Math.floor(r() * items.length)];
-  const ch = channels[Math.floor(r() * channels.length)];
+  const b = books[Math.floor(r() * books.length)];
+  const a = authors[Math.floor(r() * authors.length)];
+  const g = genres[Math.floor(r() * genres.length)];
+  const fmt = formats[Math.floor(r() * formats.length)];
+  const shelf = shelves[Math.floor(r() * shelves.length)];
   const [stTxt, stCls] = statuses[Math.floor(r() * statuses.length)];
-  const qty = 1 + Math.floor(r() * 5);
-  const total = (29 + Math.floor(r() * 470));
+  const copies = 1 + Math.floor(r() * 4);
   const month = months[Math.floor(r() * months.length)];
   const day = 1 + Math.floor(r() * 28);
   rows.push(`<tr>
-    <td class="cell-mono">#${7800 + i}</td>
-    <td class="cell-strong">${c}</td>
-    <td>${it}</td>
-    <td>${qty}</td>
-    <td class="cell-strong">$${total}</td>
-    <td>${ch}</td>
+    <td class="cell-strong">${b}</td>
+    <td>${a}</td>
+    <td>${g}</td>
+    <td><span class="format-tag ${fmt === 'PDF' ? 'pdf' : fmt === 'EPUB' ? 'epub' : 'audio'}">${fmt}</span></td>
+    <td>${copies}</td>
+    <td>${shelf}</td>
     <td><span class="status status-${stCls}">${stTxt}</span></td>
     <td>${month} ${day}, 2026</td>
   </tr>`);

@@ -8,14 +8,15 @@ import { openMenu } from './menus.js';
 
 // Folder tree (children form a hierarchy via path)
 const TREE = [
-  { id: 'root',      name: 'My Drive',  parent: null,    icon: 'drive' },
-  { id: 'projects',  name: 'Projects',  parent: 'root',  icon: 'folder' },
-  { id: 'design',    name: 'Design',    parent: 'projects', icon: 'folder' },
-  { id: 'eng',       name: 'Engineering', parent: 'projects', icon: 'folder' },
-  { id: 'marketing', name: 'Marketing', parent: 'root',  icon: 'folder' },
-  { id: 'shared',    name: 'Shared with me', parent: null, icon: 'shared' },
-  { id: 'starred',   name: 'Starred',   parent: null,    icon: 'starred' },
-  { id: 'trash',     name: 'Trash',     parent: null,    icon: 'trash' }
+  { id: 'root',       name: 'Rajgruha library', parent: null, icon: 'drive' },
+  { id: 'fiction',    name: 'Fiction',     parent: 'root', icon: 'folder' },
+  { id: 'nonfiction', name: 'Non-fiction', parent: 'root', icon: 'folder' },
+  { id: 'audio',      name: 'Audiobooks',  parent: 'root', icon: 'folder' },
+  { id: 'covers',     name: 'Covers',      parent: 'root', icon: 'folder' },
+  { id: 'imports',    name: 'Imports',     parent: 'root', icon: 'folder' },
+  { id: 'shared',     name: 'Shared with me', parent: null, icon: 'shared' },
+  { id: 'starred',    name: 'Starred',   parent: null,    icon: 'starred' },
+  { id: 'trash',      name: 'Trash',     parent: null,    icon: 'trash' }
 ];
 
 const ICON = {
@@ -27,6 +28,8 @@ const ICON = {
 };
 
 const FILE_TYPES = {
+  epub:  { color: 'var(--green)',   bg: 'var(--green-lt)' },
+  audio: { color: 'var(--purple)',  bg: 'var(--purple-lt)' },
   pdf:   { color: 'var(--red)',     bg: 'var(--red-lt)' },
   doc:   { color: 'var(--blue)',    bg: 'var(--blue-lt)' },
   xls:   { color: 'var(--green)',   bg: 'var(--green-lt)' },
@@ -40,31 +43,38 @@ const FILE_TYPES = {
 // Files (folder = type 'folder') by parent id
 let nextId = 1;
 const FILES = [
-  // root
-  { id: nextId++, parent: 'root', type: 'folder', name: 'Projects',  modified: 'Apr 28, 2026', size: '—',     starred: false },
-  { id: nextId++, parent: 'root', type: 'folder', name: 'Marketing', modified: 'Apr 27, 2026', size: '—',     starred: false },
-  { id: nextId++, parent: 'root', type: 'pdf',    name: 'Q2 Plan.pdf',           modified: 'Apr 28, 2026', size: '2.4 MB', starred: true },
-  { id: nextId++, parent: 'root', type: 'doc',    name: 'Onboarding Guide.docx', modified: 'Apr 26, 2026', size: '156 KB', starred: false },
-  { id: nextId++, parent: 'root', type: 'xls',    name: 'Q1 Metrics.xlsx',        modified: 'Apr 22, 2026', size: '892 KB', starred: true },
-  { id: nextId++, parent: 'root', type: 'img',    name: 'team-photo.jpg',         modified: 'Apr 18, 2026', size: '4.2 MB', starred: false },
-  // projects
-  { id: nextId++, parent: 'projects', type: 'folder', name: 'Design',      modified: 'Apr 28, 2026', size: '—', starred: false },
-  { id: nextId++, parent: 'projects', type: 'folder', name: 'Engineering', modified: 'Apr 28, 2026', size: '—', starred: false },
-  { id: nextId++, parent: 'projects', type: 'doc',    name: 'Sprint Plan.md',     modified: 'Apr 28, 2026', size: '12 KB',  starred: false },
-  // design
-  { id: nextId++, parent: 'design', type: 'fig',   name: 'Dashboard Mockups.fig', modified: 'Apr 28, 2026', size: '38 MB',  starred: true },
-  { id: nextId++, parent: 'design', type: 'fig',   name: 'Component Library.fig', modified: 'Apr 27, 2026', size: '24 MB',  starred: true },
-  { id: nextId++, parent: 'design', type: 'img',   name: 'logo-final.png',        modified: 'Apr 25, 2026', size: '420 KB', starred: false },
-  { id: nextId++, parent: 'design', type: 'img',   name: 'brand-guide.pdf',       modified: 'Apr 20, 2026', size: '3.1 MB', starred: false },
-  // engineering
-  { id: nextId++, parent: 'eng', type: 'code',  name: 'api-schema.json',       modified: 'Apr 28, 2026', size: '48 KB',  starred: false },
-  { id: nextId++, parent: 'eng', type: 'code',  name: 'deployment.yaml',       modified: 'Apr 28, 2026', size: '8 KB',   starred: false },
-  { id: nextId++, parent: 'eng', type: 'doc',   name: 'Architecture.md',       modified: 'Apr 26, 2026', size: '34 KB',  starred: false },
-  { id: nextId++, parent: 'eng', type: 'zip',   name: 'archive-q1.zip',        modified: 'Apr 12, 2026', size: '184 MB', starred: false },
-  // marketing
-  { id: nextId++, parent: 'marketing', type: 'video', name: 'Product Launch.mp4',   modified: 'Apr 27, 2026', size: '128 MB', starred: false },
-  { id: nextId++, parent: 'marketing', type: 'doc',   name: 'Press Release.docx',   modified: 'Apr 25, 2026', size: '89 KB',  starred: false },
-  { id: nextId++, parent: 'marketing', type: 'xls',   name: 'Campaign Budget.xlsx', modified: 'Apr 23, 2026', size: '124 KB', starred: false }
+  // root — folders only, mirroring the library shelves
+  { id: nextId++, parent: 'root', type: 'folder', name: 'Fiction',     modified: 'Nov 02, 2026', size: '—', starred: false },
+  { id: nextId++, parent: 'root', type: 'folder', name: 'Non-fiction', modified: 'Nov 01, 2026', size: '—', starred: false },
+  { id: nextId++, parent: 'root', type: 'folder', name: 'Audiobooks',  modified: 'Oct 30, 2026', size: '—', starred: false },
+  { id: nextId++, parent: 'root', type: 'folder', name: 'Covers',      modified: 'Oct 29, 2026', size: '—', starred: false },
+  { id: nextId++, parent: 'root', type: 'folder', name: 'Imports',     modified: 'Nov 03, 2026', size: '—', starred: false },
+  { id: nextId++, parent: 'root', type: 'epub',   name: 'The Left Hand of Darkness.epub', modified: 'Nov 02, 2026', size: '2.4 MB', starred: true },
+  { id: nextId++, parent: 'root', type: 'epub',   name: 'Piranesi.epub',                  modified: 'Nov 01, 2026', size: '1.1 MB', starred: true },
+  // fiction
+  { id: nextId++, parent: 'fiction', type: 'epub', name: 'Piranesi.epub',              modified: 'Nov 01, 2026', size: '1.1 MB', starred: true },
+  { id: nextId++, parent: 'fiction', type: 'epub', name: 'Klara and the Sun.epub',     modified: 'Oct 24, 2026', size: '1.8 MB', starred: false },
+  { id: nextId++, parent: 'fiction', type: 'epub', name: 'The Name of the Wind.epub',  modified: 'Oct 19, 2026', size: '3.2 MB', starred: false },
+  { id: nextId++, parent: 'fiction', type: 'epub', name: 'Circe.epub',                 modified: 'Oct 12, 2026', size: '1.6 MB', starred: false },
+  // non-fiction
+  { id: nextId++, parent: 'nonfiction', type: 'epub', name: 'Braiding Sweetgrass.epub', modified: 'Nov 01, 2026', size: '2.9 MB', starred: true },
+  { id: nextId++, parent: 'nonfiction', type: 'pdf',  name: 'Sapiens.pdf',              modified: 'Sep 12, 2026', size: '14.2 MB', starred: false },
+  { id: nextId++, parent: 'nonfiction', type: 'epub', name: 'Educated.epub',            modified: 'Oct 08, 2026', size: '2.1 MB', starred: false },
+  // audiobooks
+  { id: nextId++, parent: 'audio', type: 'audio', name: 'Project Hail Mary.m4b',  modified: 'Oct 28, 2026', size: '412 MB', starred: true },
+  { id: nextId++, parent: 'audio', type: 'audio', name: 'Circe.m4b',              modified: 'Oct 20, 2026', size: '286 MB', starred: false },
+  { id: nextId++, parent: 'audio', type: 'audio', name: 'A Psalm for the Wild-Built.m4b', modified: 'Oct 04, 2026', size: '94 MB', starred: false },
+  // covers
+  { id: nextId++, parent: 'covers', type: 'img', name: 'left-hand-of-darkness.jpg', modified: 'Nov 02, 2026', size: '420 KB', starred: false },
+  { id: nextId++, parent: 'covers', type: 'img', name: 'piranesi.jpg',              modified: 'Nov 01, 2026', size: '310 KB', starred: false },
+  { id: nextId++, parent: 'covers', type: 'img', name: 'braiding-sweetgrass.jpg',   modified: 'Nov 01, 2026', size: '365 KB', starred: false },
+  // imports
+  { id: nextId++, parent: 'imports', type: 'zip', name: 'calibre-export.zip',    modified: 'Nov 03, 2026', size: '1.8 GB', starred: false },
+  { id: nextId++, parent: 'imports', type: 'xls', name: 'metadata-review.xlsx',  modified: 'Nov 02, 2026', size: '84 KB',  starred: false },
+  { id: nextId++, parent: 'imports', type: 'doc', name: 'import-report.md',      modified: 'Nov 02, 2026', size: '12 KB',  starred: false },
+  // shared
+  { id: nextId++, parent: 'shared', type: 'epub', name: 'The Overstory.epub',          modified: 'Nov 02, 2026', size: '2.7 MB', starred: false },
+  { id: nextId++, parent: 'shared', type: 'epub', name: 'A Psalm for the Wild-Built.epub', modified: 'Oct 27, 2026', size: '1.3 MB', starred: false }
 ];
 
 let currentId = 'root';
@@ -84,7 +94,7 @@ function getStarredFiles() {
 
 function getCurrentFiles() {
   if (currentId === 'starred') {return getStarredFiles();}
-  if (currentId === 'shared')  {return FILES.filter((f) => f.parent === 'marketing');} // demo: marketing as shared
+  if (currentId === 'shared')  {return FILES.filter((f) => f.parent === 'shared');}
   if (currentId === 'trash')   {return [];}
   return getChildren(currentId);
 }

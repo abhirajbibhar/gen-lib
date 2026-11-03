@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sales dashboard | Gentelella 2026 v4</title>
+<title>Reading desk | Rajgruha</title>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="module" src="/src/main-v4.js"></script>
 </head>
-<body data-shell="admin" data-page="dashboard-3" data-breadcrumb="Home > Dashboards > Sales">
+<body data-shell="admin" data-page="dashboard-3" data-breadcrumb="Home > Reading desk">
 
 <main class="main">
 <div class="page-wrapper">
@@ -18,267 +18,143 @@
   <div class="page-header">
     <div class="page-header-row">
       <div>
-        <div class="page-pretitle">Sales</div>
-        <h1 class="page-title">Pipeline & performance</h1>
+        <div class="page-pretitle">Reading</div>
+        <h1 class="page-title">Reading desk</h1>
       </div>
       <div class="page-actions">
-        <button class="btn btn-outline">Q1 2026</button>
-        <button class="btn btn-primary">+ New deal</button>
+        <button class="btn btn-outline">Import EPUB</button>
+        <button class="btn btn-primary">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h8M8 4v8"/></svg>
+          Open reader
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- ── Row 1: Pipeline KPIs ── -->
   <div class="row col-4">
-    <div class="card">
-      <div class="card-header"><div><div class="card-title">Open pipeline</div><div class="card-subtitle">42 active deals</div></div></div>
-      <div class="card-body" style="padding:8px 16px 16px">
-        <div style="font-size:30px;font-weight:600;letter-spacing:-1px;color:var(--text);line-height:1">$1,284,500</div>
-        <div style="font-size:11.5px;color:var(--text-muted);margin-top:6px">↑ 12% vs last month</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><div><div class="card-title">Closed this month</div><div class="card-subtitle">17 deals won</div></div></div>
-      <div class="card-body" style="padding:8px 16px 16px">
-        <div style="font-size:30px;font-weight:600;letter-spacing:-1px;color:var(--green);line-height:1">$284,300</div>
-        <div style="font-size:11.5px;color:var(--text-muted);margin-top:6px">86% of $330k target</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><div><div class="card-title">Win rate</div><div class="card-subtitle">Last 90 days</div></div></div>
-      <div class="card-body" style="padding:8px 16px 16px">
-        <div style="font-size:30px;font-weight:600;letter-spacing:-1px;color:var(--text);line-height:1">31.2%</div>
-        <div style="font-size:11.5px;color:var(--green);margin-top:6px">↑ 4.8pp · improving</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><div><div class="card-title">Avg deal size</div><div class="card-subtitle">All-plan blended</div></div></div>
-      <div class="card-body" style="padding:8px 16px 16px">
-        <div style="font-size:30px;font-weight:600;letter-spacing:-1px;color:var(--text);line-height:1">$16,724</div>
-        <div style="font-size:11.5px;color:var(--text-muted);margin-top:6px">↑ 8% · upsell driven</div>
-      </div>
-    </div>
+    <div class="card"><div class="stat">
+      <div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 3H20v18H6.5A2.5 2.5 0 014 18.5v-13A2.5 2.5 0 016.5 3z"/></svg></div>
+      <div class="stat-content"><div class="stat-label">Sessions today</div><div class="stat-value-row"><span class="stat-value">78</span><span class="stat-change up">↑ 9</span></div><div class="stat-subtext">14 in the last hour</div></div>
+      <div class="stat-spark"><div class="bar" style="height:40%"></div><div class="bar" style="height:55%"></div><div class="bar" style="height:48%"></div><div class="bar" style="height:64%"></div><div class="bar" style="height:58%"></div><div class="bar" style="height:76%"></div><div class="bar" style="height:70%"></div><div class="bar" style="height:88%"></div><div class="bar" style="height:82%"></div><div class="bar" style="height:94%"></div></div>
+    </div></div>
+    <div class="card"><div class="stat">
+      <div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="stat-content"><div class="stat-label">Books finished</div><div class="stat-value-row"><span class="stat-value">31</span><span class="stat-change up">↑ 4</span></div><div class="stat-subtext">this week · 6 reviewed</div></div>
+      <div class="stat-spark"><div class="bar" style="height:52%;background:var(--green)"></div><div class="bar" style="height:44%;background:var(--green)"></div><div class="bar" style="height:60%;background:var(--green)"></div><div class="bar" style="height:56%;background:var(--green)"></div><div class="bar" style="height:72%;background:var(--green)"></div><div class="bar" style="height:66%;background:var(--green)"></div><div class="bar" style="height:80%;background:var(--green)"></div><div class="bar" style="height:74%;background:var(--green)"></div><div class="bar" style="height:88%;background:var(--green)"></div><div class="bar" style="height:84%;background:var(--green)"></div></div>
+    </div></div>
+    <div class="card"><div class="stat">
+      <div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 17V5a2 2 0 012-2h11a2 2 0 012 2v12"/><path d="M4 17h12a2 2 0 012 2 2 2 0 01-2 2H4z"/></svg></div>
+      <div class="stat-content"><div class="stat-label">Highlights</div><div class="stat-value-row"><span class="stat-value">46</span><span class="stat-change up">↑ 12</span></div><div class="stat-subtext">9 shared to discussions</div></div>
+      <div class="stat-spark"><div class="bar" style="height:36%;background:var(--blue)"></div><div class="bar" style="height:50%;background:var(--blue)"></div><div class="bar" style="height:44%;background:var(--blue)"></div><div class="bar" style="height:58%;background:var(--blue)"></div><div class="bar" style="height:66%;background:var(--blue)"></div><div class="bar" style="height:60%;background:var(--blue)"></div><div class="bar" style="height:74%;background:var(--blue)"></div><div class="bar" style="height:82%;background:var(--blue)"></div><div class="bar" style="height:76%;background:var(--blue)"></div><div class="bar" style="height:90%;background:var(--blue)"></div></div>
+    </div></div>
+    <div class="card"><div class="stat">
+      <div class="stat-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="stat-content"><div class="stat-label">Avg. session</div><div class="stat-value-row"><span class="stat-value">42m</span><span class="stat-change down">↓ 3m</span></div><div class="stat-subtext">across all readers</div></div>
+      <div class="stat-spark"><div class="bar" style="height:80%;background:var(--yellow)"></div><div class="bar" style="height:74%;background:var(--yellow)"></div><div class="bar" style="height:66%;background:var(--yellow)"></div><div class="bar" style="height:70%;background:var(--yellow)"></div><div class="bar" style="height:58%;background:var(--yellow)"></div><div class="bar" style="height:52%;background:var(--yellow)"></div><div class="bar" style="height:48%;background:var(--yellow)"></div><div class="bar" style="height:44%;background:var(--yellow)"></div><div class="bar" style="height:40%;background:var(--yellow)"></div><div class="bar" style="height:36%;background:var(--yellow)"></div></div>
+    </div></div>
   </div>
 
-  <!-- ── Row 2: Quarterly target gauge + Mixed orders chart ── -->
-  <div class="row col-4-8">
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Quarterly target</div>
-          <div class="card-subtitle">$284k of $1M goal</div>
-        </div>
-      </div>
-      <div class="chart-area" style="height:240px">
-        <div data-chart="gauge" style="width:100%;height:100%"></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Orders & AOV</div>
-          <div class="card-subtitle">Bar with secondary-axis line</div>
-        </div>
-      </div>
-      <div class="chart-area" style="height:240px">
-        <div data-chart="mixed-bar-line" style="width:100%;height:100%"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── Row 3: Pipeline stages + Lead sources donut ── -->
   <div class="row col-8-4">
     <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Pipeline by stage</div>
-          <div class="card-subtitle">Q1 2026 · 42 deals · $1.28M</div>
+      <div class="chart-header">
+        <div class="chart-header-left">
+          <div class="card-title">Reading sessions</div>
+          <div class="chart-stat" style="margin-top:8px">1,204 pages <span style="font-size:13px;font-weight:500;color:var(--green)">↑ 7%</span></div>
+          <div style="font-size:11.5px;color:var(--text-muted)">Across web reader, iOS and e-ink devices</div>
+        </div>
+        <div class="chart-tabs">
+          <button class="chart-tab active">7 days</button>
+          <button class="chart-tab">30 days</button>
+          <button class="chart-tab">90 days</button>
         </div>
       </div>
-      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+      <div class="chart-area" style="height:230px">
+        <div data-chart="reading-activity" style="width:100%;height:100%"></div>
+      </div>
+      <div class="card-footer" style="display:flex;gap:20px;font-size:11.5px;color:var(--text-muted)">
+        <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:3px;background:var(--primary);border-radius:2px;display:inline-block"></span> Pages read</span>
+        <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;background:var(--azure);border-radius:2px;display:inline-block;opacity:.6"></span> Minutes read</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
         <div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span class="cell-strong">Lead</span><span style="color:var(--text-muted);font-size:11.5px"><strong style="color:var(--text)">$420k</strong> · 18 deals</span></div>
-          <div class="progress-thin"><div class="bar" style="width:100%;background:var(--azure)"></div></div>
+          <div class="card-title">Continue reading</div>
+          <div class="card-subtitle">3 books in progress</div>
         </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span class="cell-strong">Qualified</span><span style="color:var(--text-muted);font-size:11.5px"><strong style="color:var(--text)">$310k</strong> · 12 deals</span></div>
-          <div class="progress-thin"><div class="bar" style="width:74%;background:var(--primary)"></div></div>
+        <button class="btn btn-outline btn-sm">Sync all</button>
+      </div>
+      <div class="card-body" style="padding:6px 16px">
+        <div class="continue-item">
+          <div class="book-cover sm cv-1"><span class="bc-title">The Left Hand of Darkness</span></div>
+          <div class="continue-meta">
+            <div class="continue-title">The Left Hand of Darkness</div>
+            <div class="continue-author">Ursula K. Le Guin · last read 2m ago</div>
+            <div class="reading-progress"><div class="fill" style="width:47%"></div></div>
+            <div class="continue-sub"><span>Page 142 of 304</span><span>47%</span></div>
+          </div>
         </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span class="cell-strong">Proposal</span><span style="color:var(--text-muted);font-size:11.5px"><strong style="color:var(--text)">$220k</strong> · 7 deals</span></div>
-          <div class="progress-thin"><div class="bar" style="width:52%;background:var(--yellow)"></div></div>
+        <div class="continue-item">
+          <div class="book-cover sm cv-3"><span class="bc-title">Piranesi</span></div>
+          <div class="continue-meta">
+            <div class="continue-title">Piranesi</div>
+            <div class="continue-author">Susanna Clarke · last read 1h ago</div>
+            <div class="reading-progress"><div class="fill" style="width:36%"></div></div>
+            <div class="continue-sub"><span>Page 88 of 245</span><span>36%</span></div>
+          </div>
         </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span class="cell-strong">Negotiation</span><span style="color:var(--text-muted);font-size:11.5px"><strong style="color:var(--text)">$148k</strong> · 5 deals</span></div>
-          <div class="progress-thin"><div class="bar" style="width:35%;background:var(--purple)"></div></div>
+        <div class="continue-item">
+          <div class="book-cover sm cv-6"><span class="bc-title">Braiding Sweetgrass</span></div>
+          <div class="continue-meta">
+            <div class="continue-title">Braiding Sweetgrass</div>
+            <div class="continue-author">Robin Wall Kimmerer · last read 4h ago</div>
+            <div class="reading-progress"><div class="fill" style="width:16%"></div></div>
+            <div class="continue-sub"><span>Page 61 of 391</span><span>16%</span></div>
+          </div>
         </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span class="cell-strong">Closed won</span><span style="color:var(--text-muted);font-size:11.5px"><strong style="color:var(--green)">$284k</strong> · 17 deals</span></div>
-          <div class="progress-thin"><div class="bar" style="width:67%;background:var(--green)"></div></div>
+      </div>
+      <div class="card-footer">
+        <a href="orders.html" style="font-size:12px;font-weight:500;color:var(--primary)">Open reading log →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-3" style="align-items:start">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Yearly goal</div></div>
+      <div class="card-body" style="padding:4px 16px 14px">
+        <div data-chart="gauge" style="width:100%;height:130px"></div>
+        <div style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:-6px">
+          <strong style="color:var(--text)">39 of 50 books</strong> · 6 ahead of schedule
         </div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-header"><div class="card-title">Lead sources</div></div>
+      <div class="card-header"><div class="card-title">Sessions by genre</div></div>
       <div class="card-body">
         <div class="donut-block">
           <div class="donut-svg">
-            <div data-chart="traffic-donut" style="width:100%;height:100%"></div>
-            <div class="donut-center-label"><div class="num">412</div><div class="sub">leads</div></div>
+            <div data-chart="genre-mix" style="width:100%;height:100%"></div>
+            <div class="donut-center-label"><div class="num">372</div><div class="sub">sessions</div></div>
           </div>
           <div class="donut-legend">
-            <div class="donut-legend-item"><span class="dot" style="background:var(--primary)"></span> Inbound <span class="pct">40%</span></div>
-            <div class="donut-legend-item"><span class="dot" style="background:var(--azure)"></span> Outbound <span class="pct">20%</span></div>
-            <div class="donut-legend-item"><span class="dot" style="background:var(--yellow)"></span> Referral <span class="pct">15%</span></div>
-            <div class="donut-legend-item"><span class="dot" style="background:var(--purple)"></span> Partners <span class="pct">12%</span></div>
-            <div class="donut-legend-item"><span class="dot" style="background:var(--green)"></span> Events <span class="pct">13%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--primary)"></span> Fantasy <span class="pct">26%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--azure)"></span> Literary <span class="pct">21%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--purple)"></span> Sci-fi <span class="pct">18%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--yellow)"></span> History <span class="pct">14%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--green)"></span> Business <span class="pct">12%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--red)"></span> Poetry <span class="pct">9%</span></div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- ── Row 4: Quota attainment + Activity radar ── -->
-  <div class="row col-2">
-    <div class="card">
-      <div class="card-header"><div class="card-title">Quota attainment</div><div class="card-subtitle" style="margin-left:8px">Q1 reps</div></div>
-      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span><strong>Sarah K.</strong> · Senior AE</span><span style="color:var(--green);font-weight:600">112%</span></div>
-          <div class="progress-thin"><div class="bar" style="width:100%;background:var(--green)"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span><strong>Michael R.</strong> · AE</span><span style="color:var(--green);font-weight:600">97%</span></div>
-          <div class="progress-thin"><div class="bar" style="width:97%;background:var(--primary)"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span><strong>Diego R.</strong> · AE</span><span style="color:var(--yellow);font-weight:600">78%</span></div>
-          <div class="progress-thin"><div class="bar" style="width:78%;background:var(--yellow)"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span><strong>Yuki T.</strong> · BDR</span><span style="color:var(--yellow);font-weight:600">56%</span></div>
-          <div class="progress-thin"><div class="bar" style="width:56%;background:var(--yellow)"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span><strong>Lina P.</strong> · BDR</span><span style="color:var(--red);font-weight:600">42%</span></div>
-          <div class="progress-thin"><div class="bar" style="width:42%;background:var(--red)"></div></div>
-        </div>
-      </div>
-    </div>
 
     <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Activity by rep</div>
-          <div class="card-subtitle">Calls · emails · meetings · demos · trials · closed</div>
-        </div>
-      </div>
-      <div class="chart-area" style="height:280px">
-        <div data-chart="radar" style="width:100%;height:100%"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── Row 5: Top reps + Recent wins ── -->
-  <div class="row col-2">
-    <div class="card">
-      <div class="card-header"><div class="card-title">Top reps</div><a href="#" style="font-size:12px">Leaderboard</a></div>
-      <div class="card-body p-0">
-        <div class="table-responsive">
-          <table class="table">
-            <thead><tr><th>Rep</th><th>Deals</th><th>Revenue</th><th>Quota</th></tr></thead>
-            <tbody>
-              <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--primary)">SK</div><span class="cell-strong">Sarah K.</span></div></td><td>14</td><td class="cell-strong">$84,200</td><td><span class="status status-green">112%</span></td></tr>
-              <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--azure)">MR</div><span class="cell-strong">Michael R.</span></div></td><td>11</td><td class="cell-strong">$72,800</td><td><span class="status status-green">97%</span></td></tr>
-              <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--purple)">DR</div><span class="cell-strong">Diego R.</span></div></td><td>9</td><td class="cell-strong">$58,400</td><td><span class="status status-yellow">78%</span></td></tr>
-              <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--yellow)">YT</div><span class="cell-strong">Yuki T.</span></div></td><td>7</td><td class="cell-strong">$42,100</td><td><span class="status status-yellow">56%</span></td></tr>
-              <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--green)">LP</div><span class="cell-strong">Lina P.</span></div></td><td>5</td><td class="cell-strong">$28,400</td><td><span class="status status-red">42%</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><div class="card-title">Won this week</div><div style="margin-left:auto;font-size:12px;color:var(--green);font-weight:600">+$93,800</div></div>
-      <div class="card-body" style="padding:8px 16px">
-        <ul class="activity-list">
-          <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--green),#1a8a32)">$</div><div><div class="activity-body"><strong>$24,500</strong> — Acme Corp · Pro plan, 50 seats</div><div class="activity-time">2 hours ago · Sarah K.</div></div></li>
-          <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--green),#1a8a32)">$</div><div><div class="activity-body"><strong>$8,900</strong> — Globex Inc · Business · annual</div><div class="activity-time">Yesterday · Michael R.</div></div></li>
-          <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--green),#1a8a32)">$</div><div><div class="activity-body"><strong>$48,000</strong> — Stark Ind. · Enterprise · 3-year</div><div class="activity-time">2 days ago · Sarah K.</div></div></li>
-          <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--green),#1a8a32)">$</div><div><div class="activity-body"><strong>$12,400</strong> — Tyrell Corp · Pro · annual</div><div class="activity-time">3 days ago · Diego R.</div></div></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── Row 6: Deal aging + Lost deals ── -->
-  <div class="row col-2">
-    <div class="card">
-      <div class="card-header"><div class="card-title">Deals at risk</div><div class="card-subtitle" style="margin-left:8px">stalled 14+ days</div></div>
-      <div class="card-body p-0">
-        <div class="table-responsive">
-          <table class="table">
-            <thead><tr><th>Deal</th><th>Stage</th><th>Value</th><th>Last touch</th></tr></thead>
-            <tbody>
-              <tr>
-                <td><div class="cell-strong">Initech</div><div style="font-size:11px;color:var(--text-muted)">Sarah K.</div></td>
-                <td><span class="status status-yellow">Proposal</span></td>
-                <td class="cell-strong">$32,000</td>
-                <td><span style="color:var(--red);font-weight:500">22 days</span></td>
-              </tr>
-              <tr>
-                <td><div class="cell-strong">Soylent Corp</div><div style="font-size:11px;color:var(--text-muted)">Michael R.</div></td>
-                <td><span class="status status-yellow">Proposal</span></td>
-                <td class="cell-strong">$18,500</td>
-                <td><span style="color:var(--red);font-weight:500">18 days</span></td>
-              </tr>
-              <tr>
-                <td><div class="cell-strong">Wonka Industries</div><div style="font-size:11px;color:var(--text-muted)">Diego R.</div></td>
-                <td><span class="status status-yellow">Negotiation</span></td>
-                <td class="cell-strong">$54,200</td>
-                <td><span style="color:var(--yellow);font-weight:500">15 days</span></td>
-              </tr>
-              <tr>
-                <td><div class="cell-strong">Cyberdyne</div><div style="font-size:11px;color:var(--text-muted)">Yuki T.</div></td>
-                <td><span class="status status-yellow">Qualified</span></td>
-                <td class="cell-strong">$9,200</td>
-                <td><span style="color:var(--yellow);font-weight:500">14 days</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><div class="card-title">Lost reasons</div><div class="card-subtitle" style="margin-left:8px">Q1 — 12 deals</div></div>
-      <div class="card-body" style="display:flex;flex-direction:column;gap:12px;padding-top:14px">
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)">Price too high</span><span style="color:var(--text-muted)">5 · $148k</span></div>
-          <div class="progress-thin"><div class="bar" style="width:42%;background:var(--red)"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)">No decision</span><span style="color:var(--text-muted)">3 · $62k</span></div>
-          <div class="progress-thin"><div class="bar" style="width:25%;background:var(--orange)"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)">Chose competitor</span><span style="color:var(--text-muted)">2 · $84k</span></div>
-          <div class="progress-thin"><div class="bar" style="width:17%;background:var(--purple)"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)">Timing</span><span style="color:var(--text-muted)">1 · $24k</span></div>
-          <div class="progress-thin"><div class="bar" style="width:8%;background:var(--yellow)"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)">Other</span><span style="color:var(--text-muted)">1 · $9k</span></div>
-          <div class="progress-thin"><div class="bar" style="width:8%;background:var(--text-muted)"></div></div>
-        </div>
+      <div class="card-header"><div class="card-title">Most read authors</div></div>
+      <div class="chart-area" style="height:230px">
+        <div data-chart="top-authors" style="width:100%;height:100%"></div>
       </div>
     </div>
   </div>

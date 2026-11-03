@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects | Gentelella 2026 v4</title>
+<title>Collections | Rajgruha</title>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="module" src="/src/main-v4.js"></script>
 </head>
-<body data-shell="admin" data-page="projects" data-breadcrumb="Home > Projects">
+<body data-shell="admin" data-page="projects" data-breadcrumb="Home > Collections">
 
 <main class="main">
 <div class="page-wrapper">
@@ -18,14 +18,14 @@
   <div class="page-header">
     <div class="page-header-row">
       <div>
-        <div class="page-pretitle">Workspace</div>
-        <h1 class="page-title">Projects</h1>
+        <div class="page-pretitle">Curated shelves</div>
+        <h1 class="page-title">Collections</h1>
       </div>
       <div class="page-actions">
         <button class="btn btn-outline">Filters</button>
         <button class="btn btn-primary">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h8M8 4v8"/></svg>
-          New project
+          New collection
         </button>
       </div>
     </div>
@@ -37,35 +37,35 @@
 </main>
 
 <script type="module">
-const projects = [
-  ['Acme Website Redesign',   'Acme Corp',      'On track',     'green',    'Refresh of the public marketing site with new brand identity.', 78, 'Apr 30',  ['SK','MR','EW']],
-  ['Mobile App v2',           'Globex Inc',     'At risk',      'yellow',   'Major rewrite of the iOS/Android app on shared React Native core.', 42, 'Jun 15', ['MK','LP','DR','YT']],
-  ['Internal Dashboard',      'Initech',        'On track',     'green',    'New analytics dashboard replacing the legacy Tableau setup.', 91, 'May 12',  ['TH','MR']],
-  ['Q2 Marketing Campaign',   'Acme Corp',      'On track',     'green',    'Cross-channel campaign for the new product line launch.', 33, 'May 28',  ['LP','EW','SK']],
-  ['Payment Migration',       'Stark Ind.',     'Blocked',      'red',      'Move from legacy gateway to new processor with zero downtime.', 18, 'Jul 02',  ['DR','MK']],
-  ['Design System v3',        'Internal',       'On track',     'green',    'Tokens, components, and Figma library refresh for v4 era.', 64, 'May 20',  ['SK','EW','LP','TH']],
-  ['Help Center Rewrite',     'Umbrella Co',    'On hold',      'yellow',   'Migration to new docs platform with full content audit.',     5,  'TBD',     ['YT','MR']],
-  ['SOC 2 Compliance',        'Internal',       'On track',     'green',    'Type II audit prep with controls, evidence, and policies.',  72, 'Jun 30',  ['DR','TH']],
-  ['Pricing Experiment',      'Tyrell Corp',    'On track',     'green',    'A/B test of three new pricing tiers across funnel.',         50, 'May 05',  ['LP','MK']]
+const collections = [
+  ['Sci-fi classics',        'Curated by Maya',   'Published',  'green',  'The genre-defining novels every reader should start with, from Le Guin to Liu Cixin.', 78, 'Nov 01', ['SK','MR','EW']],
+  ['Book club 2026',         'Reading group',     'Active',     'green',  'Twelve titles, one a month, chosen by the Wednesday night book club.', 42, 'Oct 28', ['MK','LP','DR','YT']],
+  ['Staff picks',            'Curated by Aigars', 'Active',     'green',  'What the librarians are reading right now — refreshed every Friday.', 91, 'Nov 03', ['TH','MR']],
+  ['South Asian voices',     'Curated by Lina',   'Growing',    'yellow', 'Contemporary fiction and essays from writers across the subcontinent.', 33, 'Oct 30', ['LP','EW','SK']],
+  ['Rare & fragile',         'Archive room',      'Restricted', 'red',    'First editions and out-of-print titles. Reading-room access only.', 18, 'Oct 12', ['DR','MK']],
+  ['Audiobook essentials',   'Curated by Maya',   'Published',  'green',  'Narrator-led picks that are better heard than read.', 64, 'Nov 02', ['SK','EW','LP','TH']],
+  ['Beginner philosophy',    'Reading group',     'Paused',      'yellow', 'Short, accessible entry points into the big questions.', 5, 'Sep 30', ['YT','MR']],
+  ['Nature & climate',       'Curated by Tom',    'Active',     'green',  'Field writing, climate reporting, and the more-than-human world.', 72, 'Nov 01', ['DR','TH']],
+  ['Short reads under 200pp','Curated by Emily',  'Active',     'green',  'For the commute, the lunch break, and the reading slump.', 50, 'Oct 26', ['LP','MK']]
 ];
 const colorMap = { primary:'var(--primary)', azure:'var(--azure)', purple:'var(--purple)', yellow:'var(--yellow)', red:'var(--red)', green:'var(--green)', blue:'var(--blue)' };
 const memberColors = { SK:'azure', MR:'purple', EW:'yellow', MK:'red', LP:'green', DR:'blue', YT:'primary', TH:'purple' };
 const statusCls = { green:'status-green', yellow:'status-yellow', red:'status-red' };
 
 const grid = document.getElementById('projects-grid');
-grid.innerHTML = projects.map(([title, client, status, sCls, desc, pct, due, members], idx) => `
-  <button type="button" class="project-card" data-idx="${idx}">
+grid.innerHTML = collections.map(([title, curator, status, sCls, desc, pct, updated, members]) => `
+  <a class="project-card" href="project_detail.html" style="text-decoration:none;color:inherit">
     <div class="top">
       <div>
         <div class="title">${title}</div>
-        <div class="client">${client}</div>
+        <div class="client">${curator}</div>
       </div>
       <span class="status ${statusCls[sCls]}">${status}</span>
     </div>
     <div class="desc">${desc}</div>
     <div>
       <div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--text-muted);margin-bottom:4px">
-        <span>Progress</span><span class="cell-strong">${pct}%</span>
+        <span>Catalogued</span><span class="cell-strong">${pct}%</span>
       </div>
       <div class="progress-thin"><div class="bar" style="width:${pct}%;background:var(--${sCls === 'red' ? 'red' : sCls === 'yellow' ? 'yellow' : 'primary'})"></div></div>
     </div>
@@ -73,23 +73,10 @@ grid.innerHTML = projects.map(([title, client, status, sCls, desc, pct, due, mem
       <div class="avatars">
         ${members.map((m) => `<div class="av" style="background:${colorMap[memberColors[m] || 'primary']}">${m}</div>`).join('')}
       </div>
-      <span>Due ${due}</span>
+      <span>Updated ${updated}</span>
     </div>
-  </button>
+  </a>
 `).join('');
-
-// Wire card clicks → detail modal.
-import('/src/v4/details.js').then(({ openProjectModal }) => {
-  grid.addEventListener('click', (e) => {
-    const card = e.target.closest('.project-card');
-    if (!card) return;
-    const idx = parseInt(card.dataset.idx, 10);
-    const p = projects[idx];
-    if (!p) return;
-    const [title, client, status, sCls, desc, pct, due, members] = p;
-    openProjectModal({ title, client, status, sCls, desc, pct, due, members });
-  });
-});
 </script>
 
 </body>

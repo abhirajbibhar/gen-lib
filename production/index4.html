@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Operations dashboard | Gentelella 2026 v4</title>
+<title>Library health | Rajgruha</title>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="module" src="/src/main-v4.js"></script>
 </head>
-<body data-shell="admin" data-page="dashboard-4" data-breadcrumb="Home > Dashboards > Operations">
+<body data-shell="admin" data-page="dashboard-4" data-breadcrumb="Home > Library health">
 
 <main class="main">
 <div class="page-wrapper">
@@ -19,323 +19,184 @@
     <div class="page-header-row">
       <div>
         <div class="page-pretitle">Operations</div>
-        <h1 class="page-title">System health</h1>
+        <h1 class="page-title">Library health</h1>
       </div>
       <div class="page-actions">
-        <span class="status status-green" style="font-size:12.5px;margin-right:8px">
-          <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:4px;animation:pulse-dot 2s infinite"></span>
-          All systems operational
-        </span>
-        <button class="btn btn-outline">Status page</button>
-        <button class="btn btn-primary">Run incident drill</button>
+        <button class="btn btn-outline">Run diagnostics</button>
+        <button class="btn btn-primary">Reindex catalog</button>
       </div>
     </div>
   </div>
 
-  <!-- ── Maintenance banner ── -->
-  <div class="row col-1">
-    <div class="banner banner-info">
-      <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg>
-      <div class="banner-body"><strong>Scheduled maintenance</strong> — API gateway upgrade <strong>Friday Apr 30 at 02:00 UTC</strong>. Expected 15 min of partial degradation.</div>
-      <div class="banner-actions"><button class="btn btn-outline btn-sm">View runbook</button></div>
-    </div>
-  </div>
-
-  <!-- ── Row 1: 4-up KPIs ── -->
   <div class="row col-4">
     <div class="card"><div class="stat">
       <div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l5 5L21 4"/></svg></div>
-      <div class="stat-content">
-        <div class="stat-label">Uptime</div>
-        <div class="stat-value-row"><span class="stat-value">99.98%</span></div>
-        <div class="stat-subtext">30-day rolling</div>
-      </div>
+      <div class="stat-content"><div class="stat-label">Uptime</div><div class="stat-value-row"><span class="stat-value">99.98%</span><span class="stat-change up">30d</span></div><div class="stat-subtext">last incident 12 days ago</div></div>
     </div></div>
-
     <div class="card"><div class="stat">
-      <div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-      <div class="stat-content">
-        <div class="stat-label">P95 latency</div>
-        <div class="stat-value-row"><span class="stat-value">142ms</span><span class="stat-change up">↑ 8ms</span></div>
-        <div class="stat-subtext">SLO: 200ms</div>
-      </div>
+      <div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 3H20v18H6.5A2.5 2.5 0 014 18.5v-13A2.5 2.5 0 016.5 3z"/></svg></div>
+      <div class="stat-content"><div class="stat-label">Indexed titles</div><div class="stat-value-row"><span class="stat-value">4,286</span><span class="stat-change up">100%</span></div><div class="stat-subtext">search index up to date</div></div>
     </div></div>
-
     <div class="card"><div class="stat">
-      <div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h6M16 12h6M12 2v6M12 16v6"/><circle cx="12" cy="12" r="4"/></svg></div>
-      <div class="stat-content">
-        <div class="stat-label">Requests/min</div>
-        <div class="stat-value-row"><span class="stat-value">8,432</span></div>
-        <div class="stat-subtext">peak today: 11,402</div>
-      </div>
+      <div class="stat-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L2 18a2 2 0 001.7 3h16.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg></div>
+      <div class="stat-content"><div class="stat-label">Failed imports</div><div class="stat-value-row"><span class="stat-value">3</span><span class="stat-change down">↓ 2</span></div><div class="stat-subtext">needs a librarian review</div></div>
     </div></div>
-
     <div class="card"><div class="stat">
-      <div class="stat-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7v10l10 5 10-5V7z"/></svg></div>
-      <div class="stat-content">
-        <div class="stat-label">Error rate</div>
-        <div class="stat-value-row"><span class="stat-value">0.04%</span><span class="stat-change down">↓ 0.01pp</span></div>
-        <div class="stat-subtext">28 errors in 1h</div>
-      </div>
+      <div class="stat-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+      <div class="stat-content"><div class="stat-label">Storage</div><div class="stat-value-row"><span class="stat-value">72.4 GB</span><span class="stat-change up">+2.1</span></div><div class="stat-subtext">of 100 GB · 18 months left</div></div>
     </div></div>
   </div>
 
-  <!-- ── Row 2: Traffic chart + Quick health gauges ── -->
   <div class="row col-8-4">
     <div class="card">
       <div class="card-header">
         <div>
-          <div class="card-title">Traffic — last 7 days</div>
-          <div class="card-subtitle">Sessions & page views</div>
+          <div class="card-title">Scan & index jobs</div>
+          <div class="card-subtitle">Last 6 import runs</div>
         </div>
-        <div class="chart-tabs">
-          <button class="chart-tab active">7d</button>
-          <button class="chart-tab">24h</button>
-          <button class="chart-tab">1h</button>
-        </div>
+        <button class="btn btn-outline btn-sm">View log →</button>
       </div>
-      <div class="chart-area" style="height:240px">
-        <div data-chart="dashboard-network" style="width:100%;height:100%"></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><div class="card-title">Resource usage</div></div>
-      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)"><strong>CPU</strong></span><span style="color:var(--text-muted)">62% · 4 cores</span></div>
-          <div class="progress-thin"><div class="bar" style="width:62%;background:var(--primary)"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)"><strong>Memory</strong></span><span style="color:var(--text-muted)">5.8 / 16 GB</span></div>
-          <div class="progress-thin"><div class="bar" style="width:36%;background:var(--azure)"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)"><strong>Disk</strong></span><span style="color:var(--text-muted)">186 / 500 GB</span></div>
-          <div class="progress-thin"><div class="bar" style="width:37%;background:var(--green)"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)"><strong>Network in</strong></span><span style="color:var(--text-muted)">128 Mbps</span></div>
-          <div class="progress-thin"><div class="bar" style="width:42%;background:var(--purple)"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)"><strong>Network out</strong></span><span style="color:var(--text-muted)">94 Mbps</span></div>
-          <div class="progress-thin"><div class="bar" style="width:32%;background:var(--yellow)"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)"><strong>API quota</strong></span><span style="color:var(--text-muted)">87,400 / 100,000</span></div>
-          <div class="progress-thin"><div class="bar" style="width:87%;background:var(--red)"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── Row 3: API endpoint stats + Cache hit gauge ── -->
-  <div class="row col-8-4">
-    <div class="card">
-      <div class="card-header"><div class="card-title">API endpoints · last hour</div><a href="#" style="font-size:12px">View all</a></div>
       <div class="card-body p-0">
         <div class="table-responsive">
           <table class="table">
             <thead>
-              <tr><th>Endpoint</th><th style="text-align:right">Requests</th><th style="text-align:right">P50</th><th style="text-align:right">P95</th><th style="text-align:right">Errors</th><th>Status</th></tr>
+              <tr><th>Job</th><th>Source</th><th>Items</th><th>Duration</th><th>Status</th><th>Finished</th></tr>
             </thead>
             <tbody>
               <tr>
-                <td style="font-family:var(--font-mono);font-size:12px">GET /api/users</td>
-                <td style="text-align:right">42,810</td>
-                <td style="text-align:right">38ms</td>
-                <td style="text-align:right">98ms</td>
-                <td style="text-align:right">0.01%</td>
-                <td><span class="status status-green">OK</span></td>
+                <td class="cell-strong">Nightly catalog sync</td>
+                <td>library.local</td>
+                <td>1,284</td>
+                <td>2m 14s</td>
+                <td><span class="status status-green">Complete</span></td>
+                <td>02:14</td>
               </tr>
               <tr>
-                <td style="font-family:var(--font-mono);font-size:12px">POST /api/orders</td>
-                <td style="text-align:right">18,402</td>
-                <td style="text-align:right">52ms</td>
-                <td style="text-align:right">182ms</td>
-                <td style="text-align:right">0.04%</td>
-                <td><span class="status status-green">OK</span></td>
+                <td class="cell-strong">EPUB metadata refresh</td>
+                <td>Open Library</td>
+                <td>216</td>
+                <td>48s</td>
+                <td><span class="status status-green">Complete</span></td>
+                <td>02:10</td>
               </tr>
               <tr>
-                <td style="font-family:var(--font-mono);font-size:12px">GET /api/search</td>
-                <td style="text-align:right">12,938</td>
-                <td style="text-align:right">120ms</td>
-                <td style="text-align:right">340ms</td>
-                <td style="text-align:right">0.18%</td>
-                <td><span class="status status-yellow">Slow</span></td>
+                <td class="cell-strong">Cover backfill</td>
+                <td>covers/2026</td>
+                <td>38</td>
+                <td>12s</td>
+                <td><span class="status status-green">Complete</span></td>
+                <td>01:58</td>
               </tr>
               <tr>
-                <td style="font-family:var(--font-mono);font-size:12px">PATCH /api/users/:id</td>
-                <td style="text-align:right">8,124</td>
-                <td style="text-align:right">61ms</td>
-                <td style="text-align:right">134ms</td>
-                <td style="text-align:right">0.02%</td>
-                <td><span class="status status-green">OK</span></td>
+                <td class="cell-strong">Audiobook chapter split</td>
+                <td>ingest/audio</td>
+                <td>12</td>
+                <td>3m 06s</td>
+                <td><span class="status status-blue">Running</span></td>
+                <td>—</td>
               </tr>
               <tr>
-                <td style="font-family:var(--font-mono);font-size:12px">GET /api/reports/export</td>
-                <td style="text-align:right">2,401</td>
-                <td style="text-align:right">820ms</td>
-                <td style="text-align:right">2.4s</td>
-                <td style="text-align:right">0.84%</td>
-                <td><span class="status status-red">Degraded</span></td>
+                <td class="cell-strong">Inbox drop</td>
+                <td>~/drop</td>
+                <td>7</td>
+                <td>—</td>
+                <td><span class="status status-yellow">Queued</span></td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td class="cell-strong">ISBN lookup</td>
+                <td>Open Library</td>
+                <td>3</td>
+                <td>9s</td>
+                <td><span class="status status-red">Failed</span></td>
+                <td>01:31</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+      <div class="card-footer" style="display:flex;gap:16px;font-size:11.5px;color:var(--text-muted)">
+        <span>Queue: 7 items</span>
+        <span>Worker pool: 3 / 4 busy</span>
+        <span style="margin-left:auto">Next run in 3h 42m</span>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Cache hit rate</div>
-          <div class="card-subtitle">last 24h</div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Storage by format</div></div>
+        <div class="card-body">
+          <div class="donut-block">
+            <div class="donut-svg">
+              <div data-chart="format-mix" style="width:100%;height:100%"></div>
+              <div class="donut-center-label"><div class="num">72.4</div><div class="sub">GB used</div></div>
+            </div>
+            <div class="donut-legend">
+              <div class="donut-legend-item"><span class="dot" style="background:var(--primary)"></span> EPUB <span class="pct">48%</span></div>
+              <div class="donut-legend-item"><span class="dot" style="background:var(--azure)"></span> PDF <span class="pct">27%</span></div>
+              <div class="donut-legend-item"><span class="dot" style="background:var(--purple)"></span> Audio <span class="pct">18%</span></div>
+              <div class="donut-legend-item"><span class="dot" style="background:var(--yellow)"></span> Covers <span class="pct">7%</span></div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="chart-area" style="height:240px">
-        <div data-chart="gauge" style="width:100%;height:100%"></div>
-      </div>
-    </div>
-  </div>
 
-  <!-- ── Row 4: Service status + Recent incidents ── -->
-  <div class="row col-2">
-    <div class="card">
-      <div class="card-header"><div class="card-title">Service status</div></div>
-      <div class="card-body p-0">
-        <div class="table-responsive">
-          <table class="table">
-            <thead><tr><th>Service</th><th>Status</th><th>Uptime</th><th>Region</th></tr></thead>
-            <tbody>
-              <tr><td class="cell-strong">api.gentelella.io</td><td><span class="status status-green">Operational</span></td><td>99.99%</td><td>us-east-1</td></tr>
-              <tr><td class="cell-strong">app.gentelella.io</td><td><span class="status status-green">Operational</span></td><td>99.97%</td><td>us-east-1</td></tr>
-              <tr><td class="cell-strong">cdn.gentelella.io</td><td><span class="status status-green">Operational</span></td><td>100%</td><td>global</td></tr>
-              <tr><td class="cell-strong">queue-worker</td><td><span class="status status-yellow">Degraded</span></td><td>99.4%</td><td>eu-west-1</td></tr>
-              <tr><td class="cell-strong">stripe-webhook</td><td><span class="status status-green">Operational</span></td><td>99.95%</td><td>us-east-1</td></tr>
-              <tr><td class="cell-strong">db-primary</td><td><span class="status status-green">Operational</span></td><td>99.99%</td><td>us-east-1</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><div class="card-title">Incident timeline</div></div>
-      <div class="card-body">
-        <div class="timeline">
-          <div class="timeline-item is-yellow">
-            <div class="ti-time">14 min ago · ongoing</div>
-            <div class="ti-title">Queue worker degraded</div>
-            <div class="ti-desc">eu-west-1 latency spike, mitigated via autoscale.</div>
-          </div>
-          <div class="timeline-item is-green">
-            <div class="ti-time">2 hours ago · resolved</div>
-            <div class="ti-title">Database failover completed</div>
-            <div class="ti-desc">Replica promoted; primary recovered in 4m12s.</div>
-          </div>
-          <div class="timeline-item is-red">
-            <div class="ti-time">Yesterday · resolved</div>
-            <div class="ti-title">Auth outage — 3 minutes</div>
-            <div class="ti-desc">4xx spike on /login. Cause: stale JWT signing key.</div>
-          </div>
-          <div class="timeline-item is-green">
-            <div class="ti-time">2 days ago · resolved</div>
-            <div class="ti-title">SSL cert renewed</div>
-            <div class="ti-desc">gentelella.io · auto-renewed via ACM.</div>
-          </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Metadata quality</div></div>
+        <div class="card-body" style="padding:8px 16px">
+          <div class="version-row"><span class="version-label" style="width:88px">Covers</span><div class="version-bar"><div class="fill" style="width:96%;background:var(--green)"></div></div><span class="version-pct">96%</span></div>
+          <div class="version-row"><span class="version-label" style="width:88px">Authors</span><div class="version-bar"><div class="fill" style="width:99%;background:var(--green)"></div></div><span class="version-pct">99%</span></div>
+          <div class="version-row"><span class="version-label" style="width:88px">ISBN</span><div class="version-bar"><div class="fill" style="width:94%;background:var(--primary)"></div></div><span class="version-pct">94%</span></div>
+          <div class="version-row"><span class="version-label" style="width:88px">Descriptions</span><div class="version-bar"><div class="fill" style="width:88%;background:var(--yellow)"></div></div><span class="version-pct">88%</span></div>
+          <div class="version-row"><span class="version-label" style="width:88px">Genres</span><div class="version-bar"><div class="fill" style="width:82%;background:var(--yellow)"></div></div><span class="version-pct">82%</span></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ── Row 5: Background jobs + Deployment history + Recent errors ── -->
-  <div class="row col-3">
+  <div class="row col-3" style="align-items:start">
     <div class="card">
-      <div class="card-header"><div class="card-title">Background jobs</div><div class="card-subtitle" style="margin-left:8px">queue: default</div></div>
-      <div class="card-body" style="padding:12px 16px">
-        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
-          <div><div style="font-size:24px;font-weight:600;color:var(--text);line-height:1">1,284</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">queued</div></div>
-          <div><div style="font-size:24px;font-weight:600;color:var(--green);line-height:1">42</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">/sec</div></div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:8px;font-size:12.5px">
-          <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Pending</span><span class="cell-strong">1,284</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Processing</span><span style="color:var(--primary);font-weight:500">28</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Completed (24h)</span><span class="cell-strong">3.6M</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Failed (24h)</span><span style="color:var(--red);font-weight:500">142</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Retries</span><span style="color:var(--yellow);font-weight:500">38</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><div class="card-title">Recent deployments</div></div>
+      <div class="card-header"><div class="card-title">Services</div></div>
       <div class="card-body" style="padding:8px 16px">
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
-            <span class="status status-green" style="font-size:10px">v4.0.2</span>
-            <div style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
-              <span style="color:var(--text);font-weight:500">feat: settings persistence</span>
-              <span style="color:var(--text-muted);margin-left:6px">· main</span>
-            </div>
-            <span style="font-size:11px;color:var(--text-muted);white-space:nowrap">2h · 28s</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
-            <span class="status status-green" style="font-size:10px">v4.0.1</span>
-            <div style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
-              <span style="color:var(--text);font-weight:500">fix: chart skeleton flash</span>
-              <span style="color:var(--text-muted);margin-left:6px">· main</span>
-            </div>
-            <span style="font-size:11px;color:var(--text-muted);white-space:nowrap">5h · 31s</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
-            <span class="status status-green" style="font-size:10px">v4.0.0</span>
-            <div style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
-              <span style="color:var(--text);font-weight:500">feat: full inbox client</span>
-              <span style="color:var(--text-muted);margin-left:6px">· main</span>
-            </div>
-            <span style="font-size:11px;color:var(--text-muted);white-space:nowrap">1d · 42s</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
-            <span class="status status-red" style="font-size:10px">rollback</span>
-            <div style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
-              <span style="color:var(--text);font-weight:500">v3.9.4 reverted</span>
-              <span style="color:var(--text-muted);margin-left:6px">· hotfix</span>
-            </div>
-            <span style="font-size:11px;color:var(--text-muted);white-space:nowrap">2d · 12s</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
-            <span class="status status-green" style="font-size:10px">v3.9.3</span>
-            <div style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
-              <span style="color:var(--text);font-weight:500">perf: lazy-load charts</span>
-              <span style="color:var(--text-muted);margin-left:6px">· main</span>
-            </div>
-            <span style="font-size:11px;color:var(--text-muted);white-space:nowrap">3d · 38s</span>
-          </div>
-        </div>
+        <div class="toggle-row"><div><div class="label">Web app</div><div style="font-size:11px;color:var(--text-muted)">12 ms response</div></div><div class="status status-green">Up</div></div>
+        <div class="toggle-row"><div><div class="label">EPUB reader</div><div style="font-size:11px;color:var(--text-muted)">1,204 sessions today</div></div><div class="status status-green">Up</div></div>
+        <div class="toggle-row"><div><div class="label">PDF reader</div><div style="font-size:11px;color:var(--text-muted)">482 sessions today</div></div><div class="status status-green">Up</div></div>
+        <div class="toggle-row"><div><div class="label">Audiobook streamer</div><div style="font-size:11px;color:var(--text-muted)">transcoding 2 jobs</div></div><div class="status status-yellow">Degraded</div></div>
+        <div class="toggle-row"><div><div class="label">Search index</div><div style="font-size:11px;color:var(--text-muted)">4,286 documents</div></div><div class="status status-green">Up</div></div>
+        <div class="toggle-row"><div><div class="label">OPDS feed</div><div style="font-size:11px;color:var(--text-muted)">v1.2 · 3 clients</div></div><div class="status status-green">Up</div></div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-header"><div class="card-title">Recent errors</div><a href="#" style="font-size:12px">Sentry →</a></div>
-      <div class="card-body" style="padding:8px 16px;display:flex;flex-direction:column;gap:10px">
-        <div style="padding:8px 10px;border-left:3px solid var(--red);background:var(--red-lt);border-radius:var(--radius-sm)">
-          <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--red);font-weight:600">TypeError: Cannot read 'id' of null</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">api/orders.js:142 · 28× in last hour</div>
+      <div class="card-header"><div class="card-title">Recent alerts</div></div>
+      <div class="card-body" style="padding:4px 16px">
+        <ul class="activity-list">
+          <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--yellow),#c97f00)">!</div><div><div class="activity-body"><strong>Audio transcoder</strong> queue above 5 minutes</div><div class="activity-time">18 min ago</div></div></li>
+          <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--red),#a82b2b)">!</div><div><div class="activity-body"><strong>3 imports</strong> failed ISBN lookup</div><div class="activity-time">1 hour ago</div></div></li>
+          <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--green),#1a8a32)">✓</div><div><div class="activity-body"><strong>Nightly backup</strong> completed — 2.4 GB</div><div class="activity-time">6 hours ago</div></div></li>
+          <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--blue),#0550a0)">i</div><div><div class="activity-body"><strong>Index rebuild</strong> finished in 4m 12s</div><div class="activity-time">Yesterday</div></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Disk usage</div></div>
+      <div class="card-body">
+        <div class="storage-bar">
+          <div style="width:35%;background:var(--primary)"></div>
+          <div style="width:19%;background:var(--azure)"></div>
+          <div style="width:13%;background:var(--purple)"></div>
+          <div style="width:5%;background:var(--yellow)"></div>
+          <div style="width:28%;background:var(--border-color)"></div>
         </div>
-        <div style="padding:8px 10px;border-left:3px solid var(--yellow);background:var(--yellow-lt);border-radius:var(--radius-sm)">
-          <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--yellow);font-weight:600">Timeout: stripe-webhook (30s)</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">webhooks/stripe.js · 4× in last hour</div>
+        <div class="storage-legend">
+          <div class="storage-legend-item"><span class="dot" style="background:var(--primary)"></span> EPUB <span class="val">34.8 GB</span></div>
+          <div class="storage-legend-item"><span class="dot" style="background:var(--azure)"></span> PDF <span class="val">19.5 GB</span></div>
+          <div class="storage-legend-item"><span class="dot" style="background:var(--purple)"></span> Audio <span class="val">13.0 GB</span></div>
+          <div class="storage-legend-item"><span class="dot" style="background:var(--yellow)"></span> Covers <span class="val">5.1 GB</span></div>
+          <div class="storage-legend-item"><span class="dot" style="background:var(--border-color)"></span> Free <span class="val">27.6 GB</span></div>
         </div>
-        <div style="padding:8px 10px;border-left:3px solid var(--orange);background:rgba(247,103,7,0.1);border-radius:var(--radius-sm)">
-          <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--orange);font-weight:600">429 Too Many Requests</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">middleware/rate-limit.js · 12×</div>
-        </div>
-        <div style="padding:8px 10px;border-left:3px solid var(--text-muted);background:var(--bg-surface-secondary);border-radius:var(--radius-sm)">
-          <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--text);font-weight:600">DeprecationWarning: util._extend</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">node_modules/legacy-pkg · 6×</div>
-        </div>
+        <div style="margin-top:14px;font-size:11.5px;color:var(--text-muted)">Backups: nightly · last <strong style="color:var(--text)">02:00</strong> · retention 30 days</div>
       </div>
     </div>
   </div>

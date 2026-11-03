@@ -18,17 +18,36 @@ const VERSION = pkg.version;
 // `data-page` highlight match. The parent stays expanded if any child matches.
 export const NAV = [
   {
-    label: 'General',
+    label: 'Library',
     items: [
-      {
-        text: 'Dashboards', icon: 'dashboard',
-        children: [
-          { key: 'dashboard',   href: 'index.html',  text: 'Operations' },
-          { key: 'dashboard-2', href: 'index2.html', text: 'Analytics' },
-          { key: 'dashboard-3', href: 'index3.html', text: 'Sales' },
-          { key: 'dashboard-4', href: 'index4.html', text: 'System health' }
-        ]
-      },
+      { key: 'dashboard',         href: 'index.html',          text: 'Overview',           icon: 'dashboard' },
+      { key: 'catalog',           href: 'e_commerce.html',     text: 'Catalog',            icon: 'books' },
+      { key: 'book',              href: 'product_detail.html', text: 'Book detail',        icon: 'book' },
+      { key: 'reader',            href: 'reader.html',         text: 'Reader',             icon: 'pages' },
+      { key: 'reading-analytics', href: 'index2.html',         text: 'Reading analytics',  icon: 'charts', badge: { text: 'New', cls: 'badge-teal' } }
+    ]
+  },
+  {
+    label: 'Catalog',
+    items: [
+      { key: 'tables',         href: 'tables.html',         text: 'Books',         icon: 'tables' },
+      { key: 'tables-dynamic', href: 'tables_dynamic.html', text: 'Server data',   icon: 'tables' },
+      { key: 'media',          href: 'media_gallery.html',  text: 'Cover gallery', icon: 'media' },
+      { key: 'kanban',         href: 'kanban.html',         text: 'Acquisitions',  icon: 'kanban' }
+    ]
+  },
+  {
+    label: 'Reading',
+    items: [
+      { key: 'dashboard-3', href: 'index3.html',       text: 'Reading desk', icon: 'dashboard' },
+      { key: 'orders',       href: 'orders.html',       text: 'Reading log',  icon: 'receipt' },
+      { key: 'order-detail', href: 'order_detail.html', text: 'Session detail', icon: 'pages' },
+      { key: 'calendar',     href: 'calendar.html',     text: 'Reading calendar', icon: 'calendar' }
+    ]
+  },
+  {
+    label: 'Components',
+    items: [
       {
         text: 'Forms', icon: 'forms', badge: { text: 'Hot', cls: 'badge-red' },
         children: [
@@ -41,13 +60,6 @@ export const NAV = [
         ]
       },
       {
-        text: 'Tables', icon: 'tables',
-        children: [
-          { key: 'tables',         href: 'tables.html',         text: 'Static' },
-          { key: 'tables-dynamic', href: 'tables_dynamic.html', text: 'Dynamic' }
-        ]
-      },
-      {
         text: 'Charts', icon: 'charts', badge: { text: 'New', cls: 'badge-teal' },
         children: [
           { key: 'charts',       href: 'chartjs.html',     text: 'Chart cards' },
@@ -55,41 +67,16 @@ export const NAV = [
           { key: 'other-charts', href: 'other_charts.html', text: 'SVG charts' }
         ]
       },
-      { key: 'calendar', href: 'calendar.html', text: 'Calendar', icon: 'calendar' },
-      { key: 'map',      href: 'map.html',      text: 'Map',      icon: 'map' }
+      { key: 'map', href: 'map.html', text: 'Reading map', icon: 'map' }
     ]
   },
   {
-    label: 'Apps',
+    label: 'Community',
     items: [
-      { key: 'chat',          href: 'chat.html',          text: 'Chat',          icon: 'chat', badge: { text: '3', cls: 'badge-teal' } },
+      { key: 'chat',          href: 'chat.html',          text: 'Discussions',   icon: 'chat', badge: { text: '3', cls: 'badge-teal' } },
       { key: 'inbox',         href: 'inbox.html',         text: 'Inbox',         icon: 'mail' },
-      { key: 'kanban',        href: 'kanban.html',        text: 'Kanban',        icon: 'kanban' },
-      { key: 'files',         href: 'file_manager.html',  text: 'Files',         icon: 'files' },
+      { key: 'files',         href: 'file_manager.html',  text: 'Book files',    icon: 'files' },
       { key: 'notifications', href: 'notifications.html', text: 'Notifications', icon: 'bell' }
-    ]
-  },
-  {
-    label: 'E-commerce',
-    items: [
-      { key: 'storefront', href: 'e_commerce.html',    text: 'Storefront', icon: 'shop' },
-      { key: 'product',    href: 'product_detail.html', text: 'Product',   icon: 'tag' },
-      {
-        text: 'Orders', icon: 'cart',
-        children: [
-          { key: 'orders',       href: 'orders.html',       text: 'All orders' },
-          { key: 'order-detail', href: 'order_detail.html', text: 'Order detail' }
-        ]
-      },
-      { key: 'invoice', href: 'invoice.html',        text: 'Invoice', icon: 'receipt' },
-      { key: 'pricing', href: 'pricing_tables.html', text: 'Pricing', icon: 'price' }
-    ]
-  },
-  {
-    label: 'Projects',
-    items: [
-      { key: 'projects',       href: 'projects.html',       text: 'All projects', icon: 'projects' },
-      { key: 'project-detail', href: 'project_detail.html', text: 'Project detail', icon: 'pages' }
     ]
   },
   {
@@ -100,15 +87,14 @@ export const NAV = [
       { key: 'playground', href: 'playground.html',       text: 'Playground', icon: 'code',  badge: { text: 'New', cls: 'badge-teal' } },
       { key: 'theme',      href: 'theme.html',            text: 'Theme',      icon: 'paint', badge: { text: 'New', cls: 'badge-teal' } },
       { key: 'typography', href: 'typography.html',       text: 'Typography', icon: 'type' },
-      { key: 'icons',      href: 'icons.html',            text: 'Icons',      icon: 'icons' },
-      { key: 'media',      href: 'media_gallery.html',    text: 'Media',      icon: 'media' }
+      { key: 'icons',      href: 'icons.html',            text: 'Icons',      icon: 'icons' }
     ]
   },
   {
     label: 'Admin',
     items: [
-      { key: 'users',           href: 'contacts.html',         text: 'Contacts',        icon: 'users' },
-      { key: 'user_management', href: 'user_management.html',  text: 'User management', icon: 'profile' },
+      { key: 'users',           href: 'contacts.html',         text: 'Members',         icon: 'users' },
+      { key: 'user_management', href: 'user_management.html',  text: 'Member admin',    icon: 'profile' },
       { key: 'profile',         href: 'profile.html',          text: 'Your profile',    icon: 'profile' },
       { key: 'settings',        href: 'settings.html',         text: 'Settings',        icon: 'settings' },
       { key: 'faq',             href: 'faq.html',              text: 'Help center',     icon: 'help' }
@@ -137,6 +123,8 @@ export const ICONS = {
   users:     '<svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>',
   profile:   '<svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
   settings:  '<svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>',
+  book:      '<svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 3H20v18H6.5A2.5 2.5 0 014 18.5v-13A2.5 2.5 0 016.5 3z"/></svg>',
+  books:     '<svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h5v16H4zM11 4h4v16h-4z"/><path d="M17.5 5.2l3.3 1.1-3.6 13.4-2.2-.7"/></svg>',
   chat:      '<svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>',
   bell:      '<svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3a6 6 0 00-6 6c0 6-3 7-3 7h18s-3-1-3-7a6 6 0 00-6-6z"/><path d="M10.5 21a1.5 1.5 0 003 0"/></svg>',
   kanban:    '<svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="6" height="14" rx="1.5"/><rect x="11" y="3" width="6" height="9" rx="1.5"/><rect x="19" y="3" width="2" height="6" rx="0.5"/></svg>',
@@ -201,16 +189,16 @@ export function renderSidebar(activeKey) {
   return `
     <aside class="sidebar" aria-label="Primary navigation">
       <div class="sidebar-brand">
-        <div class="brand-icon">G</div>
-        <div class="brand-name">Gentelella <small>v4</small></div>
+        <div class="brand-icon">R</div>
+        <div class="brand-name">Rajgruha</div>
       </div>
       <nav class="sidebar-nav">${groups}</nav>
       <div class="sidebar-footer">
         <div class="sidebar-user">
-          <div class="avatar">A<span class="online"></span></div>
+          <div class="avatar">M<span class="online"></span></div>
           <div class="sidebar-user-info">
-            <div class="name">Aigars Silkalns</div>
-            <div class="role">Admin</div>
+            <div class="name">Maya Chen</div>
+            <div class="role">Head librarian</div>
           </div>
           <button class="more-btn" aria-label="More options">
             <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="3" r="1.2"/><circle cx="8" cy="8" r="1.2"/><circle cx="8" cy="13" r="1.2"/></svg>
@@ -273,13 +261,13 @@ export function renderTopbar(breadcrumb) {
       </div>
       <div class="search-box">
         <svg class="s-icon" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
-        <input type="text" placeholder="Search pages or run a command…" aria-label="Open command palette">
+        <input type="text" placeholder="Search books, authors, shelves…" aria-label="Open command palette">
         <kbd>⌘K</kbd>
       </div>
       <div class="topbar-right">
-        <a class="tb-btn tb-docs" href="https://gentelella.colorlib.com/docs/" target="_blank" rel="noopener" title="Documentation">
+        <a class="tb-btn tb-docs" href="faq.html" title="Help center">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h11a4 4 0 014 4v13H8a4 4 0 01-4-4V4z"/><path d="M4 17a4 4 0 014-4h11"/></svg>
-          <span>Docs</span>
+          <span>Help</span>
         </a>
         <button class="tb-btn theme-toggle" type="button" title="Toggle theme" aria-label="Toggle theme" aria-pressed="false">
           <svg class="theme-icon-light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
@@ -301,7 +289,7 @@ export function renderTopbar(breadcrumb) {
 export function renderFooter() {
   return `
     <footer class="footer">
-      <span>Gentelella — free admin dashboard template by <a href="https://colorlib.com">Colorlib</a></span>
+      <span>Rajgruha — digital library demo built on <a href="https://colorlib.com">Gentelella</a></span>
       <span>v${VERSION} · <a href="https://github.com/ColorlibHQ/gentelella/blob/master/LICENSE.txt" target="_blank" rel="noopener">MIT</a></span>
     </footer>
   `;

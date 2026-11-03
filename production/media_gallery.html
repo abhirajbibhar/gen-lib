@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Media | Gentelella 2026 v4</title>
+<title>Cover gallery | Rajgruha</title>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="module" src="/src/main-v4.js"></script>
 </head>
-<body data-shell="admin" data-page="media" data-breadcrumb="Home > Media">
+<body data-shell="admin" data-page="media" data-breadcrumb="Home > Cover gallery">
 
 <main class="main">
 <div class="page-wrapper">
@@ -18,43 +18,60 @@
   <div class="page-header">
     <div class="page-header-row">
       <div>
-        <div class="page-pretitle">Library</div>
-        <h1 class="page-title">Media gallery</h1>
+        <div class="page-pretitle">Catalog art</div>
+        <h1 class="page-title">Cover gallery</h1>
       </div>
       <div class="page-actions">
         <button class="btn btn-outline">Filter</button>
-        <button class="btn btn-primary">Upload</button>
+        <button class="btn btn-primary">Upload cover</button>
       </div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-body">
-      <div class="media-grid" id="media-grid"></div>
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-body" style="padding:12px 16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+      <span style="font-size:12px;color:var(--text-muted)">1,842 covers · 24 missing · last refresh 2 hours ago</span>
+      <span style="margin-left:auto;font-size:12px;color:var(--text-muted)">Grid</span>
+      <div class="chart-tabs">
+        <button class="chart-tab active">All</button>
+        <button class="chart-tab">Recent</button>
+        <button class="chart-tab">Missing</button>
+      </div>
     </div>
   </div>
+
+  <div class="book-shelf" id="cover-grid" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))"></div>
 
 </div>
 </main>
 
 <script type="module">
-const palettes = [
-  ['linear-gradient(135deg,#1ABB9C,#169f85)', 'hero-bg.jpg', '2.4 MB'],
-  ['linear-gradient(135deg,#066fd1,#4299e1)', 'team.jpg',    '1.8 MB'],
-  ['linear-gradient(135deg,#f59f00,#f76707)', 'sunset.jpg',  '3.1 MB'],
-  ['linear-gradient(135deg,#ae3ec9,#d6336c)', 'product.png', '0.9 MB'],
-  ['linear-gradient(135deg,#2fb344,#74b816)', 'forest.jpg',  '4.2 MB'],
-  ['linear-gradient(135deg,#d63939,#f76707)', 'fire.jpg',    '2.7 MB'],
-  ['linear-gradient(135deg,#17a2b8,#066fd1)', 'ocean.jpg',   '5.5 MB'],
-  ['linear-gradient(135deg,#1a2332,#626d7d)', 'night.jpg',   '3.3 MB'],
-  ['linear-gradient(135deg,#4263eb,#ae3ec9)', 'aurora.png',  '1.2 MB'],
-  ['linear-gradient(135deg,#74b816,#2fb344)', 'meadow.jpg',  '2.0 MB'],
-  ['linear-gradient(135deg,#d6336c,#ae3ec9)', 'bloom.jpg',   '1.5 MB'],
-  ['linear-gradient(135deg,#f59f00,#d6336c)', 'desert.jpg',  '4.8 MB']
+const covers = [
+  ['The Left Hand of Darkness','Ursula K. Le Guin','cv-1','Ace Books','EPUB · PDF'],
+  ['Piranesi','Susanna Clarke','cv-3','Bloomsbury','EPUB'],
+  ['Braiding Sweetgrass','Robin Wall Kimmerer','cv-6','Milkweed','EPUB · PDF'],
+  ['Klara and the Sun','Kazuo Ishiguro','cv-11','Faber','EPUB · Audio'],
+  ['The Overstory','Richard Powers','cv-12','Norton','EPUB'],
+  ['Project Hail Mary','Andy Weir','cv-10','Ballantine','EPUB · PDF · Audio'],
+  ['Circe','Madeline Miller','cv-5','Little, Brown','EPUB · Audio'],
+  ['The Master and Margarita','Mikhail Bulgakov','cv-2','Vintage Classics','EPUB · PDF'],
+  ['Sapiens','Yuval Noah Harari','cv-8','Harper','PDF · EPUB'],
+  ['The Ministry for the Future','Kim Stanley Robinson','cv-9','Orbit','EPUB'],
+  ['Educated','Tara Westover','cv-4','Random House','EPUB · Audio'],
+  ['The Name of the Wind','Patrick Rothfuss','cv-7','DAW Books','EPUB · PDF']
 ];
-document.getElementById('media-grid').innerHTML = palettes.map(([bg, name, size]) => `
-  <div class="media-tile" style="background:${bg}">
-    <div class="meta"><span>${name}</span><span class="size">${size}</span></div>
+
+document.getElementById('cover-grid').innerHTML = covers.map(([title, author, palette, publisher, formats]) => `
+  <div class="book-card">
+    <div class="book-cover ${palette}">
+      <span class="bc-kicker">${publisher}</span>
+      <span class="bc-title">${title}</span>
+      <span class="bc-rule"></span>
+      <span class="bc-author">${author}</span>
+    </div>
+    <div class="book-title">${title}</div>
+    <div class="book-author">${author}</div>
+    <div class="book-badges"><span class="format-tag epub">${formats}</span></div>
   </div>
 `).join('');
 </script>
