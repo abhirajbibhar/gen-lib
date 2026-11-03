@@ -109,6 +109,17 @@
 
 // Table
 .table-responsive { overflow-x: auto; }
+
+// On narrow screens keep the table at a readable width and let the card's
+// table region scroll sideways rather than crushing every column.
+@media (max-width: 760px) {
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+  .table-responsive > table.table { min-width: 560px; }
+}
 table.table {
   width: 100%;
   border-collapse: collapse;

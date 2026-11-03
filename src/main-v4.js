@@ -35,7 +35,7 @@ if ('serviceWorker' in navigator && import.meta.env.PROD
 if (document.getElementById('inbox-root')) {
   import('./v4/inbox.js').then((m) => m.initInbox());
 }
-if (document.querySelector('.calendar-grid')) {
+if (document.querySelector('.calendar-body, .calendar-grid')) {
   import('./v4/calendar.js').then((m) => m.initCalendar());
 }
 if (document.querySelector('.settings-content')) {

@@ -4,7 +4,7 @@ Cross-tool agent instructions for Gentelella v4. Read by Aider, Cline, Codex, Co
 
 ## What this is
 
-Gentelella v4 (`4.2.0`) — free admin dashboard template by Colorlib. 58 server-rendered HTML pages in [production/](production/), built with **Vite 8** (Rolldown). **Vanilla ES2022**, no Bootstrap, no jQuery, no SPA framework. SCSS only. Heavyweight runtime deps are limited to **ECharts 6**, **DataTables.net 3**, and **Leaflet 1.9** — all lazy-imported per page.
+Gentelella v4 (`4.2.0`) — free admin dashboard template by Colorlib. 58 server-rendered HTML pages in [production/](production/), built with **Vite 8** (Rolldown). **Vanilla ES2022**, no Bootstrap, no jQuery, no SPA framework. SCSS only. Heavyweight runtime deps are limited to **ECharts 6** and **DataTables.net 3** — both lazy-imported per page.
 
 Live preview: <https://preview.colorlib.com/theme/gentelella/>.
 
@@ -28,7 +28,7 @@ npm run deploy:preview    # build + sync to R2 with cache headers
 - **Single entry** [src/main-v4.js](src/main-v4.js). Imports `scss/v4/main.scss`, mounts the shell, runs `initCharts/initTables/initCommandPalette/initPageActions`, then lazy-imports page-specific modules guarded by DOM presence (`if (document.getElementById('inbox-root')) import(...)`).
 - **Shell injection at build time.** [vite.config.js](vite.config.js)'s `shellInjectionPlugin` inlines sidebar/topbar/footer into every page whose body has `data-shell="admin"`. No FOUC. Runtime [src/v4/shell.js](src/v4/shell.js) `mountShell()` is a fallback for opening raw HTML.
 - **Auto-discovered entries.** `discoverEntries()` in [vite.config.js](vite.config.js) walks `production/*.html` and registers each as a Rollup input. No hand-maintained input list.
-- **Three lazy vendor chunks**: `vendor-echarts` (chart pages), `vendor-tables` (table pages), `vendor-maps` (map page). Everything else ships in the main chunk.
+- **Two lazy vendor chunks**: `vendor-echarts` (chart pages), `vendor-tables` (table pages). Everything else ships in the main chunk.
 - **NAV is one constant.** `NAV` in [src/v4/shell-render.js](src/v4/shell-render.js), 7 groups. Pages match into NAV by `data-page` ↔ leaf `key`.
 - **Theming via CSS custom properties.** Tokens in [src/scss/v4/_tokens.scss](src/scss/v4/_tokens.scss) under `:root` and `[data-theme="dark"]`. Pre-paint inline script (in the Vite plugin) sets `data-theme` on `<html>` from `localStorage` before body renders.
 - **PWA.** Service worker registered only in `import.meta.env.PROD`. `site.webmanifest` + meta tags injected into every page by the Vite plugin. Subpath-safe: paths use `import.meta.env.BASE_URL`.

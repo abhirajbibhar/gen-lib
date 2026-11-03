@@ -80,26 +80,26 @@
 import { useApiMode, seedAdapter, httpAdapter } from '/src/v4/data-adapter.js';
 
 const SEED = [
-  { id:'#R-1042', book:'The Left Hand of Darkness', author:'Ursula K. Le Guin',  cover:'cv-1',  initials:'LH', format:'EPUB',  progress:47, status:'reading',  startedAt:'Oct 18, 2026', lastRead:'Today, 21:40' },
-  { id:'#R-1041', book:'Piranesi',                  author:'Susanna Clarke',    cover:'cv-3',  initials:'PI', format:'EPUB',  progress:36, status:'reading',  startedAt:'Oct 24, 2026', lastRead:'Today, 08:12' },
-  { id:'#R-1040', book:'Braiding Sweetgrass',       author:'Robin Wall Kimmerer', cover:'cv-6', initials:'BS', format:'EPUB',  progress:16, status:'reading',  startedAt:'Nov 01, 2026', lastRead:'Today, 07:02' },
-  { id:'#R-1039', book:'Klara and the Sun',         author:'Kazuo Ishiguro',    cover:'cv-11', initials:'KS', format:'Audio', progress:100, status:'finished', startedAt:'Oct 02, 2026', lastRead:'Oct 24, 2026' },
-  { id:'#R-1038', book:'Project Hail Mary',         author:'Andy Weir',         cover:'cv-10', initials:'PH', format:'Audio', progress:81,  status:'reading',  startedAt:'Oct 09, 2026', lastRead:'Yesterday' },
-  { id:'#R-1037', book:'The Ministry for the Future', author:'Kim Stanley Robinson', cover:'cv-9', initials:'MF', format:'EPUB', progress:0, status:'queued', startedAt:'—', lastRead:'—' },
-  { id:'#R-1036', book:'Circe',                     author:'Madeline Miller',   cover:'cv-5',  initials:'CI', format:'EPUB',  progress:64,  status:'paused',   startedAt:'Sep 28, 2026', lastRead:'Oct 15, 2026' },
-  { id:'#R-1035', book:'Educated',                  author:'Tara Westover',     cover:'cv-4',  initials:'ED', format:'EPUB',  progress:100, status:'finished', startedAt:'Sep 12, 2026', lastRead:'Oct 08, 2026' },
-  { id:'#R-1034', book:'The Overstory',             author:'Richard Powers',    cover:'cv-12', initials:'OV', format:'EPUB',  progress:0,   status:'queued',   startedAt:'—', lastRead:'—' },
-  { id:'#R-1033', book:'Sapiens',                   author:'Yuval Noah Harari', cover:'cv-8',  initials:'SA', format:'PDF',   progress:100, status:'finished', startedAt:'Aug 02, 2026', lastRead:'Sep 12, 2026' },
-  { id:'#R-1032', book:'The Name of the Wind',      author:'Patrick Rothfuss',  cover:'cv-7',  initials:'NW', format:'EPUB',  progress:2,   status:'reading',  startedAt:'Nov 02, 2026', lastRead:'Today, 06:30' },
-  { id:'#R-1031', book:'The Master and Margarita',  author:'Mikhail Bulgakov',  cover:'cv-2',  initials:'MM', format:'PDF',   progress:0,   status:'queued',   startedAt:'—', lastRead:'—' },
-  { id:'#R-1030', book:'Dune Messiah',              author:'Frank Herbert',     cover:'cv-3',  initials:'DM', format:'EPUB',  progress:100, status:'finished', startedAt:'Jul 19, 2026', lastRead:'Aug 04, 2026' },
-  { id:'#R-1029', book:'The Seventh Perfection',    author:'Daniel Polansky',   cover:'cv-1',  initials:'SP', format:'EPUB',  progress:12,  status:'paused',   startedAt:'Sep 04, 2026', lastRead:'Sep 21, 2026' },
-  { id:'#R-1028', book:'Piranesi',                  author:'Susanna Clarke',    cover:'cv-3',  initials:'PI', format:'EPUB',  progress:100, status:'finished', startedAt:'Jun 02, 2026', lastRead:'Jun 21, 2026' },
-  { id:'#R-1027', book:'This Is How You Lose the Time War', author:'Amal El-Mohtar', cover:'cv-11', initials:'TW', format:'EPUB', progress:100, status:'finished', startedAt:'May 12, 2026', lastRead:'May 19, 2026' },
-  { id:'#R-1026', book:'The Left Hand of Darkness', author:'Ursula K. Le Guin', cover:'cv-1',  initials:'LH', format:'EPUB',  progress:100, status:'finished', startedAt:'Mar 04, 2026', lastRead:'Mar 22, 2026' },
-  { id:'#R-1025', book:'A Psalm for the Wild-Built', author:'Becky Chambers',   cover:'cv-6',  initials:'PW', format:'Audio', progress:100, status:'finished', startedAt:'Feb 14, 2026', lastRead:'Feb 16, 2026' },
-  { id:'#R-1024', book:'The Overstory',             author:'Richard Powers',    cover:'cv-12', initials:'OV', format:'EPUB',  progress:41,  status:'paused',   startedAt:'Jan 08, 2026', lastRead:'Feb 02, 2026' },
-  { id:'#R-1023', book:'Klara and the Sun',         author:'Kazuo Ishiguro',    cover:'cv-11', initials:'KS', format:'EPUB',  progress:100, status:'finished', startedAt:'Jan 02, 2026', lastRead:'Jan 18, 2026' }
+  { id:'#R-1042', book:'The Left Hand of Darkness', author:'Ursula K. Le Guin',  cover:'left-hand-of-darkness', format:'EPUB',  progress:47, status:'reading',  startedAt:'Oct 18, 2026', lastRead:'Today, 21:40' },
+  { id:'#R-1041', book:'Piranesi',                  author:'Susanna Clarke',    cover:'piranesi', format:'EPUB',  progress:36, status:'reading',  startedAt:'Oct 24, 2026', lastRead:'Today, 08:12' },
+  { id:'#R-1040', book:'Braiding Sweetgrass',       author:'Robin Wall Kimmerer', cover:'braiding-sweetgrass', format:'EPUB',  progress:16, status:'reading',  startedAt:'Nov 01, 2026', lastRead:'Today, 07:02' },
+  { id:'#R-1039', book:'Klara and the Sun',         author:'Kazuo Ishiguro',    cover:'klara-and-the-sun', format:'Audio', progress:100, status:'finished', startedAt:'Oct 02, 2026', lastRead:'Oct 24, 2026' },
+  { id:'#R-1038', book:'Project Hail Mary',         author:'Andy Weir',         cover:'project-hail-mary', format:'Audio', progress:81,  status:'reading',  startedAt:'Oct 09, 2026', lastRead:'Yesterday' },
+  { id:'#R-1037', book:'The Ministry for the Future', author:'Kim Stanley Robinson', cover:'the-ministry-for-the-future', format:'EPUB', progress:0, status:'queued', startedAt:'—', lastRead:'—' },
+  { id:'#R-1036', book:'Circe',                     author:'Madeline Miller',   cover:'circe', format:'EPUB',  progress:64,  status:'paused',   startedAt:'Sep 28, 2026', lastRead:'Oct 15, 2026' },
+  { id:'#R-1035', book:'Educated',                  author:'Tara Westover',     cover:'educated', format:'EPUB',  progress:100, status:'finished', startedAt:'Sep 12, 2026', lastRead:'Oct 08, 2026' },
+  { id:'#R-1034', book:'The Overstory',             author:'Richard Powers',    cover:'the-overstory', format:'EPUB',  progress:0,   status:'queued',   startedAt:'—', lastRead:'—' },
+  { id:'#R-1033', book:'Sapiens',                   author:'Yuval Noah Harari', cover:'sapiens', format:'PDF',   progress:100, status:'finished', startedAt:'Aug 02, 2026', lastRead:'Sep 12, 2026' },
+  { id:'#R-1032', book:'The Name of the Wind',      author:'Patrick Rothfuss',  cover:'the-name-of-the-wind', format:'EPUB',  progress:2,   status:'reading',  startedAt:'Nov 02, 2026', lastRead:'Today, 06:30' },
+  { id:'#R-1031', book:'The Master and Margarita',  author:'Mikhail Bulgakov',  cover:'the-master-and-margarita', format:'PDF',   progress:0,   status:'queued',   startedAt:'—', lastRead:'—' },
+  { id:'#R-1030', book:'Dune Messiah',              author:'Frank Herbert',     cover:'dune-messiah', format:'EPUB',  progress:100, status:'finished', startedAt:'Jul 19, 2026', lastRead:'Aug 04, 2026' },
+  { id:'#R-1029', book:'The Seventh Perfection',    author:'Daniel Polansky',   cover:'the-seventh-perfection', format:'EPUB',  progress:12,  status:'paused',   startedAt:'Sep 04, 2026', lastRead:'Sep 21, 2026' },
+  { id:'#R-1028', book:'Piranesi',                  author:'Susanna Clarke',    cover:'piranesi', format:'EPUB',  progress:100, status:'finished', startedAt:'Jun 02, 2026', lastRead:'Jun 21, 2026' },
+  { id:'#R-1027', book:'This Is How You Lose the Time War', author:'Amal El-Mohtar', cover:'this-is-how-you-lose-the-time-war', format:'EPUB', progress:100, status:'finished', startedAt:'May 12, 2026', lastRead:'May 19, 2026' },
+  { id:'#R-1026', book:'The Left Hand of Darkness', author:'Ursula K. Le Guin', cover:'left-hand-of-darkness', format:'EPUB',  progress:100, status:'finished', startedAt:'Mar 04, 2026', lastRead:'Mar 22, 2026' },
+  { id:'#R-1025', book:'A Psalm for the Wild-Built', author:'Becky Chambers',   cover:'a-psalm-for-the-wild-built', format:'Audio', progress:100, status:'finished', startedAt:'Feb 14, 2026', lastRead:'Feb 16, 2026' },
+  { id:'#R-1024', book:'The Overstory',             author:'Richard Powers',    cover:'the-overstory', format:'EPUB',  progress:41,  status:'paused',   startedAt:'Jan 08, 2026', lastRead:'Feb 02, 2026' },
+  { id:'#R-1023', book:'Klara and the Sun',         author:'Kazuo Ishiguro',    cover:'klara-and-the-sun', format:'EPUB',  progress:100, status:'finished', startedAt:'Jan 02, 2026', lastRead:'Jan 18, 2026' }
 ];
 
 const STATUS = { reading:'green', finished:'blue', queued:'yellow', paused:'red' };
@@ -123,7 +123,7 @@ function rowHtml(o) {
       <td class="cell-mono"><a href="order_detail.html" style="color:var(--primary);font-weight:var(--font-weight-medium)">${o.id}</a></td>
       <td>
         <div class="cell-customer">
-          <div class="book-cover sm ${o.cover}" style="width:28px"><span class="bc-title">${o.initials}</span></div>
+          <img class="book-cover sm" src="../images/covers/${o.cover}.svg" alt="" width="480" height="720" loading="lazy" decoding="async" style="width:28px">
           <div>
             <div class="cell-strong">${o.book}</div>
             <div style="font-size:11.5px;color:var(--text-muted)">${o.author}</div>

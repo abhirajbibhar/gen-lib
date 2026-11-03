@@ -1,17 +1,24 @@
 // Gentelella 2026 v4 — Design tokens
-// DNA: Dark sidebar · Teal #1ABB9C · Light #f9fafb
+// DNA: Surface-matching sidebar · Teal #1ABB9C · Light #f9fafb
 // Font: Inter · 14px base · line-height 1.4286
 // Radius: 4/6/8 · Shadows: near-invisible
 
 :root {
-  --sidebar-bg: #1a2332;
-  --sidebar-hover: rgba(255,255,255,0.04);
-  --sidebar-active: rgba(26,187,156,0.08);
-  --sidebar-text: #7b8fa3;
-  --sidebar-text-hover: #c5d0dc;
-  --sidebar-text-active: #ffffff;
-  --sidebar-border: rgba(255,255,255,0.06);
+  // Sidebar follows the theme rather than staying navy: in light mode it is
+  // the same surface as the topbar and cards, in dark mode it is the same
+  // surface as the cards. Change these tokens, not the .sidebar rules.
+  --sidebar-bg: #ffffff;
+  --sidebar-hover: rgba(4,32,69,0.045);
+  --sidebar-active: rgba(26,187,156,0.10);
+  --sidebar-text: #626d7d;
+  --sidebar-text-hover: #1e2633;
+  --sidebar-text-active: #169f85;
+  --sidebar-heading: #1e2633;
+  --sidebar-label: #98a2b3;
+  --sidebar-border: #eff0f3;
+  --sidebar-track: rgba(4,32,69,0.10);
   --sidebar-w: 252px;
+  --topbar-h: 56px;
 
   --primary: #1ABB9C;
   --primary-lt: rgba(26,187,156,0.06);
@@ -87,6 +94,18 @@
   --body-bg: #0f1623;
   --bg-surface: #1a2332;
   --bg-surface-secondary: #141d2b;
+
+  // Sidebar tracks the dark surface. Same tokens as light, dark values.
+  --sidebar-bg: #1a2332;
+  --sidebar-hover: rgba(255,255,255,0.04);
+  --sidebar-active: rgba(26,187,156,0.08);
+  --sidebar-text: #7b8fa3;
+  --sidebar-text-hover: #c5d0dc;
+  --sidebar-text-active: #ffffff;
+  --sidebar-heading: #ffffff;
+  --sidebar-label: rgba(123,143,163,0.5);
+  --sidebar-border: rgba(255,255,255,0.06);
+  --sidebar-track: rgba(255,255,255,0.10);
 
   --border-color: rgba(255,255,255,0.08);
   --border-color-light: rgba(255,255,255,0.05);

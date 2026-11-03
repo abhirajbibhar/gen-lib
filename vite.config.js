@@ -35,13 +35,20 @@ function structuredDataPlugin() {
   const pkg = JSON.parse(readFileSync(resolve(import.meta.dirname, 'package.json'), 'utf8'));
   const SITE = 'https://gentelella.colorlib.com/';
   const ENTITIES = {
-    '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'",
-    '&mdash;': '\u2014', '&ndash;': '\u2013', '&nbsp;': ' ', '&hellip;': '\u2026'
+    '&amp;': '&',
+    '&lt;': '<',
+    '&gt;': '>',
+    '&quot;': '"',
+    '&#39;': "'",
+    '&mdash;': '\u2014',
+    '&ndash;': '\u2013',
+    '&nbsp;': ' ',
+    '&hellip;': '\u2026'
   };
-  const plain = (frag) =>
+  const plain = frag =>
     frag
       .replace(/<[^>]+>/g, ' ')
-      .replace(/&[a-z#0-9]+;/gi, (e) => ENTITIES[e] ?? e)
+      .replace(/&[a-z#0-9]+;/gi, e => ENTITIES[e] ?? e)
       .replace(/\s+/g, ' ')
       .trim();
 
@@ -86,8 +93,10 @@ function structuredDataPlugin() {
         ];
         if (faq.length) graph.push({ '@type': 'FAQPage', mainEntity: faq });
 
-        const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })
-          .replace(/</g, '\\u003c'); // never let a "</script>" escape the block
+        const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(
+          /</g,
+          '\\u003c'
+        ); // never let a "</script>" escape the block
         return html.replace(
           /<\/head>/i,
           `<script type="application/ld+json">${json}</script>\n</head>`
@@ -108,8 +117,17 @@ function structuredDataPlugin() {
 // excluded — they're real pages in the template, but nobody wants a login
 // form or a 404 mockup as a search result.
 const SITEMAP_EXCLUDE = new Set([
-  'coming_soon', 'forgot_password', 'lock_screen', 'login', 'maintenance',
-  'offline', 'page_403', 'page_404', 'page_500', 'register', 'verify_2fa'
+  'coming_soon',
+  'forgot_password',
+  'lock_screen',
+  'login',
+  'maintenance',
+  'offline',
+  'page_403',
+  'page_404',
+  'page_500',
+  'register',
+  'verify_2fa'
 ]);
 
 function sitemapPlugin() {
@@ -121,14 +139,14 @@ function sitemapPlugin() {
       if (!site) return;
       const origin = site.endsWith('/') ? site : `${site}/`;
       const urls = Object.keys(discoverEntries())
-        .map((stem) => (stem === 'main' ? 'index' : stem))
-        .filter((stem) => !SITEMAP_EXCLUDE.has(stem))
+        .map(stem => (stem === 'main' ? 'index' : stem))
+        .filter(stem => !SITEMAP_EXCLUDE.has(stem))
         .sort()
         // index.html is the site root; the rest keep their filename.
-        .map((stem) => (stem === 'index' ? origin : `${origin}production/${stem}.html`));
+        .map(stem => (stem === 'index' ? origin : `${origin}production/${stem}.html`));
 
       const body = urls
-        .map((loc) => `  <url><loc>${loc.replace(/&/g, '&amp;')}</loc></url>`)
+        .map(loc => `  <url><loc>${loc.replace(/&/g, '&amp;')}</loc></url>`)
         .join('\n');
       this.emitFile({
         type: 'asset',
@@ -172,7 +190,9 @@ function shellInjectionPlugin() {
   let base = '/'; // Resolved from Vite config — used for subpath-safe URLs.
   return {
     name: 'gentelella-shell-injection',
-    configResolved(config) { base = config.base || '/'; },
+    configResolved(config) {
+      base = config.base || '/';
+    },
     transformIndexHtml: {
       order: 'pre',
       handler(html) {
@@ -199,11 +219,17 @@ function shellInjectionPlugin() {
         // when present so each page gets distinct copy without per-page edits.
         if (!/name=["']description["']/i.test(out)) {
           const titleMatch = /<title>([^<]+)<\/title>/i.exec(out);
-          const title = titleMatch ? titleMatch[1].replace(/\s+\|\s+.*$/, '').trim() : 'Gentelella v4';
+          const title = titleMatch
+            ? titleMatch[1].replace(/\s+\|\s+.*$/, '').trim()
+            : 'Gentelella v4';
           const bcMatch = /data-breadcrumb=["']([^"']+)["']/i.exec(out);
           // Strip any "|href" targets — the description wants labels only.
           const breadcrumb = bcMatch
-            ? bcMatch[1].replace(/\|[^>]*/g, '').replace(/^Home\s*>\s*/, '').replace(/\s*>\s*/g, ' > ').trim()
+            ? bcMatch[1]
+                .replace(/\|[^>]*/g, '')
+                .replace(/^Home\s*>\s*/, '')
+                .replace(/\s*>\s*/g, ' > ')
+                .trim()
             : '';
           const desc = breadcrumb
             ? `${title} — ${breadcrumb}. Free admin template by Colorlib. 60 pages, 20 chart variants, dark mode, PWA-ready.`
@@ -252,148 +278,159 @@ function shellInjectionPlugin() {
 // `preview` also honors BASE_PATH so you can verify the built site at the
 // real path it'll be served from. `dev` always runs at `/` since the dev
 // server doesn't read built artifacts.
-export default defineConfig(({ command }) => ({
-  root: '.',
-  base: command === 'serve' ? '/' : (process.env.BASE_PATH ?? '/'),
-  publicDir: 'public',
-  plugins: [shellInjectionPlugin(), rootRedirectPlugin(), sitemapPlugin(), structuredDataPlugin()],
-  logLevel: 'info',
-  clearScreen: false,
-  build: {
-    outDir: 'dist',
-    emptyOutDir: true,
-    chunkSizeWarningLimit: 1000,
-    // Optimize source maps: 'hidden' for production (generates but doesn't reference in bundle)
-    // This allows debugging in production without exposing source maps to users
-    sourcemap: process.env.NODE_ENV === 'production' ? 'hidden' : true,
-    target: 'es2022',
-    rollupOptions: {
-      plugins: [
-        // Bundle analyzer - generates stats.html file
-        visualizer({
-          filename: 'dist/stats.html',
-          open: false,
-          gzipSize: true,
-          brotliSize: true,
-          template: 'treemap' // 'treemap', 'sunburst', 'network'
-        })
-      ],
-      output: {
-        // Function form required by Rolldown (Vite 8+). Matches by
-        // node_modules path because rolldown doesn't resolve package names.
-        manualChunks(id) {
-          // Only chunk what v4 actually uses: ECharts (lazy on chart pages),
-          // DataTables (lazy on tables pages), Leaflet (lazy on map page).
-          if (!id.includes('node_modules')) return;
-          if (/node_modules\/echarts\//.test(id)) return 'vendor-echarts';
-          if (/node_modules\/datatables\.net\//.test(id)) return 'vendor-tables';
-          if (/node_modules\/leaflet\//.test(id)) return 'vendor-maps';
+export default defineConfig(({ command, mode }) => {
+  // `mode` is 'production' for `vite build` and 'development' for
+  // `vite build --mode development`, so the build scripts stay
+  // cross-platform without a POSIX-only `NODE_ENV=…` prefix.
+  const isProd = mode === 'production';
+
+  return {
+    root: '.',
+    base: command === 'serve' ? '/' : (process.env.BASE_PATH ?? '/'),
+    publicDir: 'public',
+    plugins: [
+      shellInjectionPlugin(),
+      rootRedirectPlugin(),
+      sitemapPlugin(),
+      structuredDataPlugin()
+    ],
+    logLevel: 'info',
+    clearScreen: false,
+    build: {
+      outDir: 'dist',
+      emptyOutDir: true,
+      chunkSizeWarningLimit: 1000,
+      // Optimize source maps: 'hidden' for production (generates but doesn't reference in bundle)
+      // This allows debugging in production without exposing source maps to users
+      sourcemap: isProd ? 'hidden' : true,
+      target: 'es2022',
+      rollupOptions: {
+        plugins: [
+          // Bundle analyzer - generates stats.html file
+          visualizer({
+            filename: 'dist/stats.html',
+            open: false,
+            gzipSize: true,
+            brotliSize: true,
+            template: 'treemap' // 'treemap', 'sunburst', 'network'
+          })
+        ],
+        output: {
+          // Function form required by Rolldown (Vite 8+). Matches by
+          // node_modules path because rolldown doesn't resolve package names.
+          manualChunks(id) {
+            // Only chunk what v4 actually uses: ECharts (lazy on chart pages),
+            // DataTables (lazy on tables pages).
+            if (!id.includes('node_modules')) return;
+            if (/node_modules\/echarts\//.test(id)) return 'vendor-echarts';
+            if (/node_modules\/datatables\.net\//.test(id)) return 'vendor-tables';
+          },
+          assetFileNames: assetInfo => {
+            // Rolldown (Vite 8+) passes `names` (array); Rollup passes `name`.
+            const name = assetInfo.name ?? assetInfo.names?.[0] ?? '';
+            if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(name)) {
+              return `images/[name]-[hash][extname]`;
+            }
+            if (/\.(woff2?|eot|ttf|otf)$/i.test(name)) {
+              return `fonts/[name]-[hash][extname]`;
+            }
+            return `assets/[name]-[hash][extname]`;
+          },
+          chunkFileNames: 'js/[name]-[hash].js',
+          entryFileNames: 'js/[name]-[hash].js'
         },
-        assetFileNames: (assetInfo) => {
-          // Rolldown (Vite 8+) passes `names` (array); Rollup passes `name`.
-          const name = assetInfo.name ?? assetInfo.names?.[0] ?? '';
-          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(name)) {
-            return `images/[name]-[hash][extname]`;
-          }
-          if (/\.(woff2?|eot|ttf|otf)$/i.test(name)) {
-            return `fonts/[name]-[hash][extname]`;
-          }
-          return `assets/[name]-[hash][extname]`;
+        // Auto-discovered from production/*.html. Add a new page by just
+        // dropping the file in — no config edit needed.
+        input: discoverEntries()
+      },
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+          unsafe_comps: true,
+          passes: 3,
+          pure_getters: true,
+          reduce_vars: true,
+          collapse_vars: true,
+          dead_code: true,
+          unused: true
         },
-        chunkFileNames: 'js/[name]-[hash].js',
-        entryFileNames: 'js/[name]-[hash].js'
-      },
-      // Auto-discovered from production/*.html. Add a new page by just
-      // dropping the file in — no config edit needed.
-      input: discoverEntries()
-    },
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        unsafe_comps: true,
-        passes: 3,
-        pure_getters: true,
-        reduce_vars: true,
-        collapse_vars: true,
-        dead_code: true,
-        unused: true
-      },
-      mangle: {
-        safari10: true
-      },
-      format: {
-        comments: false
-      }
-    }
-  },
-  esbuild: {
-    target: 'es2022'
-  },
-  server: {
-    // Entry HTMLs live in production/, not at the project root.
-    // Default to an uncommon port so we don't collide with the dozen tools
-    // that grab 3000/4000/5173/8000/8080. Override with PORT env if needed.
-    // strictPort defaults to false → Vite auto-increments on collision.
-    open: '/production/index.html',
-    port: Number(process.env.PORT) || 9173,
-    host: true,
-    // /api/* → examples/express-sqlite (when running). Falls through 404 if
-    // the example backend isn't up — frontend pages stay on seed data.
-    // Override the target with API_URL if your backend lives elsewhere.
-    proxy: {
-      '/api': {
-        target: process.env.API_URL || 'http://localhost:8080',
-        changeOrigin: true
+        mangle: {
+          safari10: true
+        },
+        format: {
+          comments: false
+        }
       }
     },
-    watch: {
-      usePolling: false,
-      interval: 100,
-      ignored: ['**/node_modules/**', '**/dist/**', '**/examples/**']
+    esbuild: {
+      target: 'es2022'
     },
-    hmr: {
-      overlay: false
-    }
-  },
-  preview: {
-    open: '/production/index.html',
-    port: Number(process.env.PREVIEW_PORT) || 9174,
-    host: true
-  },
-  optimizeDeps: {
-    include: ['echarts', 'datatables.net', 'leaflet'],
-    force: false
-  },
-  resolve: {
-    // Modern build without jQuery aliases
-  },
-  css: {
-    // Enable CSS source maps only in development (saves ~8MB in production build)
-    devSourcemap: process.env.NODE_ENV !== 'production',
-    preprocessorOptions: {
-      scss: {
-        // Silence Sass deprecation warnings
-        silenceDeprecations: ['legacy-js-api', 'import', 'global-builtin', 'color-functions'],
-        // Additional settings for better performance
-        includePaths: ['node_modules'],
-        // Generate source maps only in development
-        sourceMap: process.env.NODE_ENV !== 'production',
-        sourceMapContents: process.env.NODE_ENV !== 'production'
+    server: {
+      // Entry HTMLs live in production/, not at the project root.
+      // Default to an uncommon port so we don't collide with the dozen tools
+      // that grab 3000/4000/5173/8000/8080. Override with PORT env if needed.
+      // strictPort defaults to false → Vite auto-increments on collision.
+      open: '/production/index.html',
+      port: Number(process.env.PORT) || 9173,
+      host: true,
+      // /api/* → examples/express-sqlite (when running). Falls through 404 if
+      // the example backend isn't up — frontend pages stay on seed data.
+      // Override the target with API_URL if your backend lives elsewhere.
+      proxy: {
+        '/api': {
+          target: process.env.API_URL || 'http://localhost:8080',
+          changeOrigin: true
+        }
+      },
+      watch: {
+        usePolling: false,
+        interval: 100,
+        ignored: ['**/node_modules/**', '**/dist/**', '**/examples/**']
+      },
+      hmr: {
+        overlay: false
       }
-    }
-  },
-  define: {
-    global: 'globalThis',
-    process: JSON.stringify({
-      env: {
+    },
+    preview: {
+      open: '/production/index.html',
+      port: Number(process.env.PREVIEW_PORT) || 9174,
+      host: true
+    },
+    optimizeDeps: {
+      include: ['echarts', 'datatables.net'],
+      force: false
+    },
+    resolve: {
+      // Modern build without jQuery aliases
+    },
+    css: {
+      // Enable CSS source maps only in development (saves ~8MB in production build)
+      devSourcemap: !isProd,
+      preprocessorOptions: {
+        scss: {
+          // Silence Sass deprecation warnings
+          silenceDeprecations: ['legacy-js-api', 'import', 'global-builtin', 'color-functions'],
+          // Additional settings for better performance
+          includePaths: ['node_modules'],
+          // Generate source maps only in development
+          sourceMap: !isProd,
+          sourceMapContents: !isProd
+        }
+      }
+    },
+    define: {
+      global: 'globalThis',
+      process: JSON.stringify({
+        env: {
+          NODE_ENV: 'production'
+        }
+      }),
+      'process.env': JSON.stringify({
         NODE_ENV: 'production'
-      }
-    }),
-    'process.env': JSON.stringify({
-      NODE_ENV: 'production'
-    }),
-    'process.env.NODE_ENV': '"production"'
-  }
-}));
+      }),
+      'process.env.NODE_ENV': '"production"'
+    }
+  };
+});

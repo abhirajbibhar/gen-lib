@@ -167,6 +167,179 @@
 .calendar-event.red    { background: var(--red-lt);    color: var(--red); }
 .calendar-event.purple { background: var(--purple-lt); color: var(--purple); }
 
+// Completed tasks — struck through in every view and in the agenda modal.
+.calendar-event.done,
+.cal-slot-event.done .n,
+.modal-event-row .title.done {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+// ────────────────────────
+//  CALENDAR (week / day time grid)
+// ────────────────────────
+.cal-timegrid { --cal-hour: 48px; }
+
+.cal-timegrid-head,
+.cal-timegrid-body {
+  display: grid;
+  grid-template-columns: 56px repeat(var(--cal-cols, 7), minmax(0, 1fr));
+}
+
+.cal-timegrid-head {
+  background: var(--bg-surface-secondary);
+  border-bottom: 1px solid var(--border-color-light);
+}
+.cal-head-cell {
+  padding: 8px 6px;
+  text-align: center;
+  font-size: 10.5px;
+  color: var(--text-muted);
+  border-inline-start: 1px solid var(--border-color-light);
+  cursor: pointer;
+}
+.cal-head-cell.corner { border-inline-start: none; cursor: default; }
+.cal-head-cell .dow {
+  display: block;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.cal-head-cell .dnum {
+  display: block;
+  margin-top: 2px;
+  font-size: 15px;
+  font-weight: var(--font-weight-bold);
+  color: var(--text);
+}
+.cal-head-cell.today .dow,
+.cal-head-cell.today .dnum { color: var(--primary); }
+
+.cal-timegrid-body {
+  position: relative;
+  // Leaves room for the first hour label, which is nudged up onto its line.
+  padding-top: 8px;
+  max-height: 560px;
+  overflow-y: auto;
+}
+
+.cal-gutter { border-inline-end: 1px solid var(--border-color-light); }
+.cal-gutter .cal-hour {
+  height: var(--cal-hour);
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 8px;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.cal-gutter .cal-hour span { transform: translateY(-6px); }
+
+.cal-col {
+  position: relative;
+  height: calc(var(--cal-hour) * var(--cal-rows, 15));
+  border-inline-start: 1px solid var(--border-color-light);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--border-color-light) 0,
+    var(--border-color-light) 1px,
+    transparent 1px,
+    transparent var(--cal-hour)
+  );
+  cursor: pointer;
+}
+.cal-col:hover { background-color: var(--bg-surface-secondary); }
+
+.cal-slot-event {
+  position: absolute;
+  inset-inline: 4px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  border-inline-start: 2px solid currentColor;
+  background: var(--primary-lt);
+  color: var(--primary);
+  font-size: 10.5px;
+  line-height: 1.3;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+}
+.cal-slot-event:hover { filter: brightness(0.97); }
+.cal-slot-event .n {
+  display: block;
+  font-weight: var(--font-weight-bold);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cal-slot-event .t {
+  display: block;
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cal-slot-event.blue   { background: var(--blue-lt);   color: var(--blue); }
+.cal-slot-event.yellow { background: var(--yellow-lt); color: #b45309; }
+.cal-slot-event.red    { background: var(--red-lt);    color: var(--red); }
+.cal-slot-event.purple { background: var(--purple-lt); color: var(--purple); }
+
+.cal-now-line {
+  position: absolute;
+  inset-inline: 0;
+  height: 2px;
+  background: var(--red);
+  z-index: 2;
+  pointer-events: none;
+}
+.cal-now-line::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: -4px;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+// Modal bits for the time range + done checkbox + agenda rows
+.cal-time-inputs { display: flex; align-items: center; gap: var(--space-2); }
+.cal-time-inputs input[type='time'] {
+  flex: 1;
+  height: 34px;
+  padding: 0 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font: inherit;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+}
+.cal-time-inputs input[type='time']:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-lt);
+}
+.cal-time-inputs span { color: var(--text-muted); font-size: 12px; }
+
+.cal-done-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+.cal-done-toggle input { accent-color: var(--primary); }
+
+.modal-event-row .when {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.cal-done-btn { color: var(--text-disabled); }
+.cal-done-btn.done { color: var(--primary); }
+
 @media (max-width: 700px) {
   .calendar-grid {
     grid-template-columns: repeat(7, minmax(72px, 1fr));
@@ -179,6 +352,13 @@
     font-size: 10px;
     padding: 1px 4px;
   }
+  .cal-timegrid-head,
+  .cal-timegrid-body { grid-template-columns: 40px repeat(var(--cal-cols, 7), minmax(0, 1fr)); }
+  .cal-head-cell { padding: 6px 2px; font-size: 9.5px; }
+  .cal-head-cell .dnum { font-size: 13px; }
+  .cal-gutter .cal-hour { padding: 0 4px; font-size: 9px; }
+  .cal-slot-event { inset-inline: 2px; padding: 2px 3px; font-size: 9.5px; }
+  .cal-slot-event .t { display: none; }
 }
 
 // ────────────────────────

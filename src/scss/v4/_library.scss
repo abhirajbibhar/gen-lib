@@ -1,134 +1,32 @@
 // Digital library demo components: book covers, shelves, reading progress.
-// Covers are pure CSS so the demo works offline and in dark mode.
+// Cover art ships as static images in public/images/covers (one SVG per
+// title) so the cards show real artwork, not a painted gradient.
 
 // ────────────────────────
 //  BOOK COVER
 // ────────────────────────
 .book-cover {
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  width: 100%;
+  // The width/height attributes on <img> are presentational hints: without
+  // height:auto the 720px height attribute wins and object-fit crops the art.
+  height: auto;
   aspect-ratio: 2 / 3;
-  padding: 15px 12px 12px 21px;
-  border-radius: 2px 5px 5px 2px;
-  overflow: hidden;
-  isolation: isolate;
-  color: #fff;
-  background: linear-gradient(155deg, #2f4858, #16232c);
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-secondary);
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.09),
-    0 1px 2px rgba(16, 24, 40, 0.24),
-    0 10px 20px -12px rgba(16, 24, 40, 0.65);
+    0 1px 2px rgba(16, 24, 40, 0.18),
+    0 10px 18px -12px rgba(16, 24, 40, 0.55);
   transition: box-shadow 160ms;
-}
-
-// Spine
-.book-cover::before {
-  content: '';
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 9px;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.04) 60%, rgba(255, 255, 255, 0.22));
-  border-inline-end: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-// Sheen + bottom vignette so the author line always reads
-.book-cover::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(104deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 32%, rgba(0, 0, 0, 0.16)),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.28), transparent 42%);
-}
-
-.book-cover .bc-kicker {
-  position: relative;
-  z-index: 1;
-  font-size: 7px;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  opacity: 0.62;
-}
-
-.book-cover .bc-title {
-  position: relative;
-  z-index: 1;
-  margin-top: 12px;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.22;
-  letter-spacing: 0.1px;
-  text-wrap: balance;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.book-cover .bc-rule {
-  position: relative;
-  z-index: 1;
-  width: 18px;
-  height: 1px;
-  margin-top: 9px;
-  background: rgba(255, 255, 255, 0.55);
-}
-
-.book-cover .bc-author {
-  position: relative;
-  z-index: 1;
-  margin-top: auto;
-  padding-top: 12px;
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  opacity: 0.9;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 // Compact cover for rows and lists
 .book-cover.sm {
   width: 46px;
   flex-shrink: 0;
-  aspect-ratio: 2 / 3;
-  padding: 7px 5px 5px 10px;
-  border-radius: 2px 4px 4px 2px;
+  border-radius: var(--radius-sm);
 }
-.book-cover.sm::before { width: 5px; }
-.book-cover.sm .bc-kicker { display: none; }
-.book-cover.sm .bc-title {
-  margin-top: 2px;
-  font-size: 6.5px;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.book-cover.sm .bc-rule { width: 10px; margin-top: 4px; }
-.book-cover.sm .bc-author { display: none; }
-
-// Cover palettes
-.book-cover.cv-1  { background: linear-gradient(155deg, #264653, #12262b); }
-.book-cover.cv-2  { background: linear-gradient(155deg, #8a342b, #3a1210); }
-.book-cover.cv-3  { background: linear-gradient(155deg, #24466f, #0c1b2e); }
-.book-cover.cv-4  { background: linear-gradient(155deg, #6a4c93, #2c1e42); }
-.book-cover.cv-5  { background: linear-gradient(155deg, #b08968, #5f3f24); }
-.book-cover.cv-6  { background: linear-gradient(155deg, #2d6a4f, #103127); }
-.book-cover.cv-7  { background: linear-gradient(155deg, #4a4e69, #1e1e30); }
-.book-cover.cv-8  { background: linear-gradient(155deg, #9a3412, #3f1704); }
-.book-cover.cv-9  { background: linear-gradient(155deg, #0f766e, #032b28); }
-.book-cover.cv-10 { background: linear-gradient(155deg, #4338ca, #19164a); }
-.book-cover.cv-11 { background: linear-gradient(155deg, #831843, #34071b); }
-.book-cover.cv-12 { background: linear-gradient(155deg, #57534e, #171412); }
 
 // ────────────────────────
 //  BOOK CARD / SHELF
@@ -149,7 +47,7 @@
   text-decoration: none;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   transition: box-shadow 200ms, transform 200ms, border-color 200ms;
 }
 .book-card:hover {
@@ -168,7 +66,7 @@
   display: block;
   color: inherit;
   text-decoration: none;
-  border-radius: 3px 6px 6px 3px;
+  border-radius: var(--radius-sm);
 }
 .book-card-art:hover { text-decoration: none; }
 .book-card-art::after {
@@ -218,9 +116,8 @@
 }
 .book-card:hover .book-cover {
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.14),
-    0 2px 5px rgba(16, 24, 40, 0.28),
-    0 18px 28px -14px rgba(16, 24, 40, 0.75);
+    0 2px 5px rgba(16, 24, 40, 0.22),
+    0 18px 28px -14px rgba(16, 24, 40, 0.7);
   transform: translateY(-2px) scale(1.012);
 }
 
@@ -522,66 +419,26 @@
 // ────────────────────────
 //  READER
 // ────────────────────────
-.reader-page .reader-card {
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 210px);
-  min-height: 480px;
+// The reader is the whole content area: no page padding, no card, no toolbar,
+// no footer — just the shell around the document. The stage is pushed down by
+// the topbar's height so the viewer never slides underneath the fixed header,
+// and it takes exactly the rest of the viewport.
+body[data-page='reader'] .footer { display: none; }
+body[data-page='reader'] .main { padding-top: 0; }
+
+.reader-page {
+  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
+  background: var(--bg-surface-secondary);
 }
-
-.reader-toolbar {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  flex-wrap: wrap;
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--border-color-light);
-}
-
-.reader-book {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-}
-.reader-book .book-cover.sm { width: 30px; }
-.reader-book-text { min-width: 0; }
-.reader-book-title {
-  font-size: 13px;
-  font-weight: var(--font-weight-bold);
-  color: var(--text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.reader-book-meta {
-  font-size: 11px;
-  color: var(--text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.reader-format-switch { margin-inline-start: auto; }
-
-.reader-position {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 170px;
-}
-.reader-page-count {
-  font-size: 11px;
-  color: var(--text-muted);
-  white-space: nowrap;
-}
-.reader-position .reading-progress { width: 64px; height: 4px; }
 
 .reader-stage {
   position: relative;
-  flex: 1;
-  min-height: 0;
+  margin-top: var(--topbar-h);
+  height: calc(100vh - var(--topbar-h));
+  height: calc(100dvh - var(--topbar-h));
+  overflow: hidden;
   background: var(--bg-surface-secondary);
 }
 #pdf-viewer {
@@ -610,23 +467,6 @@
   animation: reader-spin 700ms linear infinite;
 }
 @keyframes reader-spin { to { transform: rotate(360deg); } }
-
-.reader-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding: 9px 16px;
-  border-top: 1px solid var(--border-color-light);
-  font-size: 11px;
-  color: var(--text-muted);
-}
-
-@media (max-width: 760px) {
-  .reader-format-switch { margin-inline-start: 0; }
-  .reader-page .reader-card { height: calc(100vh - 250px); }
-}
 
 // Genre rows reuse the visitor-row layout with a colour square instead of a flag
 .genre-list .visitor-row .dot {

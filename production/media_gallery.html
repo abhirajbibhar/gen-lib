@@ -47,28 +47,23 @@
 
 <script type="module">
 const covers = [
-  ['The Left Hand of Darkness','Ursula K. Le Guin','cv-1','Ace Books','EPUB · PDF'],
-  ['Piranesi','Susanna Clarke','cv-3','Bloomsbury','EPUB'],
-  ['Braiding Sweetgrass','Robin Wall Kimmerer','cv-6','Milkweed','EPUB · PDF'],
-  ['Klara and the Sun','Kazuo Ishiguro','cv-11','Faber','EPUB · Audio'],
-  ['The Overstory','Richard Powers','cv-12','Norton','EPUB'],
-  ['Project Hail Mary','Andy Weir','cv-10','Ballantine','EPUB · PDF · Audio'],
-  ['Circe','Madeline Miller','cv-5','Little, Brown','EPUB · Audio'],
-  ['The Master and Margarita','Mikhail Bulgakov','cv-2','Vintage Classics','EPUB · PDF'],
-  ['Sapiens','Yuval Noah Harari','cv-8','Harper','PDF · EPUB'],
-  ['The Ministry for the Future','Kim Stanley Robinson','cv-9','Orbit','EPUB'],
-  ['Educated','Tara Westover','cv-4','Random House','EPUB · Audio'],
-  ['The Name of the Wind','Patrick Rothfuss','cv-7','DAW Books','EPUB · PDF']
+  ['The Left Hand of Darkness','Ursula K. Le Guin','left-hand-of-darkness','Ace Books','EPUB · PDF'],
+  ['Piranesi','Susanna Clarke','piranesi','Bloomsbury','EPUB'],
+  ['Braiding Sweetgrass','Robin Wall Kimmerer','braiding-sweetgrass','Milkweed','EPUB · PDF'],
+  ['Klara and the Sun','Kazuo Ishiguro','klara-and-the-sun','Faber','EPUB · Audio'],
+  ['The Overstory','Richard Powers','the-overstory','Norton','EPUB'],
+  ['Project Hail Mary','Andy Weir','project-hail-mary','Ballantine','EPUB · PDF · Audio'],
+  ['Circe','Madeline Miller','circe','Little, Brown','EPUB · Audio'],
+  ['The Master and Margarita','Mikhail Bulgakov','the-master-and-margarita','Vintage Classics','EPUB · PDF'],
+  ['Sapiens','Yuval Noah Harari','sapiens','Harper','PDF · EPUB'],
+  ['The Ministry for the Future','Kim Stanley Robinson','the-ministry-for-the-future','Orbit','EPUB'],
+  ['Educated','Tara Westover','educated','Random House','EPUB · Audio'],
+  ['The Name of the Wind','Patrick Rothfuss','the-name-of-the-wind','DAW Books','EPUB · PDF']
 ];
 
-document.getElementById('cover-grid').innerHTML = covers.map(([title, author, palette, publisher, formats]) => `
+document.getElementById('cover-grid').innerHTML = covers.map(([title, author, slug, publisher, formats]) => `
   <div class="book-card">
-    <div class="book-cover ${palette}">
-      <span class="bc-kicker">${publisher}</span>
-      <span class="bc-title">${title}</span>
-      <span class="bc-rule"></span>
-      <span class="bc-author">${author}</span>
-    </div>
+    <img class="book-cover" src="../images/covers/${slug}.svg" alt="Cover of ${title} by ${author}" width="480" height="720" loading="lazy" decoding="async">
     <div class="book-title">${title}</div>
     <div class="book-author">${author}</div>
     <div class="book-badges"><span class="format-tag epub">${formats}</span></div>

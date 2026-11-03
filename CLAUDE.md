@@ -4,7 +4,7 @@ Guidance for Claude Code (claude.ai/code) when working in this repository. Cross
 
 ## What this is
 
-Gentelella v4 (`4.2.0`) — free admin dashboard template by Colorlib. **58 production HTML pages** under [production/](production/), built with Vite 8 (Rolldown). Vanilla ES2022, no Bootstrap, no jQuery, no SPA framework. SCSS-only styling. ECharts 6, DataTables.net 3, and Leaflet 1.9 are the only heavyweight runtime deps — all lazy-imported per page.
+Gentelella v4 (`4.2.0`) — free admin dashboard template by Colorlib. **58 production HTML pages** under [production/](production/), built with Vite 8 (Rolldown). Vanilla ES2022, no Bootstrap, no jQuery, no SPA framework. SCSS-only styling. ECharts 6 and DataTables.net 3 are the only heavyweight runtime deps — both lazy-imported per page.
 
 Live preview: <https://preview.colorlib.com/theme/gentelella/>.
 
@@ -31,7 +31,7 @@ Override the dev port via `PORT=…`; build under a subpath via `BASE_PATH=/foo/
 
 ## Architecture
 
-**Entry point**: [src/main-v4.js](src/main-v4.js) — single bundle for every page. Imports `scss/v4/main.scss`, mounts the shell, registers ECharts/DataTables/Leaflet placeholders, then lazy-imports page-specific modules guarded by DOM presence:
+**Entry point**: [src/main-v4.js](src/main-v4.js) — single bundle for every page. Imports `scss/v4/main.scss`, mounts the shell, registers ECharts/DataTables placeholders, then lazy-imports page-specific modules guarded by DOM presence:
 
 ```js
 if (document.getElementById('inbox-root')) {
@@ -49,7 +49,6 @@ if (document.getElementById('inbox-root')) {
 | ---------------- | ----------- | ------------------------------- |
 | `vendor-echarts` | chart pages | `node_modules/echarts/`         |
 | `vendor-tables`  | table pages | `node_modules/datatables.net/`  |
-| `vendor-maps`    | map page    | `node_modules/leaflet/`         |
 
 Everything else (shell, command palette, charts wrapper, tables wrapper, etc.) is in the main chunk and is small enough not to need splitting.
 

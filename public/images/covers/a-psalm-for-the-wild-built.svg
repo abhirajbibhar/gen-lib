@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="720" viewBox="0 0 480 720" role="img" aria-label="A Psalm for the Wild-Built by Becky Chambers">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#5d8a5a"/>
+      <stop offset="1" stop-color="#162914"/>
+    </linearGradient>
+    <linearGradient id="spine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".14"/>
+      <stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset=".45" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".34"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="480" height="720" fill="url(#bg)"/>
+  <g color="#ebf6e6">
+    <g stroke="currentColor" fill="none" opacity=".32">
+      <path d="M240 380 m0 -150 a150 150 0 1 1 -1 0" stroke-width="1.2"/>
+      <path d="M240 430 m0 -110 a110 110 0 1 0 -1 0" stroke-width="1"/>
+      <path d="M240 470 m0 -70 a70 70 0 1 1 -1 0" stroke-width="1"/>
+      <path d="M240 500 m0 -30 a30 30 0 1 0 -1 0" stroke-width="1"/>
+      <path d="M40 600 h400 M40 620 h400" stroke-width=".6" opacity=".5"/>
+    </g></g>
+  <rect width="480" height="720" fill="url(#fade)"/>
+  <rect width="480" height="720" fill="url(#sheen)"/>
+  <rect width="16" height="720" fill="url(#spine)"/>
+  <rect x="1" y="1" width="478" height="718" fill="none" stroke="#ebf6e6" stroke-opacity=".28"/>
+
+  <text x="52" y="72" fill="#ebf6e6" fill-opacity=".72" font-family="Inter, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" letter-spacing="3.2">TORDOTCOM</text>
+
+  <text fill="#ebf6e6" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="700" letter-spacing="-0.6"><tspan x="52" y="273.32">A Psalm for</tspan><tspan x="52" y="326.68">the Wild-Built</tspan></text>
+
+  <rect x="52" y="360.68" width="42" height="2" fill="#ebf6e6" fill-opacity=".65"/>
+
+  <text x="52" y="652" fill="#ebf6e6" fill-opacity=".9" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="500" letter-spacing="1.6">BECKY CHAMBERS</text>
+</svg>

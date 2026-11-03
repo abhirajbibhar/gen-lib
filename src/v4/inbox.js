@@ -108,7 +108,7 @@ Otherwise The Ministry for the Future, but give it a month.`, time: 'Yesterday' 
   m({ folder: 'sent', unread: false, starred: false, label: 'library',  from: 'Me',  to: 'mark@readers.club', subject: 'Re: Import my Calibre library', preview: 'Drop the export in Book files and I will index it tonight.', body: `Drop the export into Book files → Upload and I will run the indexer tonight.
 
 600 books should take about 20 minutes.`, time: 'Mon' }),
-  m({ folder: 'sent', unread: false, starred: false, label: 'personal', from: 'Me',  to: 'emily@readers.club', subject: 'Re: My Piranesi highlights', preview: 'Keep the one about the tides.', body: `Keep the one about the tides — it is the whole book in one line.`, time: 'Yesterday' }),
+  m({ folder: 'sent', unread: false, starred: false, label: 'personal', from: 'Me',  to: 'emily@readers.club', subject: 'Re: My Piranesi highlights', preview: 'Keep the one about the tides.', body: 'Keep the one about the tides — it is the whole book in one line.', time: 'Yesterday' }),
 
   // ── Drafts
   m({ folder: 'drafts', unread: false, starred: false, label: null,     from: 'Me', to: 'emily@readers.club', subject: 'Re: My Piranesi highlights',  preview: 'Two more highlights you might like —', body: 'Two more highlights you might like — the ones from chapter 34 and the final page.', time: 'Today' }),
